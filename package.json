@@ -4,5 +4,8 @@
   "description": "Basic theme",
   "repository": "git@github.com:skilld-labs/kaizen.git",
   "author": "Skilld",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.0"
+  }
 }
