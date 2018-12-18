@@ -24,10 +24,7 @@ options.theme = {
   root: options.rootPath.theme,
   sass: options.rootPath.src + 'sass/',
   css: options.rootPath.dist + 'css/',
-  js: options.rootPath.src + 'js/',
-  node: options.rootPath.theme + 'node_modules/',
-  images: options.rootPath.theme + 'images/',
-  sprites: options.rootPath.src + 'sprites/*'
+  js: options.rootPath.src + 'js/'
 };
 
 options.autoprefixer = {

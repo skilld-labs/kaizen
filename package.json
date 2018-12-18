@@ -6,6 +6,14 @@
   "author": "Skilld",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-decorators": "^7.2.2",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@babel/plugin-proposal-function-sent": "^7.2.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.2.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-loader": "^8.0.4",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
@@ -14,7 +22,11 @@
     "gulp-sass": "^4.0.2",
     "gulp-size": "^3.0.0",
     "gulp-sourcemaps": "^2.6.4",
-    "node-sass-magic-importer": "^5.2.0"
+    "node-sass-magic-importer": "^5.2.0",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "^4.27.1",
+    "webpack-modernizr-loader": "^4.0.1",
+    "webpack-stream": "^5.2.1"
   },
   "scripts": {
     "build": "NODE_ENV=production gulp",
