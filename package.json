@@ -1,0 +1,8 @@
+{
+  "name": "kaizen",
+  "version": "1.0.0",
+  "description": "Basic theme",
+  "repository": "git@github.com:skilld-labs/kaizen.git",
+  "author": "Skilld",
+  "license": "MIT"
+}
