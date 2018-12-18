@@ -6,6 +6,17 @@
   "author": "Skilld",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^4.0.0"
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "node-sass-magic-importer": "^5.2.0"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production gulp",
+    "dev": "NODE_ENV=dev gulp"
   }
 }
