@@ -44,4 +44,14 @@ options.sass = {
   outputStyle: (isProduction ? 'compresssed' : 'expanded')
 };
 
+options.eslint = {
+  files: [
+    options.rootPath.project + 'gulpfile.js',
+    options.theme.js + '**/*.js',
+    '!' + options.theme.js + '**/*.min.js',
+    options.theme.components + '**/*.js',
+    '!' + options.theme.build + '**/*.js'
+  ]
+};
+
 module.exports = options;

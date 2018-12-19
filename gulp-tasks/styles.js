@@ -10,7 +10,7 @@
 
 const options = require('../gulp-options');
 
-const { dest, src } = require('gulp');
+const {dest, src} = require('gulp');
 const autoprefixer  = require('gulp-autoprefixer');
 const gulpif        = require('gulp-if');
 const rename        = require('gulp-rename');

@@ -3,7 +3,7 @@
  * Javascript.
  */
 
-const { dest, src } = require('gulp');
+const {dest, src} = require('gulp');
 const options = require('../gulp-options');
 const webpack = require('webpack-stream');
 

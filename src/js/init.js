@@ -1,1 +1,1 @@
-import './.modernizrrc'
+import './.modernizrrc';
