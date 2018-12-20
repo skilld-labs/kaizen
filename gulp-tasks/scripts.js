@@ -9,7 +9,7 @@ const webpack = require('webpack-stream');
 
 
 function scripts() {
-  return src(options.theme.js + 'init.js')
+  return src(options.theme.js + '*.js')
     .pipe(webpack(require('../webpack.config')))
     .pipe(dest(options.rootPath.dist));
 }
