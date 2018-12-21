@@ -1,0 +1,6 @@
+base:
+  css:
+    base:
+      dist/css/styles.css: {}
+  js:
+    dist/app.js: {}

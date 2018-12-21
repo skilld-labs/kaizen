@@ -21,7 +21,7 @@ options.rootPath = {
 
 options.theme = {
   name: 'kaizen',
-  root: options.rootPath.theme,
+  gulpAssets: options.rootPath.project + 'gulp-tasks/assets/',
   sass: options.rootPath.src + 'sass/',
   css: options.rootPath.dist + 'css/',
   js: options.rootPath.src + 'js/'
