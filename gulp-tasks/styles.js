@@ -10,7 +10,7 @@
 
 const options = require('../gulp-options');
 
-const {dest, src} = require('gulp');
+const {dest, lastRun, src} = require('gulp');
 const autoprefixer  = require('gulp-autoprefixer');
 const gulpif        = require('gulp-if');
 const rename        = require('gulp-rename');
@@ -19,7 +19,7 @@ const size          = require('gulp-size');
 const sourcemaps    = require('gulp-sourcemaps');
 
 function styles() {
-  return src(options.sassFiles)
+  return src(options.sassFiles, {since: lastRun(styles)})
     .pipe(gulpif(!options.isProduction, sourcemaps.init()))
     .pipe(sass(options.sass).on('error', sass.logError))
     .pipe(autoprefixer(options.autoprefixer))

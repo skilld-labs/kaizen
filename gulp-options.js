@@ -54,4 +54,22 @@ options.eslint = {
   ]
 };
 
+// If your files are on a network share, you may want to turn on polling for
+// Gulp watch. Since polling is less efficient, we disable polling by default.
+// Use `options.gulpWatchOptions = {interval: 1000, mode: 'poll'};` as example.
+options.gulpWatchOptions = {};
+
+options.browserSync = false;
+
+// Set the URL used to access the Drupal website under development. This will
+// allow Browser Sync to serve the website and update CSS changes on the fly.
+options.drupalURL = '';
+
+try {
+  let overrides = require('./gulp-options.local');
+  options = Object.assign(options, overrides);
+} catch (ex) {
+  console.log('Work with default gulp options');
+}
+
 module.exports = options;
