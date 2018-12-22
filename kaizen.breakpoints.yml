@@ -1,0 +1,24 @@
+kaizen.mobile:
+  label: mobile
+  mediaQuery: 'all and (max-width: 639px)'
+  weight: 0
+  group: kaizen
+  multipliers:
+    - 1x
+    - 2x
+kaizen.narrow:
+  label: narrow
+  mediaQuery: 'all and (min-width: 640px) and (max-width: 1023px)'
+  weight: 1
+  group: kaizen
+  multipliers:
+    - 1x
+    - 2x
+kaizen.wide:
+  label: wide
+  mediaQuery: 'all and (min-width: 1024px)'
+  weight: 2
+  group: kaizen
+  multipliers:
+    - 1x
+    - 2x

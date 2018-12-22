@@ -1,0 +1,11 @@
+// THIS IS GENERATED FILE. PLEASE EDIT THEMENAME.breakpoints.yml
+$breakpoints-groups: (
+  kaizen: (
+    mobile_1x: 'all and (max-width: 639px)',
+    mobile_2x: 'all and (max-width: 639px) and (min-resolution: 2dppx)',
+    narrow_1x: 'all and (min-width: 640px) and (max-width: 1023px)',
+    narrow_2x: 'all and (min-width: 640px) and (max-width: 1023px) and (min-resolution: 2dppx)',
+    wide_1x: 'all and (min-width: 1024px)',
+    wide_2x: 'all and (min-width: 1024px) and (min-resolution: 2dppx)',
+  ),
+);
