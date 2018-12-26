@@ -1,0 +1,4 @@
+// Generate css variable mixin.
+@function color($name) {
+  @return var(--#{$name});
+}

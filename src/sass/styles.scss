@@ -1,5 +1,14 @@
 @import 'init';
 
 body {
+  color: color('black');
   font-size: $base-font-size;
+}
+
+a {
+  color: color('brand_3');
+
+  &:hover {
+    color: color('brand_4');
+  }
 }
