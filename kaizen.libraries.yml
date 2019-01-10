@@ -1,5 +1,7 @@
 base:
   css:
+    theme:
+        color/colors.css: {}
     base:
       dist/css/styles.css: {}
   js:

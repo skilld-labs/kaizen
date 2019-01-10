@@ -1,14 +1,14 @@
-.brands {
+.colors {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
   max-width: 100%;
 }
-.brands__item  {
+.colors__item  {
   margin-bottom: 32px;
   text-align: center;
 }
-.brands__item > div:first-of-type {
+.colors__item > div:first-of-type {
   border: 1px solid;
   flex: 0 0 80px;
   height: 80px;
