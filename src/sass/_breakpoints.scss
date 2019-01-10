@@ -1,0 +1,33 @@
+@import 'bp';
+
+/// Mixin to manage responsive breakpoints
+/// UPDATED TO USE WITH $breakpoints-groups
+/// @author Hugo Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints-groups
+/// Usage: https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/#article-header-id-1
+
+@mixin respond-to($breakpoint, $group: 'kaizen') {
+  @if map-has-key($breakpoints-groups, $group) {
+
+    $breakpoints: map-get($breakpoints-groups, $group);
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+      // Prints a media query based on the value
+      @media #{inspect(map-get($breakpoints, $breakpoint))} {
+        @content;
+      }
+    }
+
+    // If the key doesn't exist in the map
+    @else {
+      @error 'Unfortunately, no value could be retrieved from `#{$breakpoint}`. '
+          + 'Available breakpoints are: #{map-keys($breakpoints)}.';
+    }
+  }
+  // If the group doesn't exist in the group list
+  @else {
+    @error 'Unfortunately, no value could be retrieved from `#{$group}`. '
+        + 'Available groups are: #{map-keys($breakpoints-groups)}.';
+  }
+}
