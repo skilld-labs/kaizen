@@ -1,9 +1,9 @@
-@import 'init';
+@import '../../../init';
 
 // COMPONENT_NAME
 //
 // Markup:
-// <div class="COMPONENT {{modifier_class}}">COMPONENT_NAME</div>
+// <div class='COMPONENT {{modifier_class}}'>COMPONENT_NAME</div>
 //
 // .COMPONENT--modifier - Modifier description.
 //
@@ -13,5 +13,5 @@ $name: 'COMPONENT';
 
 .#{$name},
 %#{$name} {
-
+  display: inherit;
 }
