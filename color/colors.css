@@ -1,0 +1,11 @@
+/* ---------- Color Module Styles ----------- */
+
+:root {
+  --black:   #000;
+  --white:   #fff;
+  --color_1: #e65100;
+  --color_2: #ff6d00;
+  --color_3: #ff981f;
+  --color_4: #ffca28;
+  --color_5: #ffe57f;
+}
