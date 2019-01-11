@@ -13,7 +13,7 @@ const themeName = options.theme.name;
 const {parallel} = require('gulp');
 const WARNING = 'THIS IS GENERATED FILE. PLEASE EDIT THEMENAME.breakpoints.yml';
 const jsFile = '.bp.json';
-const sassFile = '_bp.scss';
+const sassFile = 'abstractions/_bp.scss';
 
 /**
  * Generate sass map with breakpoints.
