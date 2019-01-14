@@ -1,0 +1,14 @@
+custom_link:
+  label: Custom link
+  group: Kaizen
+  template: <a href="#" class="custom-link">Custom link text</a>
+
+custom_title:
+  label: Custom title
+  group: Kaizen
+  template: <h2 class="custom-title">Custom title</h2>
+
+custom_component_added_to_default_styleguide:
+  label: Custom Component
+  group: Common
+  template: <div class="custom-component">Custom Component</div>

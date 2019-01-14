@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the Kaizen theme.
+ */
+
+use Drupal\Core\Config\FileStorage;
+
+/**
+ * Implements hook_styleguide_alter() for managing styleguide output.
+ */
+function kaizen_styleguide_alter(&$items) {
+  unset($items['image-horizontal']);
+  unset($items['image-vertical']);
+  unset($items['image-inset-horizontal']);
+  unset($items['image-inset-vertical']);
+
+  $storage = new FileStorage(__DIR__);
+  $config = $storage->read('kaizen.components');
+
+  foreach ($config as $key => $value) {
+    // TODO: Research usage of twig templates.
+    // TODO: Research usage component modifiers.
+    // TODO: Research usage of node+view mode.
+    $items[$key] = [
+      'title' => $value['label'],
+      'content' => $value['template'],
+      'group' => t($value['group']),
+    ];
+  }
+}
