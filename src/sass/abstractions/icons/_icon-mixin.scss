@@ -1,0 +1,103 @@
+@import 'init';
+// TODO: maybe need to remove/replace typey;
+@import '~typey';
+
+@import '../../dist/svg/svg-sprite-mixins';
+@import '../../dist/fonts/svg-font-mixins';
+
+// g-icon()
+//
+// Global mixin for include colored icon.
+// With modernizr check if browser supports svg-fragment and css-mask
+// then use: svg-sprite, otherwice generated iconfont.
+//
+// This mixin uses sass map with the next properties:
+// $name = Filename of svg. Maybe located inside options.theme.svg
+// See `iconfont` and `svg` gulp tasks.
+//
+// $color: functional or base color name from _colors.scss
+//
+// $fallback-font-size: font-size of fallback in case of iconfont
+// possible values:
+//                  `NUMpx` only.
+//
+// $display: set value of `display` property for icon in case of svg-sprite.
+// possible values:
+//                  `block` (default)
+//                  `inline-block`
+//
+// $where-to-insert: in what placeholder icon should be added
+// possible values:
+//                  `before` (default, if icon should be added before content, or not necessary)
+//                  `after` (if icon should be added after content)
+
+@mixin g-icon($options: ()) {
+  $icon-properties: map-merge((
+    name: test,
+    color: color_1,
+    fallback-font-size: inherit,
+    display: block,
+    where-to-insert: before
+  ), $options);
+
+  .cssmask & {
+    &::#{map-get($icon-properties, where-to-insert)} {
+      @include g-icon-css-mask($icon-properties);
+    }
+  }
+
+  .no-cssmask & {
+    &::#{map-get($icon-properties, where-to-insert)} {
+      @include g-icon-no-css-mask($icon-properties);
+    }
+  }
+}
+// g-icon-css-mask()
+//
+// Global mixin to add svg-sprite.
+// it has dependency with mixin `g-icon`.
+//
+// all params here from `g-icon` mixin.
+@mixin g-icon-css-mask($icon-properties) {
+  @include svg-mixin-global(map-get($icon-properties, name));
+  background-color: color(map-get($icon-properties, color));
+  display: map-get($icon-properties, display);
+  content: '';
+}
+
+// g-icon-no-css-mask()
+//
+// Global mixin to add iconfont in case of fallback.
+// it has dependency with mixin `g-icon`.
+//
+// all params here from `g-icon` mixin.
+@mixin g-icon-no-css-mask($icon-properties) {
+  @extend %icon;
+  @if (map-get($icon-properties, fallback-font-size) != inherit) {
+    // TODO: this line comes from typey, maybe need to use smth instead;
+    font-size: spacing(map-get($icon-properties, fallback-font-size));
+  }
+  @else {
+    font-size: map-get($icon-properties, fallback-font-size);
+  }
+  color: color(map-get($icon-properties, color));
+  content: icon-char(map-get($icon-properties, name));
+  line-height: 1;
+}
+
+// icon-font()
+//
+// Global mixin to add main styles for iconic font.
+//
+// $line-height = set needed line-height value, or set it to `false` if you want to ignore it.
+@mixin icon-font($line-height: 1) {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  @if ($line-height != false) {
+    line-height: $line-height;
+  }
+}

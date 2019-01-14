@@ -21,6 +21,9 @@ options.rootPath = {
 
 options.theme = {
   name: 'kaizen',
+  root: options.rootPath.project,
+  svg: options.rootPath.dist + 'svg/',
+  iconfont: options.rootPath.dist + 'fonts/',
   gulpAssets: options.rootPath.project + 'gulp-tasks/assets/',
   sass: options.rootPath.src + 'sass/',
   css: options.rootPath.dist + 'css/',
@@ -52,6 +55,53 @@ options.eslint = {
     options.theme.components + '**/*.js',
     '!' + options.theme.build + '**/*.js'
   ]
+};
+
+// Svg sprite options.
+options.svgConfig = {
+  shape: {
+    dimension: {
+      maxWidth: 500,
+      maxHeight: 500,
+      transform: ['svgo']
+    },
+    id: {
+      separator: ''
+    }
+  },
+  mode: {
+    view: {
+      dest: './',
+      sprite: '../svg',
+      bust: true,
+      prefix: '@mixin svg-sprite--%s',
+      layout: 'diagonal',
+      mixin: true,
+      render: {
+        scss: {
+          dest: 'svg-sprite-mixins.scss',
+          template: options.rootPath.src + '/svg/_svg-sprite-template.scss'
+        }
+      },
+      example: true
+    }
+  }
+};
+
+// IconfontCSS options.
+options.iconfontCSS = {
+  fontName: 'iconic-font',
+  path: options.theme.root + 'src/svg/_svg-font-template.scss',
+  targetPath: '_svg-font-mixins.scss',
+  fontPath: '../fonts/'
+};
+
+// Iconfont options.
+options.iconfont = {
+  fontName: 'iconic-font',
+  formats: ['svg', 'woff', 'woff2'],
+  normalize: true,
+  fontHeight: 1001
 };
 
 // If your files are on a network share, you may want to turn on polling for

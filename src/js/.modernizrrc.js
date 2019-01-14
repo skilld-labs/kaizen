@@ -8,6 +8,8 @@ module.exports = {
     'setClasses'
   ],
   'feature-detects': [
+    'test/css/mask',
+    'svg/inline',
     'test/css/cssgrid',
   ]
 };
