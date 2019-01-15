@@ -7,7 +7,8 @@ regions:
   header: Header
   content: Content
   footer: Footer
-dependencies:
-  - drupal:styleguide
+# Enable module Styleguide and uncomment 2 strings below.
+#dependencies:
+#  - drupal:styleguide
 libraries:
   - kaizen/base

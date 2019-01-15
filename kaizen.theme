@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Config\FileStorage;
+use Drupal\file\Entity\File;
 
 /**
  * Implements hook_styleguide_alter() for managing styleguide output.
@@ -22,11 +23,64 @@ function kaizen_styleguide_alter(&$items) {
   foreach ($config as $key => $value) {
     // TODO: Research usage of twig templates.
     // TODO: Research usage component modifiers.
-    // TODO: Research usage of node+view mode.
+
     $items[$key] = [
       'title' => $value['label'],
-      'content' => $value['template'],
+      'description' => $value['description'],
       'group' => t($value['group']),
     ];
+
+    if ($value['type'] !== 'twig') {
+      $items[$key]['content'] = kaizen_custom_styleguide_render_entity($value['type'], $value['entity']);
+    } else {
+      $items[$key]['content'] = $value['template'];
+    }
   }
+}
+
+/**
+ * Render entity.
+ * Using kaize.components.yml config file.
+ * Options for config items:
+ * 1) 'twig' - renders provided html
+ * 2) 'entity' - renders drupal entity.
+ *
+ * In 'entity' render for fields used Drupal\styleguide\GeneratorInterface
+ * functions. For example:
+ * article_teaser.entity.fields.title.generator uses Drupal\styleguide\GeneratorInterface->words()
+ * with article_teaser.entity.fields.title.params
+ */
+
+function kaizen_custom_styleguide_render_entity($type, $entity) {
+  $styleguide_generator = \Drupal::service('styleguide.generator');
+
+  $entity_config = [
+    'in_preview' => TRUE,
+    'type' => $entity['type'],
+  ];
+
+  foreach ($entity['fields'] as $key => $value) {
+    $params = array_key_exists('params', $value) ? $value['params'] : array();
+    $field = call_user_func_array(array($styleguide_generator, $value['generator']), $params);
+
+    if ($value['generator'] == 'image') {
+      $field = kaizen_custom_styleguide_create_image_field($field);
+    }
+    $entity_config[$key] = $field;
+  }
+
+  $entity_created = \Drupal::entityTypeManager()->getStorage($type)->create($entity_config);
+  $view_builder = \Drupal::entityTypeManager()->getViewBuilder($type);
+  $view = $view_builder->view($entity_created, $entity['view_mode']);
+  $output = \Drupal::service('renderer')->render($view);
+
+  return $output;
+}
+
+function kaizen_custom_styleguide_create_image_field($uri) {
+  $file = File::create([
+    'uri' => $uri,
+  ]);
+  $file->save();
+  return $file->id();
 }

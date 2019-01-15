@@ -1,14 +1,39 @@
 custom_link:
   label: Custom link
+  type: twig
+  description: Custom link description
   group: Kaizen
   template: <a href="#" class="custom-link">Custom link text</a>
 
 custom_title:
   label: Custom title
+  type: twig
+  description: Custom title description
   group: Kaizen
   template: <h2 class="custom-title">Custom title</h2>
 
 custom_component_added_to_default_styleguide:
   label: Custom Component
+  type: twig
+  description: Custom component listed in default styleguide description
   group: Common
   template: <div class="custom-component">Custom Component</div>
+
+article_teaser:
+  label: Node Article(teaser)
+  type: node
+  description: Article node in teaser view mode
+  group: Kaizen
+  entity:
+    type: article
+    view_mode: teaser
+    fields:
+      title:
+        generator: words
+        params:
+          - 5
+          - ucwords
+      body:
+        generator: lorem
+      field_image:
+        generator: image
