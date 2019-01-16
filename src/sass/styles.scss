@@ -1,5 +1,7 @@
 @import 'init';
 
+@import 'base/border-box';
+
 body {
   background-color: color('bg');
   color: color('text');
