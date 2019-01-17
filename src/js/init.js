@@ -1,3 +1,4 @@
+import './trimlines/trimlines';
 import modernizr from './.modernizrrc';
 import {initBreakpointsCssReload} from './breakpoints';
 import cssVars from 'css-vars-ponyfill';
