@@ -2,3 +2,6 @@
 @import 'abstractions/colors';
 @import 'abstractions/variables';
 @import '~susy';
+
+// Uncomment next @import if you need trimming feature on the project.
+//@import 'line-clamp';
