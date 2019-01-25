@@ -88,8 +88,9 @@ import {addBreakpointListener} from '../breakpoints';
         if (notes === false) {
           const wrapper = document.createElement('div');
           wrapper.className = 'clamp-wrapper';
-          while(element.firstChild)
+          while (element.firstChild) {
             wrapper.appendChild(element.firstChild);
+          }
 
           element.appendChild(wrapper);
         }
