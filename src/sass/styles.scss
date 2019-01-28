@@ -1,14 +1,15 @@
 @import 'init';
 
 body {
-  color: color('black');
+  background-color: color('bg');
+  color: color('text');
   font-size: $base-font-size;
 }
 
 a {
-  color: color('color_3');
+  color: color('link');
 
   &:hover {
-    color: color('color_4');
+    color: color('link-hover');
   }
 }

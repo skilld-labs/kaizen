@@ -7,10 +7,10 @@
   Drupal.color = {
     logoChanged: false,
     callback: function callback(context, settings, $form) {
-      var $colorPreview = $form[0].querySelectorAll('.color-preview .colors__item > div:first-of-type');
-      var $colorPalette = $form[0].querySelectorAll('.js-color-palette');
+      const $colorPreview = $form[0].querySelectorAll('.color-preview .colors__item > div:first-of-type');
+      const $colorPalette = $form[0].querySelectorAll('.js-color-palette');
 
-      for (var i = 0; i < $colorPreview.length; i++) {
+      for (let i = 0; i < $colorPreview.length; i++) {
         $colorPreview[i].style.backgroundColor = $colorPalette[0].querySelectorAll('input[name="palette[' +
           $colorPreview[i].getAttribute('class') + ']"]')[0].value
       }

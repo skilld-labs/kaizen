@@ -1,4 +1,24 @@
-// Generate css variable mixin.
-@function color($name) {
+// functional colors mapping
+$colors-map: (
+  // Body bg
+  bg: 'color-7',
+  // Body text
+  text: 'color-6',
+
+  link: 'color-3',
+  link-hover: 'color-4',
+);
+
+// Generate css variable function.
+@function get-var-color($name) {
   @return var(--#{$name});
+}
+
+@function color($key) {
+  @if map-has-key($colors-map, $key) {
+    @return get-var-color(map-get($colors-map, $key));
+  }
+
+  @error 'Unknown `#{$key}` in $colors-map.';
+  @return null;
 }
