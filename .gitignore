@@ -1,2 +1,4 @@
 /dist
+.bg.json
+_bp.scss
 gulp-options.local.js
