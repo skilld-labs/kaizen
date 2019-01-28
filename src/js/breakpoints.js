@@ -1,6 +1,7 @@
 /**
  * @file
  * Get breakpoints kaizen.breakpoints.yml in this file.
+ *
  * Usage:
  * import {addBreakpointListener} from './breakpoints';
  * addBreakpointListener('mobile_1x', () => {
@@ -10,6 +11,7 @@
 
 // Since webpack >= v2.0.0, importing of JSON files will work by default.
 import config from './.bp.json';
+import debounce from 'lodash.debounce';
 const events = ['load', 'resize'];
 const defaultGroup = 'kaizen';
 
@@ -57,28 +59,4 @@ function setBreakpoints() {
   });
 }
 
-// TODO: Use drupal debounce here.
-function debounce(func, wait, immediate) {
-  let timeout;
-  let result;
-  return function (...args) {
-    const context = this;
-    const later = function () {
-      timeout = null;
-      if (!immediate) {
-        result = func.apply(context, args);
-      }
-    };
-    const callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) {
-      result = func.apply(context, args);
-    }
-    return result;
-  };
-}
-
 export {initBreakpointsCssReload, addBreakpointListener};
-
-
