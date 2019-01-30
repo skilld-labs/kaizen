@@ -1,0 +1,69 @@
+/*
+Since it is hard to define polifill for CSS Layout
+better to add some common recipes for grids and failback.
+We can use css `@supports` to check grid support
+And modernizr check feature 'test/css/cssgrid' to check unsupported
+with susy to manage math.
+
+Resources:
+https://gridbyexample.com/ - Collection of CSS Grid examples and patterns.
+https://www.miriamsuzanne.com/speaking/talks/no-grid-system/ - Awesome retrospective of grids.
+https://oddbird.net/2017/06/28/susy3/#susy-columns-grid-template-columns - Susy as grid failback
+*/
+
+
+
+/*
+That example will create endless grid of type:
+
+2fr 3fr 2fr
+2fr 3fr 2fr
+...........
+
+with 1 rem gutter.
+*/
+.grid-example {
+
+  // If variables added inside selector they stay local
+  // So one list may used everywhere.
+  // Also for common grids we may use CSS Variables.
+  $gap: 1rem;
+  $grid-template-columns: 2fr 3fr 2fr;
+  $susy-columns: susy-repeat(2) susy-repeat(3) susy-repeat(2);
+
+  .no-cssgrid & {
+    display: flex;
+    flex-wrap: wrap;
+    // To have equal display with CSS Layout grid add negative margin.
+    margin-bottom: -#{$gap};
+
+    >* {
+      flex-grow: 0;
+      flex-shrink: 0;
+      margin-right: $gap;
+      margin-bottom: $gap;
+
+      &:nth-child(3n-1) {
+        // It will do complex math like:
+        // flex-basis: calc(2rem + ((100% - 6rem) / 7 * 3));
+        // https://oddbird.net/susy/docs/api.html
+        flex-basis: span(3 at 3 of wide ($susy-columns) narrow set-gutters $gap);
+      }
+
+      &:nth-child(3n-2) {
+        flex-basis: span(2 at 1 of wide ($susy-columns) narrow set-gutters $gap);
+      }
+
+      &:nth-child(3n) {
+        flex-basis: span(2 at 5 of wide ($susy-columns) narrow set-gutters $gap);
+        margin-right: 0;
+      }
+    }
+  }
+
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-gap: $gap;
+  }
+}
