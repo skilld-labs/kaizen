@@ -32,6 +32,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "node-sass-magic-importer": "^5.2.0",
+    "susy": "^3.0.5",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.27.1",
     "webpack-modernizr-loader": "^4.0.1",
