@@ -1,24 +1,28 @@
 /**
  * @file
- * Breakpoints parser. Inspired by https://github.com/jenslind/drupal-breakpoints-scss/
+ * Breakpoints parser.
+ *
+ * Inspired by https://github.com/jenslind/drupal-breakpoints-scss/
  * Generates sass variables for sass.
  *
  * TODO: Put into separated npm package.
  */
+
 'use strict';
 const options = require('../gulp-options');
 const yaml = require('js-yaml');
 const fs = require('fs');
 const themeName = options.theme.name;
-const {parallel} = require('gulp');
 const WARNING = 'THIS IS GENERATED FILE. PLEASE EDIT THEMENAME.breakpoints.yml';
 const jsFile = '.bp.json';
 const sassFile = '_bp.scss';
 
 /**
  * Generate sass map with breakpoints.
+ *
  * @param {*} groups - Breakpoints groups list mapped with their queries.
  * @param {*} fileContent - parsed Drupal breakpoints.yml
+ *
  * @returns Sass Map with drupal breakpoints.
  */
 
@@ -36,11 +40,11 @@ function generateMap(groups, fileContent) {
     breakpoints.forEach((bp) => {
       let breakpoint = fileContent[bp];
       let multipliers = checkMultipliers(breakpoint.multipliers);
-      let machineLabel = breakpoint.label.replace(/\s+/g, '_').toLowerCase();
+      let breakpointLabel = breakpoint.label.replace(/\s+/g, '_').toLowerCase();
 
       multipliers.forEach(mp => {
         let multiplier = mp ? '_' + mp : '';
-        scssMap += '    ' + machineLabel + multiplier + ': \''
+        scssMap += '    ' + breakpointLabel + multiplier + ': \''
           + generateQuery(breakpoint, mp === '1x' ? null : mp) + '\',\n';
       });
     });
@@ -59,11 +63,11 @@ function generateJSON(groups, fileContent) {
     breakpoints.forEach((bp) => {
       let breakpoint = fileContent[bp];
       let multipliers = checkMultipliers(breakpoint.multipliers);
-      let machineLabel = breakpoint.label.replace(/\s+/g, '_').toLowerCase();
+      let breakpointLabel = breakpoint.label.replace(/\s+/g, '_').toLowerCase();
 
       multipliers.forEach(mp => {
         let multiplier = mp ? '_' + mp : '';
-        output[group][machineLabel + multiplier] = generateQuery(breakpoint, mp === '1x' ? null : mp);
+        output[group][breakpointLabel + multiplier] = generateQuery(breakpoint, mp === '1x' ? null : mp);
       });
     });
   });
@@ -72,8 +76,10 @@ function generateJSON(groups, fileContent) {
 
 /**
  * Generate query.
+ *
  * @param {*} breakpoint - Media query.
  * @param {*} multiplier - Optional Multiplier.
+ *
  * @returns
  */
 
@@ -85,7 +91,9 @@ function generateQuery(breakpoint, multiplier) {
 
 /**
  * Generate groups list with mapped queries.
+ *
  * @param {*} fileContent - parsed Drupal breakpoints.yml
+ *
  * @returns
  */
 
@@ -124,6 +132,7 @@ function getMappedGroupsList(fileContent) {
  * Validate breakpoint multipliers
  *
  * @param {*} multipliers
+ *
  * @returns updated list of multipliers
  */
 
@@ -153,13 +162,17 @@ function xToResolution(mp) {
 
 function writeJs(json) {
   fs.writeFileSync(options.theme.js + jsFile, json, (err) => {
-    if (err) {throw err;}
+    if (err) {
+      throw err;
+    }
   });
 }
 
 function writeSass(sassMap) {
   fs.writeFileSync(options.theme.sass + sassFile, sassMap, (err) => {
-    if (err) {throw err;}
+    if (err) {
+      throw err;
+    }
   });
 }
 
