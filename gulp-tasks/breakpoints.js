@@ -40,11 +40,11 @@ function generateMap(groups, fileContent) {
     breakpoints.forEach((bp) => {
       let breakpoint = fileContent[bp];
       let multipliers = checkMultipliers(breakpoint.multipliers);
-      let machineLabel = breakpoint.label.replace(/\s+/g, '_').toLowerCase();
+      let breakpointLabel = breakpoint.label.replace(/\s+/g, '_').toLowerCase();
 
       multipliers.forEach(mp => {
         let multiplier = mp ? '_' + mp : '';
-        scssMap += '    ' + machineLabel + multiplier + ': \''
+        scssMap += '    ' + breakpointLabel + multiplier + ': \''
           + generateQuery(breakpoint, mp === '1x' ? null : mp) + '\',\n';
       });
     });
@@ -63,11 +63,11 @@ function generateJSON(groups, fileContent) {
     breakpoints.forEach((bp) => {
       let breakpoint = fileContent[bp];
       let multipliers = checkMultipliers(breakpoint.multipliers);
-      let machineLabel = breakpoint.label.replace(/\s+/g, '_').toLowerCase();
+      let breakpointLabel = breakpoint.label.replace(/\s+/g, '_').toLowerCase();
 
       multipliers.forEach(mp => {
         let multiplier = mp ? '_' + mp : '';
-        output[group][machineLabel + multiplier] = generateQuery(breakpoint, mp === '1x' ? null : mp);
+        output[group][breakpointLabel + multiplier] = generateQuery(breakpoint, mp === '1x' ? null : mp);
       });
     });
   });
