@@ -3,7 +3,7 @@
 @import '~typey';
 
 @import '../../dist/svg/svg-sprite-mixins';
-@import '../../dist/fonts/svg-font-mixins';
+@import '../../dist/fonts/svg-font-template';
 
 // g-icon()
 //
@@ -16,10 +16,6 @@
 // See `iconfont` and `svg` gulp tasks.
 //
 // $color: functional or base color name from _colors.scss
-//
-// $fallback-font-size: font-size of fallback in case of iconfont
-// possible values:
-//                  `NUMpx` only.
 //
 // $display: set value of `display` property for icon in case of svg-sprite.
 // possible values:
@@ -35,7 +31,6 @@
   $icon-properties: map-merge((
     name: test,
     color: color_1,
-    fallback-font-size: inherit,
     display: block,
     where-to-insert: before
   ), $options);
@@ -73,15 +68,10 @@
 // all params here from `g-icon` mixin.
 @mixin g-icon-no-css-mask($icon-properties) {
   @extend %icon;
-  @if (map-get($icon-properties, fallback-font-size) != inherit) {
-    // TODO: this line comes from typey, maybe need to use smth instead;
-    font-size: spacing(map-get($icon-properties, fallback-font-size));
-  }
-  @else {
-    font-size: map-get($icon-properties, fallback-font-size);
-  }
   color: color(map-get($icon-properties, color));
   content: icon-char(map-get($icon-properties, name));
+  font-size: spacing(icon-size(map-get($icon-properties, name)));
+  vertical-align: middle;
   line-height: 1;
 }
 

@@ -6,8 +6,8 @@
 
 @mixin <%= cssClass%>-styles {
 	font-family: "<%= fontName %>";
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: normal;
@@ -22,21 +22,32 @@
 
 @function <%= cssClass%>-char($filename) {
 	$char: "";
-<% _.each(glyphs, function(glyph) { %>
-	@if $filename == <%= glyph.fileName %> {
-		$char: "\<%= glyph.codePoint %>";
-	}<% }); %>
+  <% _.each(glyphs, function(glyph) { %>
+	  @if $filename == <%= glyph.fileName %> {
+	    $char: "\<%= glyph.codePoint %>";
+    }<% }); %>
 
-	@return $char;
+  @return $char;
+}
+
+@function <%= cssClass%>-size($filename) {
+	$iconFontSize: 0;
+  <% _.each(glyphs, function(glyph) { %>
+	  @if $filename == <%= glyph.fileName %> {
+	    $iconFontSize: <%= glyph.fontSize %>;
+    }<% }); %>
+
+  @return $iconFontSize;
 }
 
 @mixin <%= cssClass%>($filename, $insert: before, $extend: true) {
-	&:#{$insert} {
-		@if $extend {
-			@extend %<%= cssClass%>;
-		} @else {
-			@include <%= cssClass%>-styles;
-		}
-		content: <%= cssClass%>-char($filename);
-	}
+  &:#{$insert} {
+	  @if $extend {
+		  @extend %<%= cssClass%>;
+	  } @else {
+		  @include <%= cssClass%>-styles;
+	  }
+	  content: <%= cssClass%>-char($filename);
+	  font-size: <%= cssClass%>-size($filename);
+  }
 }

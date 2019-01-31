@@ -90,9 +90,9 @@ options.svgConfig = {
 
 // IconfontCSS options.
 options.iconfontCSS = {
+  cssClass: 'icon',
   fontName: 'iconic-font',
   path: options.theme.root + 'src/svg/_svg-font-template.scss',
-  targetPath: '_svg-font-mixins.scss',
   fontPath: '../fonts/'
 };
 
