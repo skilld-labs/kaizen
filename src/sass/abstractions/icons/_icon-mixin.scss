@@ -1,0 +1,165 @@
+@import '../../dist/svg/svg-sprite-mixins';
+@import '../../dist/fonts/svg-font-template';
+
+//
+// g-icon()
+//
+// Global mixin for include colored icon.
+// With modernizr check if browser supports svg-fragment and css-mask
+// then use: svg-sprite, otherwice generated iconfont.
+//
+// This mixin uses sass map with the next collections:
+// `name` = Filename of svg.
+// Default value: `test` (which means test.svg file).
+// Can be located inside options.theme.svg (gulp-options.js)
+// See `iconfont` and `svg` gulp tasks.
+//
+// `color`             Functional or base color name from _colors.scss
+//                     Default value: `text`.
+//
+// `display`           Adds display property to the icon.
+//                     Default value: `block`.
+//                     Possible values:
+//                       https://www.w3schools.com/cssref/pr_class_display.asp
+//
+// `vertical-align`    Adds `vertical-align` css-property to the icon.
+//                     Default value: `false`.
+//                     Possible values:
+//                       https://www.w3schools.com/cssref/pr_pos_vertical-align.asp
+//
+// `where-to-insert`   Specify here in which pseudoselector you want to
+//                     see your icon.
+//                     Default value: `before`.
+//                     Possible values:
+//                       `before`
+//                       `after`
+//
+// `margin`            Adds `margin` css-property to the icon. Output will
+//                     be in rems unit.
+//                     Default value: `false`. No output in this case.
+//                     Possible values:
+//                       `0 0 0 10px`,
+//                       etc.
+//
+// `breakpoints`       If you need different sizes accordance to
+//                     breakpoints then specify it here.
+//                     Default value: `false` (that means size of icon is
+//                     the same always).
+//                     Possible values:
+//                       'breakpoints': (
+//                         'breakpoint_1': scale_size_1,
+//                         'breakpoint_2': scale_size_2,
+//                       )
+//                     All possible breakpoints you can find in _bp.scss
+//                     All possible scale values inside options.iconScale
+//                     in gulp-options.js
+//
+// `debug`             If you are using modern browser that supports
+//                     `@supports` css-feature and want to check how icon
+//                     will look in browser which doesn't supports masks
+//                     css-properties set `debug` to `true`. Then you have
+//                     change classname at html tag manually from `cssmask`
+//                     to `no-cssmask` to see the visual difference between
+//                     displays of needed icon with masks and iconic font.
+//                     Default value:
+//                       `false`
+//                     Possible values:
+//                       `true`
+//
+// Example of usage `g-icon` mixin:
+//   @include g-icon((
+//     'name': icon-name,
+//     'display': inline-block,
+//     'vertical-align': bottom,
+//     'margin': 10px,
+//     'breakpoints': (
+//       'small_1x': 3
+//     )
+//   ));
+//
+@mixin g-icon($options: ()) {
+  $icon-properties: map-merge((
+    name: test,
+    color: text,
+    display: block,
+    vertical-align: false,
+    margin: false,
+    where-to-insert: before,
+    breakpoints: false,
+    debug: false
+  ), $options);
+
+  .no-cssmask & {
+    &::#{map-get($icon-properties, where-to-insert)} {
+      @include g-icon-no-css-mask($icon-properties);
+    }
+  }
+
+  @if (map-get($icon-properties, debug)) {
+    .cssmask & {
+      &::#{map-get($icon-properties, where-to-insert)} {
+        @include g-icon-css-mask($icon-properties);
+      }
+    }
+  }
+  @else {
+    @supports(mask: url('')) {
+      &::#{map-get($icon-properties, where-to-insert)} {
+        @include g-icon-css-mask($icon-properties);
+      }
+    }
+  }
+}
+// g-icon-css-mask()
+//
+// Global mixin to add svg-sprite.
+// it has dependency with mixin `g-icon`.
+//
+// all params here from `g-icon` mixin.
+@mixin g-icon-css-mask($icon-properties) {
+  @include svg-mixin-global(map-get($icon-properties, name));
+  background-color: color(map-get($icon-properties, color));
+  display: map-get($icon-properties, display);
+  @if (map-get($icon-properties, margin)) {
+    @include margin(map-get($icon-properties, margin));
+  }
+  @if (map-get($icon-properties, vertical-align)) {
+    vertical-align: map-get($icon-properties, vertical-align);
+  }
+  @if (map-get($icon-properties, breakpoints)) != false {
+    @each $breakpoint, $scale-value in map-get($icon-properties, breakpoints) {
+      @include respond-to($breakpoint) {
+        @include svg-mixin-global('#{unquote(map-get($icon-properties, name))-#{$scale-value}x}', true);
+      }
+    }
+  }
+  content: '';
+}
+
+// g-icon-no-css-mask()
+//
+// Global mixin to add iconfont in case of fallback.
+// it has dependency with mixin `g-icon`.
+//
+// all params here from `g-icon` mixin.
+@mixin g-icon-no-css-mask($icon-properties) {
+  @extend %icon;
+  color: color(map-get($icon-properties, color));
+  content: icon-char(map-get($icon-properties, name));
+  font-size: spacing(icon-size(map-get($icon-properties, name)));
+  line-height: 1;
+  display: map-get($icon-properties, display);
+  @if (map-get($icon-properties, vertical-align)) {
+    vertical-align: map-get($icon-properties, vertical-align);
+  }
+  @if (map-get($icon-properties, margin)) {
+    @include margin(map-get($icon-properties, margin));
+  }
+  @if (map-get($icon-properties, breakpoints)) != false {
+    @each $breakpoint, $scale-value in map-get($icon-properties, breakpoints) {
+      @include respond-to($breakpoint) {
+        font-size: spacing(icon-size('#{unquote(map-get($icon-properties, name))-#{$scale-value}x}'));
+      }
+    }
+  }
+}

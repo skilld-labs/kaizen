@@ -1,0 +1,57 @@
+// Template source:
+// https://github.com/backflip/gulp-iconfont-css/blob/master/templates/_icons.scss
+//
+// Font init moved to base/fonts and single classes removed avoid their
+// multiple include on init.
+
+@mixin <%= cssClass%>-styles {
+	font-family: "<%= fontName %>";
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+}
+
+%<%= cssClass%> {
+	@include <%= cssClass%>-styles;
+}
+
+@function <%= cssClass%>-char($filename) {
+	$char: "";
+<% _.each(glyphs, function(glyph) { %>
+	@if $filename == "<%= glyph.fileName %>" {
+		$char: "\<%= glyph.codePoint %>";
+	}<% }); %>
+
+  @return $char;
+}
+
+@function <%= cssClass%>-size($filename) {
+	$iconFontSize: 0;
+<% _.each(glyphs, function(glyph) { %>
+	@if $filename == "<%= glyph.fileName %>" {
+		$iconFontSize: <%= glyph.fontSize + "px" %>;
+	}
+  <% _.each(glyph.effectSizes, function(effectSize) { %>
+	@if $filename == "<%= glyph.fileName + -effectSize.scaleValue + 'x' %>" {
+		$iconFontSize: <%= glyph.fontSize * effectSize.scaleValue + "px" %>;
+	}
+  <% });}); %>
+  @return $iconFontSize;
+}
+
+@mixin <%= cssClass%>($filename, $insert: before, $extend: true) {
+  &:#{$insert} {
+	  @if $extend {
+		  @extend %<%= cssClass%>;
+	  } @else {
+		  @include <%= cssClass%>-styles;
+	  }
+	  content: <%= cssClass%>-char($filename);
+	  font-size: <%= cssClass%>-size($filename);
+  }
+}
