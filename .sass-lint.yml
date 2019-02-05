@@ -1,10 +1,5 @@
 # Documentation for the sass-lint Linters is available at:
 # https://github.com/sasstools/sass-lint/tree/master/docs/rules
-
-files:
-  ignore:
-    - 'src/sass/abstractions/_sprites.scss'
-
 options:
   formatter: stylish
   merge-default-rules: true
@@ -18,48 +13,34 @@ rules:
   mixins-before-declarations:
     - 2
     - exclude:
-      - 'breakpoint'
-      - 'mq'
       - 'respond-to'
       - 'rtl'
-      - 'zen-breakpoint'
-      - 'zen-layout'
-      - 'zen-mq'
-      - 'zen-respond-to'
 
   # Line Spacing
   one-declaration-per-line: 2
   empty-line-between-blocks:
     - 2
-    - ignore-single-line-rulesets: false
   single-line-per-selector: 2
 
   # Disallows
-  # no-color-keywords: 2
-  # no-color-literals: 2
-  # no-css-comments: 2
+  no-color-keywords: 0
+  no-color-literals: 0
+  no-css-comments: 0
   no-debug: 2
-  # no-duplicate-properties: 2
+  no-duplicate-properties: 2
   no-empty-rulesets: 2
   no-extends: 0
-  # no-ids: 2
-  # no-important: 2
+  no-ids: 0
+  no-important: 0
   no-invalid-hex: 2
   no-mergeable-selectors: 2
   no-misspelled-properties:
     - 2
-    - extra-properties:
-      - '*font-family'
-      - '*height'
-      - 'interpolation-mode'
-      - '*margin-left'
-      - '*vertical-align'
-      - '*width'
   no-qualifying-elements: 0
   no-trailing-zero: 2
   no-transition-all: 2
   no-url-protocols: 2
-  # no-vendor-prefixes: 2
+  no-vendor-prefixes: 0
   no-warn: 2
   property-units: 0
 
@@ -93,11 +74,11 @@ rules:
   empty-args: 0
   hex-length: 2
   hex-notation: 2
-  # indentation: 2
+  indentation: 0
   leading-zero: 2
   nesting-depth:
     - 2
-    - max-depth: 4
+    - max-depth: 3
   property-sort-order: 0
   quotes: 2
   shorthand-values: 2
@@ -118,14 +99,3 @@ rules:
   # Final Items
   trailing-semicolon: 2
   final-newline: 2
-
-  # Work-around for sass-lint not having per-file/block/line rule config.
-  # @TODO: Re-enable these disabled rules. See https://www.drupal.org/node/2717117
-  indentation: 0
-  no-color-keywords: 0
-  no-color-literals: 0
-  no-css-comments: 0
-  no-duplicate-properties: 0
-  no-ids: 0
-  no-important: 0
-  no-vendor-prefixes: 0

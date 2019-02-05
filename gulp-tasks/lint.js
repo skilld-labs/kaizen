@@ -3,9 +3,7 @@
  * Lint.
  */
 
-// TODO:
-// 1) Check how to extend core eslint
-// 2) Update sass linter.
+// TODO: Check how to extend core eslint
 
 const options = require('../gulp-options');
 const eslint = require('gulp-eslint');
