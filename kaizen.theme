@@ -16,6 +16,23 @@ function kaizen_styleguide_alter(&$items) {
   unset($items['image-vertical']);
   unset($items['image-inset-horizontal']);
   unset($items['image-inset-vertical']);
+  unset($items['form']['content']['text_format']);
+  unset($items['filter_tips']);
+  unset($items['filter_tips_long']);
+  unset($items['headings_text']);
+  unset($items['text_format']);
+  unset($items['feed_icon']);
+  unset($items['maintenance_page']);
+  unset($items['system_powered_by']);
+  unset($items['confirm_form']);
+  unset($items['form-fieldset']);
+  unset($items['more_help_link']);
+  unset($items['more_link']);
+  unset($items['ul_title']);
+  unset($items['ol_title']);
+  unset($items['ul_long']);
+  unset($items['ol_long']);
+  unset($items['monospace']);
 
   $storage = new FileStorage(__DIR__);
   $config = $storage->read('kaizen.components');
@@ -23,34 +40,83 @@ function kaizen_styleguide_alter(&$items) {
   foreach ($config as $key => $value) {
     // TODO: Research usage of twig templates.
     // TODO: Research usage component modifiers.
-
     $items[$key] = [
       'title' => $value['label'],
       'description' => $value['description'],
+      // @codingStandardsIgnoreLine
       'group' => t($value['group']),
     ];
 
     if ($value['type'] !== 'twig') {
       $items[$key]['content'] = kaizen_custom_styleguide_render_entity($value['type'], $value['entity']);
-    } else {
-      $items[$key]['content'] = $value['template'];
+    }
+    else {
+      $items[$key]['content'] = kaizen_custom_styleguide_render_template($value);
     }
   }
 }
 
 /**
+ * Create styleguide template.
+ *
+ * @param string $template
+ *   Template.
+ *
+ * @return int|null|string
+ *   Template.
+ */
+function kaizen_custom_styleguide_render_template($template) {
+  $output = '';
+  $content = array_key_exists('content', $template) ? $template['content'] : [];
+
+  $output .= '<dl>';
+  $output .= '<dt>"' . t('Default') . '"</dt>';
+  $output .= '<dd>' . kaizen_custom_styleguide_render_twig($template['template'], $content) . '</dd>';
+
+  if (array_key_exists('modifiers', $template)) {
+    foreach ($template['modifiers'] as $key => $value) {
+      $output .= '<dt>"' . $key . '"</dt>';
+      $output .= '<dd>' . kaizen_custom_styleguide_render_twig($template['template'], $content, $value) . '</dd>';
+    }
+  }
+  $output .= '</dl>';
+  return $output;
+}
+
+/**
+ * Render twig templates.
+ *
+ * @param string $path
+ *   Path to template.
+ *
+ * @return int|null|string
+ *   Template.
+ */
+function kaizen_custom_styleguide_render_twig($path, $content, $modifier = FALSE) {
+  // Needed to prevent notices when Twig debugging is enabled.
+  $content['theme_hook_original'] = 'not-applicable';
+
+  if ($modifier) {
+    $content['modifier_class'] = $modifier;
+  }
+  $markup = twig_render_template(drupal_get_path('theme', 'kaizen') . $path, $content);
+  // Cast to string since twig_render_template returns a Markup object.
+  return (string) $markup;
+}
+
+/**
  * Render entity.
- * Using kaize.components.yml config file.
+ *
+ * Using kaizen.components.yml config file.
  * Options for config items:
  * 1) 'twig' - renders provided html
  * 2) 'entity' - renders drupal entity.
- *
  * In 'entity' render for fields used Drupal\styleguide\GeneratorInterface
  * functions. For example:
- * article_teaser.entity.fields.title.generator uses Drupal\styleguide\GeneratorInterface->words()
- * with article_teaser.entity.fields.title.params
+ * article_teaser.entity.fields.title.generator uses
+ * Drupal\styleguide\GeneratorInterface->words()
+ * with article_teaser.entity.fields.title.params.
  */
-
 function kaizen_custom_styleguide_render_entity($type, $entity) {
   $styleguide_generator = \Drupal::service('styleguide.generator');
 
@@ -60,8 +126,8 @@ function kaizen_custom_styleguide_render_entity($type, $entity) {
   ];
 
   foreach ($entity['fields'] as $key => $value) {
-    $params = array_key_exists('params', $value) ? $value['params'] : array();
-    $field = call_user_func_array(array($styleguide_generator, $value['generator']), $params);
+    $params = array_key_exists('params', $value) ? $value['params'] : [];
+    $field = call_user_func_array([$styleguide_generator, $value['generator']], $params);
 
     if ($value['generator'] == 'image') {
       $field = kaizen_custom_styleguide_create_image_field($field);
@@ -77,6 +143,15 @@ function kaizen_custom_styleguide_render_entity($type, $entity) {
   return $output;
 }
 
+/**
+ * Create image field.
+ *
+ * @param string $uri
+ *   Uri.
+ *
+ * @return int|null|string
+ *   ID of a file.
+ */
 function kaizen_custom_styleguide_create_image_field($uri) {
   $file = File::create([
     'uri' => $uri,

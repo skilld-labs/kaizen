@@ -1,0 +1,17 @@
+@import '../../../init';
+
+// example
+//
+// Markup:
+// <div class='a-example {{modifier_class}}'>example</div>
+//
+// .a-example--modifier - Modifier description.
+//
+// Style guide: components.atoms.example
+
+$name: 'a-example';
+
+.#{$name},
+%#{$name} {
+  display: inherit;
+}

@@ -1,4 +1,5 @@
 /**
+ * @file
  * Component creation.
  */
 
@@ -20,7 +21,7 @@ let typeQuestion = {
   type: 'list',
   name: 'component_type',
   message: 'What type of component?',
-  choices: ['Atom', 'Molecule', 'Organism']
+  choices: ['Atom', 'Molecule', 'Organism', 'Template', 'Helper']
 };
 
 function checkIfComponentNotExists() {
@@ -43,10 +44,10 @@ function creationDialog(cb) {
 }
 
 function copyFiles(type, name) {
-  let typePlural = type.component_type.toLowerCase() + 's'; // Atom -> atoms
-  let typeIndex = type.component_type.charAt(0).toLowerCase(); // Atom -> a
-  let sourceName = typeIndex + '-' + name.component_name; // a-COMPONENT_NAME
-  let dirName = 'components/' + typePlural + '/' + name.component_name; // components/atoms/COMPONENT_NAME
+  let typePlural = type.component_type.toLowerCase() + 's'; // Atom -> atoms.
+  let typeIndex = type.component_type.charAt(0).toLowerCase(); // Atom -> a.
+  let sourceName = typeIndex + '-' + name.component_name; // a-COMPONENT_NAME.
+  let dirName = 'components/' + typePlural + '/' + name.component_name; // components/atoms/COMPONENT_NAME.
 
   src(options.theme.gulpAssets + 'component-source.scss')
     .pipe(rename({
@@ -62,6 +63,15 @@ function copyFiles(type, name) {
     .pipe(rename({
       dirname: dirName,
       basename: name.component_name
+    }))
+    .pipe(replace('COMPONENT', sourceName))
+    .pipe(dest(options.theme.sass, { overwrite: false }));
+
+  src(options.theme.gulpAssets + 'component.html.twig')
+    .pipe(rename({
+      dirname: dirName,
+      basename: sourceName,
+      extname: '.html.twig'
     }))
     .pipe(replace('COMPONENT', sourceName))
     .pipe(dest(options.theme.sass, {overwrite: false}));

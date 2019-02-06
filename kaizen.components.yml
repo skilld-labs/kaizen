@@ -1,29 +1,19 @@
-custom_link:
-  label: Custom link
+example:
+  label: Example
   type: twig
-  description: Custom link description
-  group: Kaizen
-  template: <a href="#" class="custom-link">Custom link text</a>
+  description: Example Component
+  group: 02 Kaizen Atoms
+  content:
+    content: Example Text
+  template: /src/sass/components/atoms/example/a-example.html.twig
+  modifiers:
+    icon: a-example--with-modifier
 
-custom_title:
-  label: Custom title
-  type: twig
-  description: Custom title description
-  group: Kaizen
-  template: <h2 class="custom-title">Custom title</h2>
-
-custom_component_added_to_default_styleguide:
-  label: Custom Component
-  type: twig
-  description: Custom component listed in default styleguide description
-  group: Common
-  template: <div class="custom-component">Custom Component</div>
-
-article_teaser:
+article_teaser_example:
   label: Node Article(teaser)
   type: node
   description: Article node in teaser view mode
-  group: Kaizen
+  group: 03 Kaizen Molecules
   entity:
     type: article
     view_mode: teaser
