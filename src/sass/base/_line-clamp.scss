@@ -1,0 +1,19 @@
+// Line Clamp styles
+//
+// List of classes `line-clamp-[1..10]` for using in
+// https://css-tricks.com/almanac/properties/l/line-clamp/
+// To add new trimmed line use /src/js/trimlines/line_clamps.js
+
+$class-slug: line-clamp;
+
+@for $i from 1 through 10 {
+  .#{$class-slug}-#{$i} {
+    @supports (-webkit-line-clamp: 1) {
+      overflow: hidden;
+      display: -webkit-box;
+      /* autoprefixer: off */
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: $i; // sass-lint:disable-line no-misspelled-properties
+    }
+  }
+}
