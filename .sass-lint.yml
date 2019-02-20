@@ -27,6 +27,11 @@ rules:
   no-color-literals: 0
   no-css-comments: 0
   no-debug: 2
+  no-disallowed-property-values:
+    - 1
+    -
+      properties:
+        outline: none
   no-duplicate-properties: 2
   no-empty-rulesets: 2
   no-extends: 0
