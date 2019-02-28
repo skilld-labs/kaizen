@@ -5029,6 +5029,10 @@ progress@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
 
+"project-components@https://github.com/iberdinsky-skilld/project-components.git":
+  version "1.0.0"
+  resolved "https://github.com/iberdinsky-skilld/project-components.git#c416e86c75f5d62ca3c5f659c39db2423f78f645"
+
 promise-inflight@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"

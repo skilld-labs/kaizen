@@ -9,3 +9,5 @@ initBreakpointsCssReload();
 if (!modernizr.testAllProps('customproperties')) {
   cssVars();
 }
+
+import 'project-components/components/atoms/test/a-test';

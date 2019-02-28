@@ -1,11 +1,11 @@
 @import 'init';
-
 @import 'base/border-box';
+@import '~project-components/components/atoms/test/a-test';
 
 body {
+  @extend %a-test;
   background-color: color('bg');
   color: color('text');
-  font-size: $base-font-size;
 }
 
 a {
