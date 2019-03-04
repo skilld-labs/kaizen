@@ -1,0 +1,14 @@
+@import '../../../init';
+
+// Styles for js-redirect.
+
+$name: 'h-redirect';
+
+.#{$name},
+%#{$name} {
+  cursor: pointer;
+
+  &__inner-link {
+    outline: none;
+  }
+}

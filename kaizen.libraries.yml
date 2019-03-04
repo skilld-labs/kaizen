@@ -4,6 +4,7 @@ base:
         color/colors.css: {}
     base:
       dist/css/styles.css: {}
+      dist/css/redirect.css: {}
   js:
     dist/app.js: {}
 

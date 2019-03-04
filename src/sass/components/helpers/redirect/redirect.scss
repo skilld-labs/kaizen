@@ -1,0 +1,9 @@
+@import 'h-redirect';
+
+.js-redirect {
+  @extend %h-redirect;
+
+  a {
+    @extend %h-redirect__inner-link;
+  }
+}

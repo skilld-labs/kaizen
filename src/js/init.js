@@ -9,3 +9,5 @@ initBreakpointsCssReload();
 if (!modernizr.testAllProps('customproperties')) {
   cssVars();
 }
+
+import './ui/redirect';
