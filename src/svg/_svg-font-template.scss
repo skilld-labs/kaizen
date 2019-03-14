@@ -30,17 +30,18 @@
   @return $char;
 }
 
-@function <%= cssClass%>-size($filename) {
+@function <%= cssClass%>-size($filename, $scale: 1) {
 	$iconFontSize: 0;
-<% _.each(glyphs, function(glyph) { %>
+  <% _.each(glyphs, function(glyph) { %>
 	@if $filename == "<%= glyph.fileName %>" {
-		$iconFontSize: <%= glyph.fontSize + "px" %>;
+		$iconFontSize: <%= glyph.fontSize + 'px' %>;
+    <% _.each(glyph.effectSizes, function(effectSize) { %>
+	  @if $scale == <%= effectSize.scaleValue %> {
+		  $iconFontSize: $iconFontSize * $scale;
+	  }
+    <% }); %>
 	}
-  <% _.each(glyph.effectSizes, function(effectSize) { %>
-	@if $filename == "<%= glyph.fileName + -effectSize.scaleValue + 'x' %>" {
-		$iconFontSize: <%= glyph.fontSize * effectSize.scaleValue + "px" %>;
-	}
-  <% });}); %>
+  <% }); %>
   @return $iconFontSize;
 }
 

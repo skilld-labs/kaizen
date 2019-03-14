@@ -30,32 +30,41 @@
 
 // TODO Rework it with #fragment or svgView#viewBox()
 // mask-image: url({{{sprite}}}##{$name});
-@mixin svg-mixin-global($name, $breakpoint: false) {
-	@if $breakpoint == false {
-		mask: url("{{{sprite}}}") no-repeat;
-		mask-size: spacing({{ spriteWidth }}px) spacing({{ spriteHeight }}px);
-	}
+@mixin svg-mixin-mask {
+	mask: url("{{{sprite}}}") no-repeat;
+}
 
-  {{#shapes}}
+@mixin svg-mixin-mask-properties($name, $scale-value: 1, $mask-position-of-icon: false) {
 	$name-exist: false;
-	@if $name == "{{ name }}"{
-		mask-position: {{position.relative.xy}};
-		width: spacing({{width.outer}}px);
-		height: spacing({{height.outer}}px);
-		$name-exist: true;
-	}
-  {{#scale}}
+	$scale-exist: false;
 
-	@if $name == "{{ name }}-{{scaleValue}}x" {
-		width: spacing({{width.outer}}px * {{scaleValue}});
-		height: spacing({{height.outer}}px * {{scaleValue}});
-		mask-size: spacing({{spriteWidth}}px * {{scaleValue}}) spacing({{spriteHeight}}px * {{scaleValue}});
-		$name-exist: true;
+{{#shapes}}
+	@if $mask-position-of-icon == "{{ name }}-mask-position" {
+		mask-position: {{position.relative.xy}};
 	}
+	@if "#{$name}" == "{{ name }}" {
+	$name-exist: true;
+  {{#scale}}
+		@if $scale-value == {{scaleValue}} {
+		  width: spacing({{width.outer}}px * {{scaleValue}});
+		  height: spacing({{height.outer}}px * {{scaleValue}});
+		  mask-size: spacing({{spriteWidth}}px * {{scaleValue}}) spacing({{spriteHeight}}px * {{scaleValue}});
+		  $scale-exist: true;
+	  }
   {{/scale}}
-  {{/shapes}}
+	}
+{{/shapes}}
+
+	$error-message: false;
+	@if $scale-exist == false {
+		$error-message: "Scale value `#{$scale-value}` doesn't exist. Please add it to options.iconScale in gulp-options.js.";
+	}
 
 	@if $name-exist == false {
-		@error "Icon "#{$name}" doesn't exist";
+		$error-message: "Icon `#{$name}` doesn't exist.";
+	}
+
+	@if $error-message {
+		@error $error-message;
 	}
 }

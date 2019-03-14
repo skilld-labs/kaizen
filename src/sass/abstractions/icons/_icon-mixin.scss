@@ -9,20 +9,26 @@
 // then use: svg-sprite, otherwice generated iconfont.
 //
 // This mixin uses sass map with the next collections:
-// `name` = Filename of svg.
-// Default value: `test` (which means test.svg file).
-// Can be located inside options.theme.svg (gulp-options.js)
-// See `iconfont` and `svg` gulp tasks.
+// `name`              Filename of svg.
+//                     Default value: `test` (which means test.svg).
+//                     Can be located inside options.theme.svg (gulp-options.js)
+//                     See `iconfont` and `svg` gulp tasks.
 //
 // `color`             Functional or base color name from _colors.scss
 //                     Default value: `text`.
+//
+// `bg`                Adds `background-color` property to the icon.
+//                     Default value: `transparent`.
+//                     Possible values:
+//                       `inherit`,
+//                       functional or base color name from _colors.scss
 //
 // `display`           Adds display property to the icon.
 //                     Default value: `block`.
 //                     Possible values:
 //                       https://www.w3schools.com/cssref/pr_class_display.asp
 //
-// `vertical-align`    Adds `vertical-align` css-property to the icon.
+// `vertical-align`    Adds `vertical-align` property to the icon.
 //                     Default value: `false`.
 //                     Possible values:
 //                       https://www.w3schools.com/cssref/pr_pos_vertical-align.asp
@@ -41,6 +47,16 @@
 //                       `0 0 0 10px`,
 //                       etc.
 //
+// `scale`             If you need a larger or smaller icon by default, set
+//                     this option to NUM.
+//                     All possible scale values inside options.iconScale
+//                     in gulp-options.js
+//                     Default value: `1`. Default size in this case.
+//                     Possible values:
+//                       `0.5`,
+//                       `2`,
+//                       etc, see options.iconScale.
+//
 // `breakpoints`       If you need different sizes accordance to
 //                     breakpoints then specify it here.
 //                     Default value: `false` (that means size of icon is
@@ -58,7 +74,7 @@
 //                     `@supports` css-feature and want to check how icon
 //                     will look in browser which doesn't supports masks
 //                     css-properties set `debug` to `true`. Then you have
-//                     change classname at html tag manually from `cssmask`
+//                     to change classname at html tag manually from `cssmask`
 //                     to `no-cssmask` to see the visual difference between
 //                     displays of needed icon with masks and iconic font.
 //                     Default value:
@@ -68,25 +84,29 @@
 //
 // Example of usage `g-icon` mixin:
 //   @include g-icon((
-//     'name': icon-name,
-//     'display': inline-block,
-//     'vertical-align': bottom,
-//     'margin': 10px,
-//     'breakpoints': (
-//       'small_1x': 3
+//     name: test,
+//     display: inline-block,
+//     vertical-align: top,
+//     margin: 10px,
+//     scale-value': 2,
+//     breakpoints: (
+//       small_1x: 3,
+//       small_2x: hidden
 //     )
 //   ));
 //
 @mixin g-icon($options: ()) {
   $icon-properties: map-merge((
-    name: test,
-    color: text,
-    display: block,
-    vertical-align: false,
-    margin: false,
+    name:            test,
+    color:           text,
+    bg:              transparent,
+    display:         block,
+    vertical-align:  false,
+    margin:          false,
     where-to-insert: before,
-    breakpoints: false,
-    debug: false
+    scale:           1,
+    breakpoints:     false,
+    debug:           false
   ), $options);
 
   .no-cssmask & {
@@ -110,29 +130,53 @@
     }
   }
 }
+
 // g-icon-css-mask()
 //
 // Global mixin to add svg-sprite.
 // it has dependency with mixin `g-icon`.
 //
-// all params here from `g-icon` mixin.
+// all params here comes from `g-icon` mixin.
 @mixin g-icon-css-mask($icon-properties) {
-  @include svg-mixin-global(map-get($icon-properties, name));
+  // Call `mask: url()` property.
+  @include svg-mixin-mask();
+
+  // Call mixin to set necessary properties for css-masked icon.
+  @include svg-mixin-mask-properties('#{unquote(map-get($icon-properties, name))}', map-get($icon-properties, scale), '#{unquote(map-get($icon-properties, name))}-mask-position');
+
+  // Set color of css-masked icon.
   background-color: color(map-get($icon-properties, color));
+
+  // Set display property.
   display: map-get($icon-properties, display);
+
+  // Set margin property if exist.
   @if (map-get($icon-properties, margin)) {
     @include margin(map-get($icon-properties, margin));
   }
+
+  // Set vertical-align property if exist.
   @if (map-get($icon-properties, vertical-align)) {
     vertical-align: map-get($icon-properties, vertical-align);
   }
+
+  // If breakpoints were called, check if breakpoint exist.
   @if (map-get($icon-properties, breakpoints)) != false {
-    @each $breakpoint, $scale-value in map-get($icon-properties, breakpoints) {
+    @each $breakpoint, $breakpoint-value in map-get($icon-properties, breakpoints) {
       @include respond-to($breakpoint) {
-        @include svg-mixin-global('#{unquote(map-get($icon-properties, name))-#{$scale-value}x}', true);
+        // If an icon shouldn't be hidden on added breakpoint, then update sizes of this icon.
+        @if ($breakpoint-value != hidden) {
+          @include svg-mixin-mask-properties('#{unquote(map-get($icon-properties, name))}', $breakpoint-value);
+        }
+
+          // If icon should be hidden on added breakpoint, then hide it.
+        @else {
+          display: none;
+        }
       }
     }
   }
+
   content: '';
 }
 
@@ -141,24 +185,57 @@
 // Global mixin to add iconfont in case of fallback.
 // it has dependency with mixin `g-icon`.
 //
-// all params here from `g-icon` mixin.
+// all params here comes from `g-icon` mixin.
 @mixin g-icon-no-css-mask($icon-properties) {
+  // Call base styles for iconic font.
   @extend %icon;
+
+  // Set color.
   color: color(map-get($icon-properties, color));
+
+  // Set content.
   content: icon-char(map-get($icon-properties, name));
-  font-size: spacing(icon-size(map-get($icon-properties, name)));
+
+  // Set line-height to 1 to fix alignment issue.
   line-height: 1;
+
+  // Set display.
   display: map-get($icon-properties, display);
+
+  // Set size.
+  font-size: spacing(icon-size('#{unquote(map-get($icon-properties, name))}', map-get($icon-properties, scale)));
+
+  // Set vertical-align property if exist.
   @if (map-get($icon-properties, vertical-align)) {
     vertical-align: map-get($icon-properties, vertical-align);
   }
+
+  // Set background-color if need. Base `transparent` value need to fix IE issues, related to iconic font.
+  @if ((map-get($icon-properties, bg) != inherit) and (map-get($icon-properties, bg) != transparent)) {
+    background-color: color(map-get($icon-properties, bg));
+  }
+  @else {
+    background-color: map-get($icon-properties, bg);
+  }
+
+  // Set margin property if exist.
   @if (map-get($icon-properties, margin)) {
     @include margin(map-get($icon-properties, margin));
   }
+
+  // If breakpoints were called, check if breakpoint exist.
   @if (map-get($icon-properties, breakpoints)) != false {
-    @each $breakpoint, $scale-value in map-get($icon-properties, breakpoints) {
+    @each $breakpoint, $breakpoint-value in map-get($icon-properties, breakpoints) {
       @include respond-to($breakpoint) {
-        font-size: spacing(icon-size('#{unquote(map-get($icon-properties, name))-#{$scale-value}x}'));
+        // If an icon shouldn't be hidden on added breakpoint, then update sizes of this icon.
+        @if ($breakpoint-value != hidden) {
+          font-size: spacing(icon-size('#{unquote(map-get($icon-properties, name))}', $breakpoint-value));
+        }
+
+        // If icon should be hidden on added breakpoint, then hide it.
+        @else {
+          display: none;
+        }
       }
     }
   }
