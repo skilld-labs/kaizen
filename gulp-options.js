@@ -5,7 +5,6 @@
 
 'use strict';
 
-const magicImporter = require('node-sass-magic-importer');
 
 let env = process.env.NODE_ENV || 'testing';
 let isProduction = (env === 'production');
@@ -38,10 +37,6 @@ options.sassFiles = {
   ignore: options.theme.sass + '**/_*.scss'
 };
 
-options.sass = {
-  importer: magicImporter(),
-  outputStyle: (isProduction ? 'compresssed' : 'expanded')
-};
 
 options.eslint = {
   files: [
