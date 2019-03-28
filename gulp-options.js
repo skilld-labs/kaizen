@@ -26,17 +26,10 @@ options.theme = {
   js: options.rootPath.src + 'js/'
 };
 
-options.autoprefixer = {
-  browsers: [
-    '> 1%'
-  ]
-};
-
 options.sassFiles = {
   components: options.theme.sass + '**/*.scss',
   ignore: options.theme.sass + '**/_*.scss'
 };
-
 
 options.eslint = {
   files: [

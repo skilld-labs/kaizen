@@ -13,6 +13,7 @@
     "@babel/plugin-proposal-numeric-separator": "^7.2.0",
     "@babel/plugin-proposal-throw-expressions": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
+    "autoprefixer": "^9.5.0",
     "babel-loader": "^8.0.4",
     "browser-sync": "^2.26.3",
     "chalk": "^2.4.2",
@@ -21,7 +22,6 @@
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-eslint": "^5.0.0",
-    "gulp-if": "^2.0.2",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-sass-lint": "^1.4.0",
@@ -32,6 +32,8 @@
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "minimist": "^1.2.0",
+    "node-sass": "^4.11.0",
+    "postcss-cli": "^6.1.2",
     "susy": "^3.0.5",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.27.1",
@@ -42,6 +44,18 @@
     "build": "NODE_ENV=production gulp",
     "build:css": "cross-env node ./scripts/css/build.js",
     "build:css-dev": "cross-env NODE_ENV=development node ./scripts/css/build.js",
+    "post:css": "cross-env ./node_modules/.bin/postcss \"dist/css/*.css\" --dir \"dist/css\" --use autoprefixer --no-map",
     "dev": "NODE_ENV=dev gulp"
-  }
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "cover 95%",
+    "ie >= 9",
+    "edge >= 13",
+    "firefox >= 5",
+    "opera >= 12",
+    "safari >= 5",
+    "chrome >= 56"
+  ]
 }
