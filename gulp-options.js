@@ -33,11 +33,10 @@ options.autoprefixer = {
   ]
 };
 
-options.sassFiles = [
-  options.theme.sass + '**/*.scss',
-  // Do not open Sass partials as they will be included as needed.
-  '!' + options.theme.sass + '**/_*.scss'
-];
+options.sassFiles = {
+  components: options.theme.sass + '**/*.scss',
+  ignore: options.theme.sass + '**/_*.scss'
+};
 
 options.sass = {
   importer: magicImporter(),

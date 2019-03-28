@@ -1,0 +1,30 @@
+/* line 2, src/sass/base/_border-box.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 6, src/sass/base/_border-box.scss */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* line 5, src/sass/styles.scss */
+body {
+  background-color: var(--color-7);
+  color: var(--color-6);
+  font-size: 14px;
+}
+
+/* line 11, src/sass/styles.scss */
+a {
+  color: var(--color-3);
+}
+
+/* line 14, src/sass/styles.scss */
+a:hover {
+  color: var(--color-4);
+}
+
+/*# sourceMappingURL=styles.css.map */
