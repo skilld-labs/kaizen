@@ -2,4 +2,3 @@
 *.css.map
 .bp.json
 _bp.scss
-gulp-options.local.js

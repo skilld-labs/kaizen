@@ -8,17 +8,14 @@
  * yarn run build:css-dev --file ./src/sass/styles.scss
  */
 
-'use strict';
-
-const options = require('../../gulp-options');
-
 const glob = require('glob');
 const argv = require('minimist')(process.argv.slice(2));
+const options = require('../../gulp-options');
 const changeOrAdded = require('./changeOrAdded');
 
 const fileMatch = options.sassFiles.components;
 const globOptions = {
-  ignore: options.sassFiles.ignore
+  ignore: options.sassFiles.ignore,
 };
 
 const processFiles = (error, filePaths) => {
@@ -26,14 +23,13 @@ const processFiles = (error, filePaths) => {
     process.exitCode = 1;
   }
   // Process all the found files.
-  let callback = changeOrAdded;
+  const callback = changeOrAdded;
   filePaths.forEach(callback);
 };
 
 if (argv.file) {
   processFiles(null, [].concat(argv.file));
-}
-else {
+} else {
   glob(fileMatch, globOptions, processFiles);
 }
 process.exitCode = 0;

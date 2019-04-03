@@ -3,11 +3,12 @@
  * Watch.
  */
 
-const {series, watch} = require('gulp');
+const { series, watch } = require('gulp');
 const browserSync = require('browser-sync');
+
 const server = browserSync.create();
-const {styles} = require('./styles');
-const {scripts} = require('./scripts');
+const { styles } = require('./styles');
+const { scripts } = require('./scripts');
 const options = require('../gulp-options');
 
 function reload(done) {
@@ -20,7 +21,7 @@ function reload(done) {
 function serve(done) {
   if (options.browserSync) {
     server.init({
-      proxy: options.drupalURL
+      proxy: options.drupalURL,
     });
   }
   done();
@@ -28,14 +29,10 @@ function serve(done) {
 
 function watchFiles() {
   watch(
-    options.theme.sass + '**/*.scss',
+    `${options.theme.sass}**/*.scss`,
     options.gulpWatchOptions,
-    series(styles, reload)
+    series(styles, reload),
   );
-  watch(
-    options.theme.js,
-    options.gulpWatchOptions,
-    series(scripts, reload)
-  );
+  watch(options.theme.js, options.gulpWatchOptions, series(scripts, reload));
 }
 exports.watch = series(serve, watchFiles);

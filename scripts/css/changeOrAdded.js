@@ -4,26 +4,24 @@ const log = require('./log');
 const compile = require('./compile');
 const options = require('../../gulp-options');
 
-module.exports = (filePath) => {
+module.exports = filePath => {
   log(`'${filePath}' is being processed.`);
   // Transform the file.
   compile(filePath, function write(code, fileName, map) {
     // Write the result to the filesystem.
-    fs.writeFile(options.theme.css + `${fileName}.css`, code, (err) => {
+    fs.writeFile(`${options.theme.css}${fileName}.css`, code, err => {
       if (err) {
         log(chalk.red(err));
         process.exitCode = 1;
-      }
-      else {
+      } else {
         log(`'${filePath}' is finished.`);
       }
-
     });
 
     if (process.env.NODE_ENV === 'development' && map) {
-      fs.writeFile(options.theme.css + `${fileName}.css.map`, map, () => {
+      fs.writeFile(`${options.theme.css}${fileName}.css.map`, map, () => {
         log(`'${filePath}' map is finished.`);
       });
     }
   });
-}
+};
