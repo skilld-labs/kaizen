@@ -4,7 +4,7 @@
  * Provides the build:css command to compile sass files to css.
  *
  * Run build:css with --file to only parse a specific file.
- * @example <caption>Only process misc/drupal.es6.js and misc/drupal.init.es6.js</caption
+ * @example <caption>Only process src/sass/styles.scss</caption
  * yarn run build:css-dev --file ./src/sass/styles.scss
  */
 

@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "./.stylelintrc.json"
+  ],
+  "rules": {
+    "string-quotes": "single",
+    "unit-whitelist": ["deg", "em", "ex", "ms", "rem", "%", "s", "px", "vw", "vh"]
+  }
+}

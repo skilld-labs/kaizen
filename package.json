@@ -10,7 +10,9 @@
     "@babel/preset-env": "^7.4.2",
     "autoprefixer": "^9.5.0",
     "babel-loader": "^8.0.4",
+    "browser-sync": "^2.26.3",
     "chalk": "^2.4.2",
+    "chokidar": "^2.1.5",
     "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -50,7 +52,12 @@
     "post:css": "cross-env ./node_modules/.bin/postcss \"dist/css/*.css\" --dir \"dist/css\"",
     "lint:js": "node ./node_modules/eslint/bin/eslint.js .",
     "lint:css": "stylelint \"**/*.css\"",
-    "breakpoints": "cross-env node ./scripts/breakpoints.js"
+    "lint:sass": "stylelint \"**/*.scss\" --config ./.stylelintrc.sass.json",
+    "breakpoints": "cross-env node ./scripts/breakpoints.js",
+    "browsersync": "yarn run browser-sync start --proxy '127.0.0.1:8888' --files ./dist",
+    "watch:sass": "cross-env node ./scripts/css/watch.js",
+    "watch:js": "cross-env ./node_modules/.bin/webpack -w",
+    "watch:bs": "cross-env NODE_ENV=development ./node_modules/.bin/run-p browsersync watch:js watch:sass"
   },
   "dependencies": {
     "css-vars-ponyfill": "^1.17.2",

@@ -3,7 +3,6 @@
  */
 
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin');
 const options = require('./gulp-options');
 
