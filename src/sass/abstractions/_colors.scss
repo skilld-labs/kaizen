@@ -4,7 +4,6 @@ $colors-map: (
   bg: 'color-7',
   // Body text
   text: 'color-6',
-
   link: 'color-3',
   link-hover: 'color-4',
 );
@@ -20,5 +19,6 @@ $colors-map: (
   }
 
   @error 'Unknown `#{$key}` in $colors-map.';
+
   @return null;
 }

@@ -1,9 +1,25 @@
 {
   "extends": [
-    "./.stylelintrc.json"
+    "./.stylelintrc.json",
+    "stylelint-config-recommended-scss"
   ],
   "rules": {
+    "plugin/no-browser-hacks": null,
+    "order/order": [
+      "custom-properties",
+      "dollar-variables",
+      {
+        "type": "at-rule",
+        "hasBlock": false
+      },
+      "declarations",
+      "rules",
+      {
+        "type": "at-rule",
+        "hasBlock": false
+      }
+    ],
     "string-quotes": "single",
-    "unit-whitelist": ["deg", "em", "ex", "ms", "rem", "%", "s", "px", "vw", "vh"]
+    "unit-whitelist": ["deg", "em", "ex", "fr", "ms", "rem", "%", "s", "px", "vw", "vh"]
   }
 }
