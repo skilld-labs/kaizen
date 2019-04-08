@@ -23,4 +23,6 @@ options.sassFiles = {
   ignore: `${options.theme.sass}**/_*.scss`,
 };
 
+options.buildAssets = `${options.rootPath.project}scripts/assets/`;
+
 module.exports = options;

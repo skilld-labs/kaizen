@@ -1,6 +1,5 @@
 /dist/js/*.js
 /color/*.js
-/gulp-tasks.DEPRECATED/
 /scripts/
 postcss.config.js
 webpack.config.dev.js
