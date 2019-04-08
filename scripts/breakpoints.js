@@ -8,7 +8,6 @@
  * TODO: Put into separated npm package.
  */
 
-const yaml = require('js-yaml');
 const fs = require('fs');
 const options = require('../kaizen-options');
 
@@ -16,6 +15,8 @@ const themeName = options.theme.name;
 const WARNING = 'THIS IS GENERATED FILE. PLEASE EDIT THEMENAME.breakpoints.yml';
 const jsFile = '.bp.json';
 const sassFile = '_bp.scss';
+
+const readYaml = require('./drupal-yml/read');
 
 /**
  * Validate breakpoint multipliers
@@ -152,19 +153,6 @@ function getMappedGroupsList(fileContent) {
   return groups;
 }
 
-function parseBreakpoints() {
-  try {
-    const doc = yaml.safeLoad(
-      fs.readFileSync(
-        `${options.rootPath.project + themeName}.breakpoints.yml`,
-      ),
-    );
-    return doc;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
 function xToResolution(mp) {
   return ` and (min-resolution: ${parseInt(mp)}dppx)`;
 }
@@ -185,7 +173,9 @@ function writeSass(sassMap) {
   });
 }
 
-const fileContent = parseBreakpoints();
+const fileContent = readYaml(
+  `${options.rootPath.project + themeName}.breakpoints.yml`,
+);
 const groups = getMappedGroupsList(fileContent);
 const sassMap = generateMap(groups, fileContent);
 const json = generateJSON(groups, fileContent);
