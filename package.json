@@ -41,6 +41,12 @@
     "webpack-cli": "^3.3.0",
     "webpack-modernizr-loader": "^4.0.1"
   },
+  "dependencies": {
+    "css-vars-ponyfill": "^1.17.2",
+    "js-yaml": "^3.12.0",
+    "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1"
+  },
   "scripts": {
     "build": "cross-env ./node_modules/.bin/run-p build:js build:css",
     "dev": "cross-env ./node_modules/.bin/run-p build:js-dev build:css-dev",
@@ -62,11 +68,5 @@
     "watch:sass": "cross-env node ./scripts/css/watch.js",
     "watch:js": "cross-env ./node_modules/.bin/webpack -w",
     "watch:bs": "cross-env NODE_ENV=development ./node_modules/.bin/run-p browsersync watch:js watch:sass"
-  },
-  "dependencies": {
-    "css-vars-ponyfill": "^1.17.2",
-    "js-yaml": "^3.12.0",
-    "lodash.debounce": "^4.0.8",
-    "lodash.throttle": "^4.1.1"
   }
 }

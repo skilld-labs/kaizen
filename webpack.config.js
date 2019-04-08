@@ -12,7 +12,7 @@ const config = {
     app: './init.js',
   },
   output: {
-    path: options.rootPath.dist,
+    path: `${options.rootPath.dist}js/`,
     filename: 'app.js',
   },
   mode: 'production',

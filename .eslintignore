@@ -1,4 +1,4 @@
-/dist/*.js
+/dist/js/*.js
 /color/*.js
 /gulp-tasks.DEPRECATED/
 /scripts/
