@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const sass = require('node-sass');
 const path = require('path');
-const options = require('../../gulp-options');
+const options = require('../../kaizen-options');
 const log = require('./log');
 
 module.exports = (filePath, callback) => {

@@ -6,7 +6,7 @@
 
 const fs = require('fs');
 const chokidar = require('chokidar');
-const options = require('../../gulp-options');
+const options = require('../../kaizen-options');
 
 const changeOrAdded = require('./changeOrAdded');
 const log = require('./log');

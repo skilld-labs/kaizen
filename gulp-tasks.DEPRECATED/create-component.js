@@ -6,7 +6,7 @@ const { dest, src } = require('gulp');
 const inquirer = require('inquirer');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
-const options = require('../gulp-options');
+const options = require('../kaizen-options');
 
 const nameQuestion = {
   type: 'input',

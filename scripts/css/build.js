@@ -10,7 +10,7 @@
 
 const glob = require('glob');
 const argv = require('minimist')(process.argv.slice(2));
-const options = require('../../gulp-options');
+const options = require('../../kaizen-options');
 const changeOrAdded = require('./changeOrAdded');
 
 const fileMatch = options.sassFiles.components;

@@ -2,11 +2,10 @@
  * @file
  */
 
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const TerserPlugin = require('terser-webpack-plugin');
-const options = require('./gulp-options');
+const options = require('./kaizen-options');
 
-const config = {
+module.exports = {
   context: options.theme.js,
   entry: {
     app: './init.js',
@@ -43,16 +42,3 @@ const config = {
     ],
   },
 };
-
-if (process.env.NODE_ENV === 'development') {
-  config.devtool = 'cheap-module-eval-source-map';
-  config.mode = 'development';
-  config.optimization.minimizer = [];
-}
-
-// To check bundle size.
-if (process.env.NODE_ENV === 'debug') {
-  config.plugins.push(new BundleAnalyzerPlugin());
-}
-
-module.exports = config;

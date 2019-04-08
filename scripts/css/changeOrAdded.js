@@ -2,7 +2,7 @@ const chalk = require('chalk');
 const fs = require('fs');
 const log = require('./log');
 const compile = require('./compile');
-const options = require('../../gulp-options');
+const options = require('../../kaizen-options');
 
 module.exports = filePath => {
   log(`'${filePath}' is being processed.`);

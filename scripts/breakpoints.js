@@ -10,7 +10,7 @@
 
 const yaml = require('js-yaml');
 const fs = require('fs');
-const options = require('../gulp-options');
+const options = require('../kaizen-options');
 
 const themeName = options.theme.name;
 const WARNING = 'THIS IS GENERATED FILE. PLEASE EDIT THEMENAME.breakpoints.yml';
