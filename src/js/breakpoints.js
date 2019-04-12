@@ -9,9 +9,9 @@
  * }, 250);
  */
 
-// Since webpack >= v2.0.0, importing of JSON files will work by default.
 import debounce from 'lodash.debounce';
-import config from './.bp.json';
+// eslint-disable-next-line import/no-unresolved
+const config = require('../../kaizen.breakpoints.yml');
 
 const events = ['load', 'resize'];
 const defaultGroup = 'kaizen';

@@ -80,7 +80,7 @@ function createComponent(component, elements = ['content']) {
   const sourceName = `${typeIndex}-${name}`; // a-COMPONENT_NAME
   const dirName = `components/${typePlural}/${name}/`; // components/atoms/COMPONENT_NAME/
 
-  const sourceTarget = `${options.theme.sass}${dirName}${sourceName}.scss`;
+  const sourceTarget = `${options.theme.sass}${dirName}_${sourceName}.scss`;
   const implementationTarget = `${options.theme.sass}${dirName}${name}.scss`;
   const replaceInSass = {
     COMPONENT_NAME: name,

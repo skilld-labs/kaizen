@@ -5,6 +5,10 @@ body {
   color: color('text');
   background-color: color('bg');
   font-size: $base-font-size;
+
+  @include respond-to('wide_1x') {
+    background: green;
+  }
 }
 
 a {

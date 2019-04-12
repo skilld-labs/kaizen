@@ -18,6 +18,12 @@ body {
   font-size: 14px;
 }
 
+@media all and (min-width: 1024px) {
+  body {
+    background: green;
+  }
+}
+
 a {
   color: var(--color-3);
 }
@@ -25,3 +31,4 @@ a {
 a:hover {
   color: var(--color-4);
 }
+

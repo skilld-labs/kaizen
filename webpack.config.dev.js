@@ -8,10 +8,11 @@ const prod = require('./webpack.config');
 
 const devConfig = {
   mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   optimization: {
     minimizer: [],
   },
+  plugins: []
 };
 
 // To check bundle size.
