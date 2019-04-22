@@ -44,6 +44,8 @@
     "stylelint-order": "^2.1.0",
     "stylelint-scss": "^3.5.4",
     "susy": "^3.0.5",
+    "svg-sprite": "^1.5.0",
+    "svg4everybody": "^2.1.9",
     "terser-webpack-plugin": "^1.2.3",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.3.0",
@@ -62,6 +64,7 @@
     "browsersync": "yarn run browser-sync start --proxy '127.0.0.1:8888' --files ./dist",
     "watch": "cross-env ./node_modules/.bin/webpack -w",
     "watch:bs": "cross-env NODE_ENV=development ./node_modules/.bin/run-p browsersync watch",
+    "icons": "svg-sprite --config ./scripts/icons/svg-sprite.json ./images/svg/*.svg",
     "cc": "node ./scripts/create-component.js"
   }
 }
