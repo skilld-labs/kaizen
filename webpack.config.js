@@ -5,12 +5,11 @@
 const glob = require('glob');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
-const breakpointsImporter = require('./scripts/importers/breakpoints-importer');
 const options = require('./kaizen-options');
 
 const mapFilenamesToEntries = (pattern, globOptions) =>
   glob.sync(pattern, globOptions).reduce((entries, filename) => {
-    const [, name] = filename.match(/([^/]+)\.scss$/);
+    const [, name] = filename.match(/([^/]+)\.css$/);
     return {
       ...entries,
       [name]: filename,
@@ -21,8 +20,8 @@ module.exports = {
   context: options.theme.js,
   entry: {
     app: './init.js',
-    ...mapFilenamesToEntries(options.sassFiles.components, {
-      ignore: options.sassFiles.ignore,
+    ...mapFilenamesToEntries(options.cssFiles.components, {
+      ignore: options.cssFiles.ignore,
     }),
   },
   output: {
@@ -41,7 +40,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.scss$/,
+        test: /\.css$/,
         use: [
           {
             loader: 'file-loader',
@@ -62,16 +61,6 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               sourceMap: process.env.NODE_ENV === 'development',
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              includePaths: [`${options.rootPath.project}node_modules`],
-              outputStyle: 'expanded',
-              sourceMap: process.env.NODE_ENV === 'development',
-              sourceComments: process.env.NODE_ENV === 'development',
-              importer: breakpointsImporter,
             },
           },
         ],

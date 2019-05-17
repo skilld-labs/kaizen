@@ -1,6 +1,6 @@
 import cssVars from 'css-vars-ponyfill';
-import modernizr from './.modernizrrc';
 import svg4everybody from 'svg4everybody';
+import modernizr from './.modernizrrc';
 import { initBreakpointsCssReload } from './breakpoints';
 
 // TODO: Check if css classes need to be reloaded by default.

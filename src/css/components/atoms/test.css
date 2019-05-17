@@ -1,0 +1,5 @@
+@import "./_a-test.css";
+
+.extendingClass {
+  @extend %a-test;
+}

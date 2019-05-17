@@ -1,33 +1,39 @@
+:root {
+  --color-bg: var(--color-7);
+  --color-text: var(--color-6);
+  --color-link: var(--color-3);
+  --color-link--hover: var(--color-4);
+}
+:root {
+  --base-font-size: 14px;
+}
+/* https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 *,
-*::before,
-*::after {
+ *::before,
+ *::after {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
-
 body {
-  color: var(--color-6);
-  background-color: var(--color-7);
-  font-size: 14px;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-size: var(--base-font-size);
 }
 
 @media all and (min-width: 1024px) {
   body {
-    background: green;
+    background-color: green;
   }
 }
-
 a {
-  color: var(--color-3);
+  color: var(--color-link);
 }
-
 a:hover {
-  color: var(--color-4);
+  color: var(--color-link--hover);
 }
