@@ -1,0 +1,27 @@
+{
+  "dest": "dist",
+  "shape": {
+    "id": {
+      "separator": false,
+      "generator": "svg-%s"
+    }
+  },
+  "svg": {
+    "xmlDeclaration": false,
+    "doctypeDeclaration": false,
+    "namespaceIDs": true,
+    "namespaceClassnames": true,
+    "dimensionAttributes": true
+  },
+  "mode": {
+    "symbol": {
+      "prefix": ".%s",
+      "dimensions": "--size",
+      "dest": "svg",
+      "sprite": "sprite.svg",
+      "render": {
+        "css": true
+      }
+    }
+  }
+}
