@@ -5,7 +5,6 @@
 const glob = require('glob');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const breakpointsImporter = require('./scripts/importers/breakpoints-importer');
 const options = require('./kaizen-options');
 
@@ -45,10 +44,13 @@ module.exports = {
         test: /\.scss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: 'file-loader',
             options: {
-              sourceMap: process.env.NODE_ENV === 'development',
+              name: 'css/[name].css',
             },
+          },
+          {
+            loader: 'extract-loader',
           },
           {
             loader: 'css-loader',
@@ -90,11 +92,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-    }),
-  ],
+  plugins: [],
   optimization: {
     minimizer: [
       new TerserPlugin({
