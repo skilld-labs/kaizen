@@ -5,7 +5,7 @@ base:
     base:
       dist/css/styles.css: {}
   js:
-    dist/app.js: {}
+    dist/js/app.js: {}
 
 color.preview:
   css:

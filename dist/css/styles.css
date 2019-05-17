@@ -1,0 +1,33 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  color: var(--color-6);
+  background-color: var(--color-7);
+  font-size: 14px;
+}
+
+@media all and (min-width: 1024px) {
+  body {
+    background: green;
+  }
+}
+
+a {
+  color: var(--color-3);
+}
+
+a:hover {
+  color: var(--color-4);
+}

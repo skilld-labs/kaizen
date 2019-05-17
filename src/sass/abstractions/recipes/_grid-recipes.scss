@@ -11,8 +11,6 @@ https://www.miriamsuzanne.com/speaking/talks/no-grid-system/ - Awesome retrospec
 https://oddbird.net/2017/06/28/susy3/#susy-columns-grid-template-columns - Susy as grid failback
 */
 
-
-
 /*
 That example will create endless grid of type:
 
@@ -37,7 +35,7 @@ with 1 rem gutter.
     // To have equal display with CSS Layout grid add negative margin.
     margin-bottom: -#{$gap};
 
-    >* {
+    > * {
       flex-grow: 0;
       flex-shrink: 0;
       margin-right: $gap;
