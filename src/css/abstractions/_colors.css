@@ -1,0 +1,6 @@
+:root {
+  --color-bg: var(--color-7);
+  --color-text: var(--color-6);
+  --color-link: var(--color-3);
+  --color-link--hover: var(--color-4);
+}

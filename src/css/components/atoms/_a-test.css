@@ -1,0 +1,7 @@
+%a-test {
+  background-color: black;
+
+  @drupal-breakpoint wide_1x {
+    background-color: green;
+  }
+}

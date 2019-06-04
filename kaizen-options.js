@@ -13,14 +13,13 @@ options.rootPath = {
 
 options.theme = {
   name: 'kaizen',
-  sass: `${options.rootPath.src}sass/`,
-  css: `${options.rootPath.dist}css/`,
+  css: `${options.rootPath.src}css/`,
   js: `${options.rootPath.src}js/`,
 };
 
-options.sassFiles = {
-  components: `${options.theme.sass}**/*.scss`,
-  ignore: `${options.theme.sass}**/_*.scss`,
+options.cssFiles = {
+  components: `${options.theme.css}**/*.css`,
+  ignore: `${options.theme.css}**/_*.css`,
 };
 
 options.buildAssets = `${options.rootPath.project}scripts/assets/`;

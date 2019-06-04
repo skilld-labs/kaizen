@@ -15,16 +15,15 @@ Basic drupal 8 theme.
 
 ## Features
 
-- Gulp
+- PostCss
 - Webpack
 - Babel
 - Browsersync
 - eslint
-- sasslint
 - custom Modernizr
 - Autoprefixer
 - Drupal Color Module support
-- Drupal breakpoints.yml config parser in sass/js
+- Drupal breakpoints.yml config parser in css/js
 - ...
 
 ## Creating subtheme from starterkit
