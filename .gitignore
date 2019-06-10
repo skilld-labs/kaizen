@@ -1,5 +1,4 @@
 /dist/js/
-/dist/svg/
 *.css.map
 .bp.json
 _bp.scss
