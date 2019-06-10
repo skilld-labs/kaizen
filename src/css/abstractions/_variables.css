@@ -1,3 +1,5 @@
 :root {
-  --base-font-size: 14px;
+  --root-font-size--mobile: 2vw;
+  --root-font-size--desktop: 100%;
+  --base-font-size: 1rem;
 }

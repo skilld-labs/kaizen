@@ -1,21 +1,18 @@
 @import "./abstractions/_colors.css";
 @import "./abstractions/_variables.css";
 @import "./base/_border-box.css";
+@import "./base/_embedded.css";
+
+html {
+  font-size: var(--root-font-size--mobile);
+
+  @drupal-breakpoint wide_1x {
+    font-size: var(--root-font-size--desktop);
+  }
+}
 
 body {
   color: var(--color-text);
   background-color: var(--color-bg);
   font-size: var(--base-font-size);
-
-  @drupal-breakpoint wide_1x {
-    background-color: green;
-  }
-}
-
-a {
-  color: var(--color-link);
-
-  &:hover {
-    color: var(--color-link--hover);
-  }
 }
