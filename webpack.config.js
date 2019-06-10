@@ -46,10 +46,14 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: 'css/[name].css',
+              sourceMap: process.env.NODE_ENV === 'development',
             },
           },
           {
             loader: 'extract-loader',
+            options: {
+              sourceMap: process.env.NODE_ENV === 'development',
+            },
           },
           {
             loader: 'css-loader',
