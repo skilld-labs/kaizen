@@ -2,16 +2,13 @@
  * Component creation.
  */
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 const inquirer = require('inquirer');
 const fs = require('fs');
 const options = require('../kaizen-options');
 
-const readYaml = require('./drupal-yml/read');
-
-const sourceTemplate = `${options.buildAssets}component-source.scss`;
-const implementationTemplate = `${
-  options.buildAssets
-}component-implementation.scss`;
+const sourceTemplate = `${options.buildAssets}component-source.css`;
+const implementationTemplate = `${options.buildAssets}component-implementation.css`;
 const twigTemplate = `${options.buildAssets}component-template.twig`;
 
 const componentQuestions = [
@@ -68,6 +65,31 @@ const elementQuestions = [
   },
 ];
 
+function generateElementsForTwig(component, element) {
+  const machineName = element.toLowerCase();
+  const bemClass = `${component.toLowerCase()}__${machineName}`;
+  return `<div class"${bemClass}">{{ content.${machineName} }}</div>`;
+}
+
+function readReplaceAndSave(filePath, replaceItems, fileDest) {
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      throw err;
+    }
+
+    for (const replaceItem in replaceItems) {
+      const re = new RegExp(replaceItem, 'g');
+      data = data.replace(re, replaceItems[replaceItem]);
+    }
+
+    fs.writeFile(fileDest, data, 'utf8', error => {
+      if (error) {
+        throw error;
+      }
+    });
+  });
+}
+
 function createComponent(component, elements = ['content']) {
   const {
     component_type: type = 'Atom',
@@ -80,9 +102,9 @@ function createComponent(component, elements = ['content']) {
   const sourceName = `${typeIndex}-${name}`; // a-COMPONENT_NAME
   const dirName = `components/${typePlural}/${name}/`; // components/atoms/COMPONENT_NAME/
 
-  const sourceTarget = `${options.theme.sass}${dirName}_${sourceName}.scss`;
-  const implementationTarget = `${options.theme.sass}${dirName}${name}.scss`;
-  const replaceInSass = {
+  const sourceTarget = `${options.theme.css}${dirName}_${sourceName}.css`;
+  const implementationTarget = `${options.theme.css}${dirName}${name}.css`;
+  const replaceInCss = {
     COMPONENT_NAME: name,
     COMPONENT_TYPE: typePlural,
     COMPONENT: sourceName,
@@ -93,14 +115,14 @@ function createComponent(component, elements = ['content']) {
     regions = `${regions}  ${generateElementsForTwig(sourceName, element)}\n`;
   });
 
-  const templateTarget = `${options.theme.sass}${dirName}${sourceName}.twig`;
+  const templateTarget = `${options.theme.css}${dirName}${sourceName}.twig`;
   const replaceInTwig = {
     COMPONENT: sourceName,
-    REGIONS: regions
+    REGIONS: regions,
   };
 
   fs.mkdir(
-    `${options.theme.sass}${dirName}`,
+    `${options.theme.css}${dirName}`,
     {
       recursive: true,
     },
@@ -108,10 +130,10 @@ function createComponent(component, elements = ['content']) {
       if (err) {
         throw err;
       }
-      readReplaceAndSave(sourceTemplate, replaceInSass, sourceTarget);
+      readReplaceAndSave(sourceTemplate, replaceInCss, sourceTarget);
       readReplaceAndSave(
         implementationTemplate,
-        replaceInSass,
+        replaceInCss,
         implementationTarget,
       );
       if (twig) {
@@ -121,35 +143,10 @@ function createComponent(component, elements = ['content']) {
   );
 }
 
-function generateElementsForTwig(component, element) {
-  const machineName = element.toLowerCase();
-  const bemClass = `${component.toLowerCase()}__${machineName}`;
-  return `<div class"${bemClass}">{{ content.${machineName} }}</div>`;
-}
-
-function readReplaceAndSave(filePath, replaceItems, fileDest) {
-  fs.readFile(filePath, 'utf8', function(err, data) {
-    if (err) {
-      return console.log(err);
-    }
-
-    for (const replaceItem in replaceItems) {
-      const re = new RegExp(replaceItem, 'g');
-      data = data.replace(re, replaceItems[replaceItem]);
-    }
-
-    fs.writeFile(fileDest, data, 'utf8', function(err) {
-      if (err) {
-        return console.log(err);
-      }
-    });
-  });
-}
-
 inquirer.prompt(componentQuestions).then(answers => {
   const elements = [];
   if (answers.createAdditionalElements) {
-    var ask = () => {
+    const ask = () => {
       inquirer.prompt(elementQuestions).then(answersEl => {
         elements.push(answersEl.elements);
         if (answersEl.askAgain) {
