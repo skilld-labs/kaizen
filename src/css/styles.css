@@ -2,7 +2,6 @@
 @import "./abstractions/_variables.css";
 @import "./base/_border-box.css";
 
-
 body {
   color: var(--color-text);
   background-color: var(--color-bg);

@@ -5,6 +5,12 @@
     "stylelint-order"
   ],
   "rules": {
+    "at-rule-no-unknown": [ true, {
+      "ignoreAtRules": [
+        "drupal-breakpoint",
+        "extend"
+      ]
+    }],
     "comment-empty-line-before": null,
     "function-linear-gradient-no-nonstandard-direction": null,
     "function-whitespace-after": null,
