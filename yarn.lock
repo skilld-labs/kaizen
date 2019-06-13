@@ -631,6 +631,13 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
+"@skilld/webpack-drupal-breakpoints-loader@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@skilld/webpack-drupal-breakpoints-loader/-/webpack-drupal-breakpoints-loader-1.0.0.tgz#009113cd672064ae18df18d724ae6c435fc8b9d7"
+  integrity sha512-uqWGpukeym4TYVeMCgfwTNN4TPm7TrYHdfrimcTIJa35pTU6TBYDJZTOO0y/faDmvsHdF96dMk/QCusrh3YW0w==
+  dependencies:
+    js-yaml "^3.13.1"
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
