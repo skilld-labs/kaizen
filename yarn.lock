@@ -631,6 +631,14 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
+"@skilld/postcss-drupal-breakpoints@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@skilld/postcss-drupal-breakpoints/-/postcss-drupal-breakpoints-0.0.1.tgz#453717b2715e14789bdc2632839d3d6456884386"
+  integrity sha512-j3obvnLa7RmKMYL3DVHyWqKhfFXGLIE32LFzkdx+cCj1tti6xDyCAYZ10WfIcEH0SIRIvNfWroOAt3V5y4I3pA==
+  dependencies:
+    js-yaml "^3.13.1"
+    postcss "^7.0.6"
+
 "@skilld/webpack-drupal-breakpoints-loader@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@skilld/webpack-drupal-breakpoints-loader/-/webpack-drupal-breakpoints-loader-1.0.0.tgz#009113cd672064ae18df18d724ae6c435fc8b9d7"
@@ -5882,14 +5890,6 @@ postcss-cli@^6.1.2:
     pretty-hrtime "^1.0.3"
     read-cache "^1.0.0"
     yargs "^12.0.1"
-
-postcss-drupal-breakpoints@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-drupal-breakpoints/-/postcss-drupal-breakpoints-0.0.1.tgz#bf5a9faa23b95dae63ac1792f9d05833ae972166"
-  integrity sha512-mXzjFAxaElqaLsPEi/DKM8y81jtfRnyCaWNREiFiWARFCC3gBIFNKteiBOVAIdcnzkXCgwo4H7/7VwlPQupICg==
-  dependencies:
-    js-yaml "^3.13.1"
-    postcss "^7.0.6"
 
 postcss-extend@^1.0.5:
   version "1.0.5"
