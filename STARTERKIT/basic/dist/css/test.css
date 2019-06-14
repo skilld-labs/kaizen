@@ -1,9 +1,9 @@
-.extendingClass {
+.test {
   background-color: black;
 }
 
 @media all and (min-width: 1024px) {
-  .extendingClass {
+  .test {
     background-color: green;
   }
 }
