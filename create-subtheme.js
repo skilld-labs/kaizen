@@ -41,7 +41,7 @@ function copyDirectoryRecursiveSync(source, targetFolder, themeName) {
       const curSource = path.join(source, file);
       if (fs.lstatSync(curSource).isDirectory()) {
         const newDir = path.join(targetFolder, path.basename(curSource));
-        copyDirectoryRecursiveSync(curSource, newDir);
+        copyDirectoryRecursiveSync(curSource, newDir, themeName);
       } else {
         const newFileName = file.replace('kaizen', themeName);
         const newFile = path.join(targetFolder, newFileName);
