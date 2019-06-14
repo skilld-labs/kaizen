@@ -4,11 +4,9 @@
  */
 
 const fs = require('fs');
-const fse = require('fs-extra');
 const isImage = require('is-image');
 const inquirer = require('inquirer');
-const glob = require('glob');
-const sourceDirs = ['STARTERKIT/*', 'STARTERKIT/*/**'];
+const path = require('path');
 
 inquirer
   .prompt([
@@ -26,38 +24,45 @@ inquirer
     }
   ])
   .then(answers => {
-    createTheme(answers.themeName);
+    copyDirectoryRecursiveSync('STARTERKIT', answers.themeName, answers.themeName);
   });
 
-function createTheme (themeName) {
-  for (const sourceDir in sourceDirs) {
-    glob(sourceDirs[sourceDir], ({ dot: true }), (err, files) => {
-      if (err) {
-        return console.log(err);
-      }
+function copyDirectoryRecursiveSync(source, targetFolder, themeName) {
+  let files = [];
 
-      for (const file in files) {
-        if (fs.statSync(files[file]).isFile()) {
-          let enc = 'utf8';
-          if (isImage(files[file])) {
-            enc = 'base64';
-          }
-          fs.readFile(files[file], enc, (err, data) => {
-            if (err) {
-              return console.log(err);
-            }
+  if (!fs.existsSync(targetFolder)) {
+    fs.mkdirSync(targetFolder);
+  }
 
-            const fileNamePath = files[file];
-            const fileNamePathReplaced = fileNamePath.replace('STARTERKIT', themeName).replace('kaizen', themeName);
-            const fileTextReplace = data.replace(/kaizen/gi, themeName);
+  if (fs.lstatSync(source).isDirectory()) {
+    files = fs.readdirSync(source);
 
-            fse.outputFile('./' + fileNamePathReplaced, fileTextReplace, enc, (err) => {
-              if (err) {
-                return console.log(err);
-              }
-            });
-          });
+    files.forEach(file => {
+      const curSource = path.join(source, file);
+      if (fs.lstatSync(curSource).isDirectory()) {
+        const newDir = path.join(targetFolder, path.basename(curSource));
+        copyDirectoryRecursiveSync(curSource, newDir);
+      } else {
+        const newFileName = file.replace('kaizen', themeName);
+        const newFile = path.join(targetFolder, newFileName);
+
+        let enc = 'utf8';
+        if (isImage(curSource)) {
+          enc = 'base64';
         }
+
+        fs.readFile(curSource, enc, (err, data) => {
+          if (err) {
+            throw err;
+          }
+          const fileTextReplace = data.replace(/kaizen/gi, themeName);
+
+          fs.writeFile(newFile, fileTextReplace, enc, error => {
+            if (error) {
+              throw error;
+            }
+          });
+        });
       }
     });
   }
