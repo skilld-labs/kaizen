@@ -24,7 +24,7 @@ inquirer
     }
   ])
   .then(answers => {
-    copyDirectoryRecursiveSync('STARTERKIT', answers.themeName, answers.themeName);
+    copyDirectoryRecursiveSync('STARTERKIT/basic', answers.themeName, answers.themeName);
   });
 
 function copyDirectoryRecursiveSync(source, targetFolder, themeName) {
