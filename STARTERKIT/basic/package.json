@@ -6,9 +6,13 @@
   "author": "Skilld",
   "license": "MIT",
   "devDependencies": {
+    "@storybook/addon-knobs": "^5.1.8",
     "@storybook/html": "^5.1.7",
     "browser-sync": "^2.26.3",
+    "drupal-attribute": "^1.0.2",
     "inquirer": "^6.2.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "twig": "^1.13.3",
     "twig-drupal-filters": "^2.0.0",
     "twig-loader": "^0.5.1",

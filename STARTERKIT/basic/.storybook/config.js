@@ -1,12 +1,12 @@
 import { configure } from '@storybook/html';
 
-// Extend Twig.js with drupal filters.
-const Twig = require('twig');
-const twigDrupal = require('twig-drupal-filters');
-twigDrupal(Twig);
-
 // Import global styles.
 import '../dist/css/styles.css';
+
+import Twig from 'twig';
+// Extend Twig.js with drupal filters.
+import twigDrupalFilters from 'twig-drupal-filters';
+twigDrupalFilters(Twig);
 
 function loadStories() {
   const req = require.context('../src/css/components/', true, /\.stories\.js$/);

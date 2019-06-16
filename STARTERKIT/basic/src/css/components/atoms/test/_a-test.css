@@ -1,7 +1,7 @@
 %a-test {
-  background-color: black;
+  background-color: green;
 
-  @drupal-breakpoint wide_1x {
-    background-color: green;
+  &--with-modifier {
+    background-color: pink;
   }
 }
