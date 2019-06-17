@@ -9,7 +9,8 @@ const options = require('../kaizen-options');
 
 const sourceTemplate = `${options.buildAssets}component-source.css`;
 const implementationTemplate = `${options.buildAssets}component-implementation.css`;
-const twigTemplate = `${options.buildAssets}component-template.twig`;
+const twigTemplate = `${options.buildAssets}component-template.html.twig`;
+const storySource = `${options.buildAssets}component.stories.js`;
 
 const componentQuestions = [
   {
@@ -38,16 +39,15 @@ const componentQuestions = [
   },
   {
     type: 'confirm',
-    name: 'createLibrary',
-    message:
-      '(QUESTION PLACEHOLDER. NOT WORKING YET)Create record in *.libraries.yml?',
-    default: false,
+    name: 'createStory',
+    message: 'Create storybook component config?',
+    default: true,
   },
   {
     type: 'confirm',
     name: 'createTemplate',
     message: 'Create twig template?',
-    default: false,
+    default: true,
   },
 ];
 
@@ -94,7 +94,8 @@ function createComponent(component, elements = ['content']) {
   const {
     component_type: type = 'Atom',
     component_name: name = 'name',
-    createTemplate: twig = false,
+    createTemplate: twig = true,
+    createStory: story = true,
   } = component;
 
   const typePlural = `${type.toLowerCase()}s`; // Atom -> atoms
@@ -104,6 +105,10 @@ function createComponent(component, elements = ['content']) {
 
   const sourceTarget = `${options.theme.css}${dirName}_${sourceName}.css`;
   const implementationTarget = `${options.theme.css}${dirName}${name}.css`;
+  const templateTarget = `${options.theme.css}${dirName}${sourceName}.html.twig`;
+  const dataTarget = `${options.theme.css}${dirName}${sourceName}.json`;
+  const storyTarget = `${options.theme.css}${dirName}${name}.stories.js`;
+
   const replaceInCss = {
     COMPONENT_NAME: name,
     COMPONENT_TYPE: typePlural,
@@ -111,15 +116,27 @@ function createComponent(component, elements = ['content']) {
   };
 
   let regions = '';
+  let content = {};
   Array.prototype.forEach.call(elements, element => {
+    console.log(element);
     regions = `${regions}  ${generateElementsForTwig(sourceName, element)}\n`;
+    content[element.toLowerCase()] = 'Lorem Ipsum';
   });
 
-  const templateTarget = `${options.theme.css}${dirName}${sourceName}.twig`;
   const replaceInTwig = {
     COMPONENT: sourceName,
     REGIONS: regions,
   };
+
+  const dataJson = {
+    content: content
+  }
+
+  const replaceInStory = {
+    COMPONENT_NAME: name,
+    COMPONENT_TYPE: typePlural,
+    COMPONENT: sourceName,
+  }
 
   fs.mkdir(
     `${options.theme.css}${dirName}`,
@@ -131,13 +148,20 @@ function createComponent(component, elements = ['content']) {
         throw err;
       }
       readReplaceAndSave(sourceTemplate, replaceInCss, sourceTarget);
-      readReplaceAndSave(
-        implementationTemplate,
-        replaceInCss,
-        implementationTarget,
-      );
+      readReplaceAndSave(implementationTemplate, replaceInCss, implementationTarget);
+
       if (twig) {
         readReplaceAndSave(twigTemplate, replaceInTwig, templateTarget);
+
+        fs.writeFile(dataTarget, JSON.stringify(dataJson, null, '  '), 'utf8', error => {
+          if (error) {
+            throw error;
+          }
+        });
+      }
+
+      if (story) {
+        readReplaceAndSave(storySource, replaceInStory, storyTarget);
       }
     },
   );

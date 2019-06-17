@@ -1,25 +1,25 @@
 import { storiesOf } from '@storybook/html';
 import { withKnobs, select, text } from '@storybook/addon-knobs';
-import './test.css';
+import './example.css';
 
-const template = require('./test.html.twig');
-const data = require('./test.json');
+const template = require('./example.html.twig');
+const data = require('./example.json');
 
 // Uncomment next 2 lines if your templates contains {{ attibutes.addClass(...) }} or similar logic.
 import drupalAttribute from 'drupal-attribute';
 data.attributes = new drupalAttribute();
 
-storiesOf('Atoms|Test', module)
+storiesOf('atoms|example', module)
   .addDecorator(withKnobs)
   .add('with twig template and json data', () => template(data))
   .add('with knobs', () => {
 
     const options = {
       default: '',
-      withModifier: 'test--with-modifier',
+      withModifier: 'example--with-modifier',
     };
 
-    const defaultValue = 'test';
+    const defaultValue = 'example';
     const value = select("modifier class", options, defaultValue);
 
     const attibutes = new drupalAttribute();

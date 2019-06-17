@@ -1,5 +1,5 @@
 @import "./_COMPONENT.css";
 
-.DRUPAL-SELECTOR {
+.COMPONENT {
   @extend %COMPONENT;
 }

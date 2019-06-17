@@ -1,5 +1,0 @@
-@import "./_a-test.css";
-
-.test {
-  @extend %a-test;
-}
