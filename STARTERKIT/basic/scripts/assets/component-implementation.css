@@ -1,4 +1,4 @@
-@import "./_COMPONENT.css";
+@import "_COMPONENT";
 
 .COMPONENT {
   @extend %COMPONENT;

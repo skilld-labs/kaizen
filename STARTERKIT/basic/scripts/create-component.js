@@ -33,20 +33,8 @@ const componentQuestions = [
   },
   {
     type: 'confirm',
-    name: 'createAdditionalElements',
-    message: 'Create elements instead default COMPONENT__content?',
-    default: false,
-  },
-  {
-    type: 'confirm',
     name: 'createStory',
     message: 'Create storybook component config?',
-    default: true,
-  },
-  {
-    type: 'confirm',
-    name: 'createTemplate',
-    message: 'Create twig template?',
     default: true,
   },
 ];
@@ -68,7 +56,7 @@ const elementQuestions = [
 function generateElementsForTwig(component, element) {
   const machineName = element.toLowerCase();
   const bemClass = `${component.toLowerCase()}__${machineName}`;
-  return `<div class"${bemClass}">{{ content.${machineName} }}</div>`;
+  return `<div class="${bemClass}">{{ content.${machineName} }}</div>`;
 }
 
 function readReplaceAndSave(filePath, replaceItems, fileDest) {
@@ -94,7 +82,6 @@ function createComponent(component, elements = ['content']) {
   const {
     component_type: type = 'Atom',
     component_name: name = 'name',
-    createTemplate: twig = true,
     createStory: story = true,
   } = component;
 
@@ -150,8 +137,9 @@ function createComponent(component, elements = ['content']) {
       readReplaceAndSave(sourceTemplate, replaceInCss, sourceTarget);
       readReplaceAndSave(implementationTemplate, replaceInCss, implementationTarget);
 
-      if (twig) {
+      if (story) {
         readReplaceAndSave(twigTemplate, replaceInTwig, templateTarget);
+        readReplaceAndSave(storySource, replaceInStory, storyTarget);
 
         fs.writeFile(dataTarget, JSON.stringify(dataJson, null, '  '), 'utf8', error => {
           if (error) {
@@ -159,30 +147,10 @@ function createComponent(component, elements = ['content']) {
           }
         });
       }
-
-      if (story) {
-        readReplaceAndSave(storySource, replaceInStory, storyTarget);
-      }
     },
   );
 }
 
 inquirer.prompt(componentQuestions).then(answers => {
-  const elements = [];
-  if (answers.createAdditionalElements) {
-    const ask = () => {
-      inquirer.prompt(elementQuestions).then(answersEl => {
-        elements.push(answersEl.elements);
-        if (answersEl.askAgain) {
-          ask();
-        } else {
-          createComponent(answers, elements);
-        }
-      });
-    };
-
-    ask();
-  } else {
-    createComponent(answers);
-  }
+  createComponent(answers);
 });

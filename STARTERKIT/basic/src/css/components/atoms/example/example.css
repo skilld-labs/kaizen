@@ -1,4 +1,4 @@
-@import "./_a-example.css";
+@import "_a-example";
 
 .example {
   @extend %a-example;
