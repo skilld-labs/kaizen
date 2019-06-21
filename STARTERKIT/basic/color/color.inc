@@ -53,5 +53,7 @@ $info = [
   'preview_html' => 'color/preview.html',
 
   // Files to copy.
-  'copy' => [],
+  'copy' => [
+    'logo.svg',
+  ],
 ];
