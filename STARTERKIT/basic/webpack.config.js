@@ -4,6 +4,7 @@
 
 const glob = require('glob');
 const path = require('path');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const options = require('./kaizen-options');
 
@@ -80,12 +81,27 @@ module.exports = {
         },
       },
       {
+        test: /\.svg$/,
+        use: {
+          loader: 'svg-sprite-loader',
+          options: {
+            extract: true,
+            symbolId: filePath => `svg-${path.basename(filePath.slice(0, -4))}`,
+            publicPath: 'svg/',
+          },
+        },
+      },
+      {
         test: /\.modernizrrc\.js$/,
         loader: 'webpack-modernizr-loader',
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new SpriteLoaderPlugin({
+      plainSprite: true,
+    }),
+  ],
   optimization: {
     minimizer: [
       new TerserPlugin({
