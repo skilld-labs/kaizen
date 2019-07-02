@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/html';
 import './COMPONENT_NAME.css';
+COMPONENT_SCRIPT
 
 const template = require('./COMPONENT.html.twig');
 const data = require('./COMPONENT.json');
@@ -8,5 +9,4 @@ const data = require('./COMPONENT.json');
 // import drupalAttribute from 'drupal-attribute';
 // data.attributes = new drupalAttribute();
 
-storiesOf('COMPONENT_TYPE|COMPONENT_NAME', module)
-  .add('default', () => template(data));
+COMPONENT_IMPORT

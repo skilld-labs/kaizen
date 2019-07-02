@@ -11,6 +11,7 @@ const sourceTemplate = `${options.buildAssets}component-source.css`;
 const implementationTemplate = `${options.buildAssets}component-implementation.css`;
 const twigTemplate = `${options.buildAssets}component-template.html.twig`;
 const storySource = `${options.buildAssets}component.stories.js`;
+const jsTemplate = `${options.buildAssets}component-script.js`;
 
 const componentQuestions = [
   {
@@ -37,27 +38,19 @@ const componentQuestions = [
     message: 'Create storybook component config?',
     default: true,
   },
-];
-
-const elementQuestions = [
-  {
-    type: 'input',
-    name: 'elements',
-    message: 'Enter element name',
-  },
   {
     type: 'confirm',
-    name: 'askAgain',
-    message: 'Want to enter another element (just hit enter for YES)?',
-    default: true,
+    name: 'createJs',
+    message: 'Create components js form template?',
+    default: false,
   },
 ];
 
-function generateElementsForTwig(component, element) {
-  const machineName = element.toLowerCase();
-  const bemClass = `${component.toLowerCase()}__${machineName}`;
-  return `<div class="${bemClass}">{{ content.${machineName} }}</div>`;
-}
+const dataJson = {
+  content: {
+    content: 'Lorem Ipsum',
+  },
+};
 
 function readReplaceAndSave(filePath, replaceItems, fileDest) {
   fs.readFile(filePath, 'utf8', (err, data) => {
@@ -78,11 +71,12 @@ function readReplaceAndSave(filePath, replaceItems, fileDest) {
   });
 }
 
-function createComponent(component, elements = ['content']) {
+function createComponent(component) {
   const {
     component_type: type = 'Atom',
     component_name: name = 'name',
     createStory: story = true,
+    createJs: withJs = false,
   } = component;
 
   const typePlural = `${type.toLowerCase()}s`; // Atom -> atoms
@@ -95,6 +89,7 @@ function createComponent(component, elements = ['content']) {
   const templateTarget = `${options.theme.css}${dirName}${sourceName}.html.twig`;
   const dataTarget = `${options.theme.css}${dirName}${sourceName}.json`;
   const storyTarget = `${options.theme.css}${dirName}${name}.stories.js`;
+  const jsTarget = `${options.theme.css}${dirName}${sourceName}.js`;
 
   const replaceInCss = {
     COMPONENT_NAME: name,
@@ -102,28 +97,41 @@ function createComponent(component, elements = ['content']) {
     COMPONENT: sourceName,
   };
 
-  let regions = '';
-  let content = {};
-  Array.prototype.forEach.call(elements, element => {
-    console.log(element);
-    regions = `${regions}  ${generateElementsForTwig(sourceName, element)}\n`;
-    content[element.toLowerCase()] = 'Lorem Ipsum';
-  });
-
   const replaceInTwig = {
     COMPONENT: sourceName,
-    REGIONS: regions,
   };
 
-  const dataJson = {
-    content: content
-  }
+  const componentScript = withJs
+    ? `import ${name} from './${sourceName}';`
+    : '';
+
+  const componentImport = withJs
+    ? `
+storiesOf('${typePlural}|${name}', module).add('default', () => {
+  document.addEventListener(
+    'DOMNodeInserted',
+    () => {
+      ${name}();
+    },
+    false,
+  );
+  return template(data);
+});
+`
+    : `
+storiesOf('${typePlural}|${name}', module).add('default', () => template(data));
+`;
 
   const replaceInStory = {
     COMPONENT_NAME: name,
-    COMPONENT_TYPE: typePlural,
+    COMPONENT_IMPORT: componentImport,
+    COMPONENT_SCRIPT: componentScript,
     COMPONENT: sourceName,
-  }
+  };
+
+  const replaceInJs = {
+    COMPONENT: sourceName,
+  };
 
   fs.mkdir(
     `${options.theme.css}${dirName}`,
@@ -135,17 +143,30 @@ function createComponent(component, elements = ['content']) {
         throw err;
       }
       readReplaceAndSave(sourceTemplate, replaceInCss, sourceTarget);
-      readReplaceAndSave(implementationTemplate, replaceInCss, implementationTarget);
+      readReplaceAndSave(
+        implementationTemplate,
+        replaceInCss,
+        implementationTarget,
+      );
 
       if (story) {
         readReplaceAndSave(twigTemplate, replaceInTwig, templateTarget);
         readReplaceAndSave(storySource, replaceInStory, storyTarget);
 
-        fs.writeFile(dataTarget, JSON.stringify(dataJson, null, '  '), 'utf8', error => {
-          if (error) {
-            throw error;
-          }
-        });
+        fs.writeFile(
+          dataTarget,
+          JSON.stringify(dataJson, null, '  '),
+          'utf8',
+          error => {
+            if (error) {
+              throw error;
+            }
+          },
+        );
+      }
+
+      if (withJs) {
+        readReplaceAndSave(jsTemplate, replaceInJs, jsTarget);
       }
     },
   );
