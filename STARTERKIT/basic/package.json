@@ -72,7 +72,6 @@
     "browsersync": "yarn run browser-sync start --proxy '127.0.0.1:8888' --files ./dist",
     "watch": "cross-env ./node_modules/.bin/webpack -w",
     "watch:bs": "cross-env NODE_ENV=development ./node_modules/.bin/run-p browsersync watch",
-    "icons": "svg-sprite --config ./scripts/icons/svg-sprite.json ./images/svg/*.svg",
     "cc": "node ./scripts/create-component.js",
     "storybook": "start-storybook"
   },
