@@ -1,8 +1,8 @@
 {
-  "name": "kaizen-theme",
+  "name": "kaizen",
   "version": "1.0.0",
   "description": "Creates subtheme from kaizen theme",
-  "repository": "git@github.com:skilld-labs/subtheme.git",
+  "repository": "git@github.com:skilld-labs/kaizen.git",
   "author": "Skilld",
   "license": "MIT",
   "dependencies": {

@@ -5,11 +5,6 @@ const isImage = require("is-image");
 const inquirer = require("inquirer");
 const path = require("path");
 
-const util = require("util");
-const exec = util.promisify(require("child_process").exec);
-
-const remote = "https://github.com/skilld-labs/kaizen.git";
-
 inquirer
   .prompt([
     {
@@ -26,45 +21,32 @@ inquirer
     }
   ])
   .then(answers => {
-    const newThemePath = path.join(__dirname, answers.themeName);
-    cloneRepo(answers.themeName);
+    const newThemePath = process.cwd() + "/" + answers.themeName + "/";
+    replaceKaizenInFilesAndFilenames(
+      path.join(__dirname, "/STARTERKIT/basic"),
+      newThemePath,
+      answers.themeName
+    );
   });
 
-function cloneRepo(themeName) {
-  exec(`rm -rf ${themeName} && git clone ${remote} ${themeName}`).then(() => {
-    replaceStarterkitToRoot(themeName);
-  });
-}
-
-// TODO: remove it after reviews.
-function replaceStarterkitToRoot(themeName) {
-  exec(
-    `cd ${themeName} && git filter-branch --subdirectory-filter STARTERKIT/basic && rm -rf .git`
-  ).then(() => {
-    replaceKaizenInFilesAndFilenames(themeName, themeName);
-  });
-}
-
-function replaceKaizenInFilesAndFilenames(source, themeName) {
+function replaceKaizenInFilesAndFilenames(source, newThemePath, themeName) {
   let files = [];
+
+  if (!fs.existsSync(newThemePath)) {
+    fs.mkdirSync(newThemePath);
+  }
 
   if (fs.lstatSync(source).isDirectory()) {
     files = fs.readdirSync(source);
 
     files.forEach(file => {
       const curSource = path.join(source, file);
-
       if (fs.lstatSync(curSource).isDirectory()) {
-        replaceKaizenInFilesAndFilenames(curSource, themeName);
+        const newDir = path.join(newThemePath, path.basename(curSource));
+        replaceKaizenInFilesAndFilenames(curSource, newDir, themeName);
       } else {
-        let toRename = false;
-
-        const newFileName = file.replace("kaizen", x => {
-          toRename = x;
-          return themeName;
-        });
-
-        const newFile = path.join(source, newFileName);
+        const newFileName = file.replace("kaizen", themeName);
+        const newFile = path.join(newThemePath, newFileName);
 
         let enc = "utf8";
         if (isImage(curSource)) {
@@ -83,12 +65,6 @@ function replaceKaizenInFilesAndFilenames(source, themeName) {
             }
           });
         });
-
-        if (toRename) {
-          fs.unlink(curSource, err => {
-            if (err) throw err;
-          });
-        }
       }
     });
   }
