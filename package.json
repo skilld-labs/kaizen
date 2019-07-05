@@ -10,6 +10,7 @@
     "is-image": "^3.0.0"
   },
   "scripts": {
-    "cs": "node ./create-subtheme.js"
+    "cs": "node ./index.js",
+    "bin": "./index.js"
   }
 }
