@@ -10,15 +10,15 @@ module.exports = () => ({
   map: false,
   plugins: [
     postcssImport(),
-    autoprefixer({
-      cascade: false,
-    }),
-    postcssExtend(),
     postCssDrupalBreakpoints({
       importFrom: './kaizen.breakpoints.yml',
       themeName: 'kaizen'
     }),
     postcssNested(),
+    postcssExtend(),
+    autoprefixer({
+      cascade: false,
+    }),
     stylelint({
       configFile: './.stylelintrc',
       fix: true
