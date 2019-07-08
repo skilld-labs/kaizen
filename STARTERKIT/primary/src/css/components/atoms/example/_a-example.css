@@ -1,0 +1,7 @@
+%a-example {
+  background-color: green;
+
+  &--with-modifier {
+    background-color: pink;
+  }
+}

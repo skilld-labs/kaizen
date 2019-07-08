@@ -1,0 +1,13 @@
+.a-button,
+%a-button {
+  @apply py-2 px-4 rounded bg-color-3 text-color-1 outline-none;
+
+  &:hover {
+    @apply bg-color-4;
+  }
+
+  &:focus {
+    @apply bg-color-4;
+    @apply shadow-outline;
+  }
+}

@@ -1,0 +1,18 @@
+base:
+  css:
+    theme:
+        color/colors.css: {}
+    base:
+      dist/svg/sprite.css: {}
+      dist/css/styles.css: {}
+  js:
+    dist/js/app.js: {}
+
+color.preview:
+  css:
+    theme:
+      color/preview.css: {}
+  js:
+    color/preview.js: {}
+  dependencies:
+    - color/drupal.color

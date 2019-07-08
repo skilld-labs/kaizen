@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * hook_preprocess().
+ *
+ * Prepares svg_sprite_path variable to get full path to svg sprite in twig templates
+ */
+function kaizen_preprocess(&$variables, $hook) {
+  $variables['svg_sprite_path'] = base_path() . $variables['directory'] . '/dist/svg/sprite.svg';
+  $variables['#attached']['drupalSettings']['svg_sprite_path'] = $variables['svg_sprite_path'];
+}
