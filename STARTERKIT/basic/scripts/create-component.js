@@ -58,10 +58,10 @@ function readReplaceAndSave(filePath, replaceItems, fileDest) {
       throw err;
     }
 
-    for (const replaceItem in replaceItems) {
+    Object.keys(replaceItems).forEach(replaceItem => {
       const re = new RegExp(replaceItem, 'g');
       data = data.replace(re, replaceItems[replaceItem]);
-    }
+    });
 
     fs.writeFile(fileDest, data, 'utf8', error => {
       if (error) {
