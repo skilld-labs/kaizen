@@ -1,0 +1,9 @@
+@import "@kaizen/components/organisms/slider/_o-slider";
+
+/* we can use default class here but i added drupal selector for example. */
+.view-id-frontpage > .view-content > .glide {
+  /* if you need to override variable inside implementation. */
+  --o-slider-bg: var(--color-2);
+
+  @extend %o-slider;
+}

@@ -1,0 +1,15 @@
+<div class="o-slider glide">
+  <div class="glide__track" data-glide-el="track">
+    <div class="o-slider__items glide__slides">
+      {% for item in content.items %}
+        <div class='o-banner-slider__item glide__slide'>{{ item }}</div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="o-slider__bullets glide__bullets" data-glide-el="controls[nav]">
+    {% for item in content.items %}
+      <button class="glide__bullet" data-glide-dir="={{ loop.index0 }}"></button>
+    {% endfor %}
+  </div>
+</div>

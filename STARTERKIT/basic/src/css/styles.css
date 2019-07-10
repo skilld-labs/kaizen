@@ -1,18 +1,7 @@
-@import "./abstractions/_colors.css";
-@import "./abstractions/_variables.css";
-@import "./base/_border-box.css";
-@import "./base/_embedded.css";
-
-html {
-  font-size: var(--root-font-size--mobile);
-
-  @drupal-breakpoint wide_1x {
-    font-size: var(--root-font-size--desktop);
-  }
-}
-
-body {
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  font-size: var(--base-font-size);
-}
+@import "@kaizen/components/_colors";
+@import "@kaizen/components/_variables";
+@import "@kaizen/components/_border-box";
+@import "@kaizen/components/_embedded";
+@import "@kaizen/components/_typography";
+/* import in main just for example */
+@import "./components/organisms/slider/slider";
