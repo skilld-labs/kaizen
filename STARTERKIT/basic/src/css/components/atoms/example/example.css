@@ -1,5 +1,0 @@
-@import "_a-example";
-
-.example {
-  @extend %a-example;
-}

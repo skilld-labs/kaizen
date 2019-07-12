@@ -1,5 +1,6 @@
 import cssVars from 'css-vars-ponyfill';
 import svg4everybody from 'svg4everybody';
+import slider from '@kaizen/components/organisms/slider/o-slider';
 import modernizr from './.modernizrrc';
 import { initBreakpointsCssReload } from './breakpoints';
 
@@ -12,3 +13,15 @@ if (!modernizr.testAllProps('customproperties')) {
 }
 
 svg4everybody();
+
+// Attached in drupal behaviours for example.
+(({ behaviors }) => {
+  behaviors.kaizenTestSliderBehaviour = {
+    attach(context) {
+      slider({
+        className: '.view-id-frontpage > .view-content > .glide',
+        context,
+      });
+    },
+  };
+})(Drupal);

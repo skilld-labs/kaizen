@@ -37,5 +37,100 @@ html {
 body {
   color: var(--color-text);
   background-color: var(--color-bg);
-  font-size: var(--base-font-size);
+  font-size: var(--text-base-size);
+}
+/* import in main just for example */
+.glide {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+}
+.glide * {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+.glide__track {
+  overflow: hidden;
+}
+.glide__slides {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  white-space: nowrap;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -ms-touch-action: pan-Y;
+  touch-action: pan-Y;
+  will-change: transform;
+}
+.glide__slides--dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.glide__slide {
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: normal;
+  -ms-flex-negative: 0;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.glide__slide a {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.glide__arrows {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.glide__bullets {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.glide--rtl {
+  direction: rtl;
+}
+.view-id-frontpage > .view-content > .glide {
+  --o-slider-bg: var(--color-1);
+
+  background-color: var(--o-slider-bg);
+}
+/* we can use default class here but i added drupal selector for example. */
+.view-id-frontpage > .view-content > .glide {
+  /* if you need to override variable inside implementation. */
+  --o-slider-bg: var(--color-2);
 }

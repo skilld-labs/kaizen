@@ -1,0 +1,7 @@
+%a-example {
+  background-color: var(--color-1);
+
+  &--with-modifier {
+    background-color: var(--color-2);
+  }
+}
