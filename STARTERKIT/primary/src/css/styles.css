@@ -5,3 +5,4 @@
 @import "@kaizen/primary-components/_colors";
 @import "@kaizen/primary-components/_variables";
 @import "@kaizen/primary-components/_typography";
+@import "./layout";

@@ -1,0 +1,12 @@
+/**
+ * @file
+ * Bartik layout styling.
+ */
+
+/**
+ * Container
+ */
+@import "@kaizen/primary-components/helpers/container/_h-container";
+.layout-container {
+  @extend %h-container;
+}
