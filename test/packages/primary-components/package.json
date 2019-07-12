@@ -1,0 +1,11 @@
+{
+  "name": "@test/primary-components",
+  "version": "1.0.0",
+  "description": "Themed components of test",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@test/components": "^1.0.0",
+    "tailwindcss": "^1.0.4"
+  }
+}

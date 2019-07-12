@@ -1,0 +1,13 @@
+html {
+  font-size: var(--root-font-size--mobile);
+
+  @drupal-breakpoint wide_1x {
+    font-size: var(--root-font-size--desktop);
+  }
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-size: var(--text-base-size);
+}

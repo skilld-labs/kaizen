@@ -1,0 +1,7 @@
+/* import normalize from basic components */
+@import "@kaizen/components/_border-box";
+@import "@kaizen/components/_embedded";
+/* import variables from primary components */
+@import "@kaizen/primary-components/_colors";
+@import "@kaizen/primary-components/_variables";
+@import "@kaizen/primary-components/_typography";

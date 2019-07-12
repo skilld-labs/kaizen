@@ -12,7 +12,7 @@ options.rootPath = {
 };
 
 options.theme = {
-  name: 'kaizen',
+  name: 'test',
   css: `${options.rootPath.src}css/`,
   js: `${options.rootPath.src}js/`,
 };
@@ -29,7 +29,7 @@ options.postCssConfigDirectory = `${options.rootPath.project}`;
 // Check if this is primary theme with own config overrides.
 try {
   // eslint-disable-next-line global-require
-  const overrides = require('./kaizen-options-override');
+  const overrides = require('./test-options-override');
   options = Object.assign(options, overrides);
 } catch (ex) {
   // eslint-disable-next-line no-console

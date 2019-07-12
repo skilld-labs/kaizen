@@ -1,0 +1,9 @@
+@import "_a-example";
+
+.example {
+  @extend %a-example;
+
+  &--with-modifier {
+    @extend %a-example--with-modifier;
+  }
+}

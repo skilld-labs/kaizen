@@ -1,8 +1,8 @@
 {
-  "name": "kaizen-theme",
+  "name": "test-theme",
   "version": "1.0.0",
   "description": "Basic theme",
-  "repository": "git@github.com:skilld-labs/kaizen.git",
+  "repository": "git@github.com:skilld-labs/test.git",
   "author": "Skilld",
   "license": "MIT",
   "devDependencies": {
@@ -21,8 +21,8 @@
   "dependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.2",
-    "@kaizen/components": "^1.0.0",
-    "@kaizen/primary-components": "^1.0.0",
+    "@test/components": "^1.0.0",
+    "@test/primary-components": "^1.0.0",
     "@skilld/postcss-drupal-breakpoints": "^0.0.1",
     "@skilld/webpack-drupal-breakpoints-loader": "^1.0.0",
     "autoprefixer": "^9.5.0",
