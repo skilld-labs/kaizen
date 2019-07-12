@@ -8,6 +8,12 @@ const path = require("path");
 inquirer
   .prompt([
     {
+      type: 'list',
+      name: 'themeType',
+      message: 'What type of theme?',
+      choices: ['basic', 'primary'],
+    },
+    {
       type: "input",
       name: "themeName",
       message: "Please enter theme name:",
@@ -27,6 +33,13 @@ inquirer
       newThemePath,
       answers.themeName
     );
+    if (answers.themeType === 'primary') {
+      replaceKaizenInFilesAndFilenames(
+        path.join(__dirname, "/STARTERKIT/primary"),
+        newThemePath,
+        answers.themeName
+      );
+    }
   });
 
 function replaceKaizenInFilesAndFilenames(source, newThemePath, themeName) {
