@@ -1,11 +1,31 @@
-<?php
+/**
+ * @file
+ * Hooks implementation of kaizen.
+ */
 
 /**
- * hook_preprocess().
+ * Returns path to svg sprite.
+ */
+function _kaizen_get_svg_sprite_path() {
+  return base_path() . \Drupal::theme()->getActiveTheme()->getPath() . '/dist/svg/sprite.svg';
+}
+
+/**
+ * Hook_page_attachments().
  *
- * Prepares svg_sprite_path variable to get full path to svg sprite in twig templates
+ * Prepares kaizen_svg_sprite_path variable to get
+ * full path to svg sprite from js.
+ */
+function kaizen_page_attachments_alter(array &$attachments) {
+  $attachments['#attached']['drupalSettings']['kaizen_svg_sprite_path'] = _kaizen_get_svg_sprite_path();
+}
+
+/**
+ * Hook_preprocess().
+ *
+ * Prepares kaizen_svg_sprite_path variable to get
+ * full path to svg sprite from twig.
  */
 function kaizen_preprocess(&$variables, $hook) {
-  $variables['svg_sprite_path'] = base_path() . $variables['directory'] . '/dist/svg/sprite.svg';
-  $variables['#attached']['drupalSettings']['svg_sprite_path'] = $variables['svg_sprite_path'];
+  $variables['kaizen_svg_sprite_path'] = _kaizen_get_svg_sprite_path();
 }

@@ -46,7 +46,7 @@ $info = [
 
   // CSS files (excluding @import) to rewrite with new color scheme.
   'css' => [
-    'color/colors.css'
+    'color/colors.css',
   ],
 
   'preview_library' => 'kaizen/color.preview',

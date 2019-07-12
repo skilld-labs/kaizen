@@ -3,7 +3,6 @@ base:
     theme:
         color/colors.css: {}
     base:
-      dist/svg/sprite.css: {}
       dist/css/styles.css: {}
   js:
     dist/js/app.js: {}
