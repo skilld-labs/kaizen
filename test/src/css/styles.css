@@ -1,7 +1,0 @@
-/* import normalize from basic components */
-@import "@test/components/_border-box";
-@import "@test/components/_embedded";
-/* import variables from primary components */
-@import "@test/primary-components/_colors";
-@import "@test/primary-components/_variables";
-@import "@test/primary-components/_typography";

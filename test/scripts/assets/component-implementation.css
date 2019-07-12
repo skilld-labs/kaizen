@@ -1,5 +1,0 @@
-@import "_COMPONENT";
-
-.COMPONENT {
-  @extend %COMPONENT;
-}
