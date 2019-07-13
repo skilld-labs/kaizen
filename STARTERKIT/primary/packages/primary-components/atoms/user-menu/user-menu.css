@@ -1,0 +1,13 @@
+@import "_a-user-menu";
+
+.a-user-menu {
+  @extend %a-user-menu;
+
+  &__link {
+    @extend %a-user-menu__link;
+  }
+
+  &__menu-item {
+    @extend %a-user-menu__menu-item;
+  }
+}

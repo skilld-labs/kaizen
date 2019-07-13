@@ -10,7 +10,7 @@ import twigDrupalFilters from 'twig-drupal-filters';
 twigDrupalFilters(Twig);
 
 function loadStories() {
-  const req = require.context('../packages/components/', true, /\.stories\.js$/);
+  const req = require.context('../packages/', true, /\.stories\.js$/);
   req.keys().forEach(filename => req(filename));
 }
 

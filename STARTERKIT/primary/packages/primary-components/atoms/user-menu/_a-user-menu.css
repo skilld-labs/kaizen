@@ -1,0 +1,15 @@
+%a-user-menu {
+  @apply list-none m-0 p-0 flex;
+
+  &__link {
+    @apply text-blue-500;
+
+    &:hover {
+      @apply text-blue-800;
+    }
+  }
+
+  &__menu-item {
+    @apply ml-6 p-0;
+  }
+}

@@ -3,5 +3,3 @@
 @import "@kaizen/components/_border-box";
 @import "@kaizen/components/_embedded";
 @import "@kaizen/components/_typography";
-/* import in main just for example */
-@import "./components/organisms/slider/slider";

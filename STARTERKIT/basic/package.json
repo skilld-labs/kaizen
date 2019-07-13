@@ -22,6 +22,7 @@
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.2",
     "@kaizen/components": "^1.0.0",
+    "@kaizen/primary-components": "^1.0.0",
     "@skilld/postcss-drupal-breakpoints": "^0.0.1",
     "@skilld/webpack-drupal-breakpoints-loader": "^1.0.0",
     "autoprefixer": "^9.5.0",

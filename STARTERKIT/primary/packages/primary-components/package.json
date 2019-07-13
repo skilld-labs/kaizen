@@ -1,0 +1,11 @@
+{
+  "name": "@kaizen/primary-components",
+  "version": "1.0.0",
+  "description": "Themed components of kaizen",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@kaizen/components": "^1.0.0",
+    "tailwindcss": "^1.0.4"
+  }
+}

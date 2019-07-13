@@ -44,6 +44,13 @@ const componentQuestions = [
     message: 'Create components js form template?',
     default: false,
   },
+  {
+    type: 'list',
+    name: 'library',
+    message: 'What package to use?',
+    choices: ['basic', 'primary'],
+    default: 'basic',
+  },
 ];
 
 const dataJson = {
@@ -77,19 +84,21 @@ function createComponent(component) {
     component_name: name = 'name',
     createStory: story = true,
     createJs: withJs = false,
+    library: libraryPath = 'basic',
   } = component;
 
   const typePlural = `${type.toLowerCase()}s`; // Atom -> atoms
   const typeIndex = type.charAt(0).toLowerCase(); // Atom -> a
   const sourceName = `${typeIndex}-${name}`; // a-COMPONENT_NAME
-  const dirName = `components/${typePlural}/${name}/`; // components/atoms/COMPONENT_NAME/
+  const dirName = `packages/${libraryPath === 'primary' ? 'primary-components' : 'components'}/${typePlural}/${name}/`; // components/atoms/COMPONENT_NAME/
 
-  const sourceTarget = `${options.theme.css}${dirName}_${sourceName}.css`;
-  const implementationTarget = `${options.theme.css}${dirName}${name}.css`;
-  const templateTarget = `${options.theme.css}${dirName}${sourceName}.html.twig`;
-  const dataTarget = `${options.theme.css}${dirName}${sourceName}.json`;
-  const storyTarget = `${options.theme.css}${dirName}${name}.stories.js`;
-  const jsTarget = `${options.theme.css}${dirName}${sourceName}.js`;
+  const sourceTarget = `${options.rootPath.project}${dirName}_${sourceName}.css`;
+  const implementationTarget = `${options.rootPath.project}${dirName}${name}.css`;
+  const templateTarget = `${options.rootPath.project}${dirName}${sourceName}.html.twig`;
+  const dataTarget = `${options.rootPath.project}${dirName}${sourceName}.json`;
+  const storyTarget = `${options.rootPath.project}${dirName}${name}.stories.js`;
+  const jsTarget = `${options.rootPath.project}${dirName}${sourceName}.js`;
+
 
   const replaceInCss = {
     COMPONENT_NAME: name,
@@ -134,7 +143,7 @@ storiesOf('${typePlural}|${name}', module).add('default', () => template(data));
   };
 
   fs.mkdir(
-    `${options.theme.css}${dirName}`,
+    `${options.rootPath.project}${dirName}`,
     {
       recursive: true,
     },
