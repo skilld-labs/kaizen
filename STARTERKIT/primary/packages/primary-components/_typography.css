@@ -1,4 +1,6 @@
 html {
+  @apply bg-white antialiased font-sans;
+
   font-size: var(--root-font-size--mobile);
 
   @drupal-breakpoint wide_1x {
@@ -7,7 +9,5 @@ html {
 }
 
 body {
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  font-size: var(--text-base-size);
+  @apply text-gray-900 leading-normal;
 }
