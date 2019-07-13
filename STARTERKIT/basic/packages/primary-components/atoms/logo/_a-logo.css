@@ -10,6 +10,6 @@
   }
 
   &__link {
-    @apply text-3xl uppercase font-semibold leading-none text-gray-900 no-underline;
+    @apply text-3xl uppercase font-semibold leading-none text-black no-underline;
   }
 }
