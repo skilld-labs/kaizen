@@ -9,5 +9,5 @@ html {
 }
 
 body {
-  @apply text-black leading-normal;
+  @apply text-gray-dark leading-normal;
 }

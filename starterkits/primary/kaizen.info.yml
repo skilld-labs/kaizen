@@ -26,3 +26,9 @@ regions:
 
 libraries:
   - kaizen/base
+
+libraries-override:
+  classy/base:
+    css:
+      component:
+        css/components/form.css: false

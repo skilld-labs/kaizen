@@ -3,7 +3,7 @@
 .navigation.menu--account .menu {
   @extend %a-user-menu;
 
-  >.menu-item {
+  > .menu-item {
     @extend %a-user-menu__menu-item;
 
     > a {

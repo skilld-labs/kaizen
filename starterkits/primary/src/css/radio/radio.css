@@ -1,0 +1,39 @@
+@import "@kaizen/primary-components/atoms/radio/_a-radio";
+
+.form-type-radio {
+  .radio__marker {
+    @extend %a-radio__marker;
+  }
+
+  .form-radio {
+    @extend %a-radio__original;
+
+    & + .radio {
+      @extend %a-radio__custom;
+    }
+
+    &.error + .radio {
+      @extend %a-radio__custom--error;
+    }
+
+    &:hover + .radio {
+      @extend %a-radio__custom--hover;
+    }
+
+    &:focus + .radio {
+      @extend %a-radio__custom--focus;
+    }
+
+    &:checked + .radio {
+      @extend %a-radio__custom--checked;
+
+      .radio__marker {
+        @extend %a-radio__marker--checked;
+      }
+    }
+  }
+
+  .option {
+    @extend %a-radio__label;
+  }
+}
