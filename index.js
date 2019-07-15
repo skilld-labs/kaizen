@@ -29,13 +29,13 @@ inquirer
   .then(answers => {
     const newThemePath = process.cwd() + "/" + answers.themeName + "/";
     replaceKaizenInFilesAndFilenames(
-      path.join(__dirname, "/STARTERKIT/basic"),
+      path.join(__dirname, "/starterkits/basic"),
       newThemePath,
       answers.themeName
     );
     if (answers.themeType === 'primary') {
       replaceKaizenInFilesAndFilenames(
-        path.join(__dirname, "/STARTERKIT/primary"),
+        path.join(__dirname, "/starterkits/primary"),
         newThemePath,
         answers.themeName
       );

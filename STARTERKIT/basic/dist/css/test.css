@@ -1,9 +1,0 @@
-.test {
-  background-color: black;
-}
-
-@media all and (min-width: 1024px) {
-  .test {
-    background-color: green;
-  }
-}
