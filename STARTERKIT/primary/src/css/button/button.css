@@ -1,0 +1,8 @@
+@import "@kaizen/primary-components/atoms/button/_a-button";
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  @extend %a-button;
+}

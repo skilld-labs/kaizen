@@ -1,7 +1,7 @@
 %a-example {
-  background-color: var(--color-1);
+  background-color: var(--color-3);
 
   &--with-modifier {
-    background-color: var(--color-2);
+    background-color: var(--color-4);
   }
 }

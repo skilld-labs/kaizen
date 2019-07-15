@@ -6,7 +6,6 @@ const postcssNested = require('postcss-nested');
 const stylelint = require('stylelint');
 const tailwind = require('tailwindcss');
 
-
 module.exports = () => ({
   map: false,
   plugins: [

@@ -1,7 +1,7 @@
 @import "@glidejs/glide/dist/css/glide.core";
 
 %o-slider {
-  --o-slider-bg: var(--color-1);
+  --o-slider-bg: var(--color-5);
 
   background-color: var(--o-slider-bg);
 }
