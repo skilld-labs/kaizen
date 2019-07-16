@@ -8,7 +8,7 @@ const data = require('./a-radio.json');
 // import drupalAttribute from 'drupal-attribute';
 // data.attributes = new drupalAttribute();
 
-storiesOf('molecules|radio', module)
+storiesOf('atoms|radio', module)
 .add('default', () => template(data))
 .add('hover', () =>
   template({

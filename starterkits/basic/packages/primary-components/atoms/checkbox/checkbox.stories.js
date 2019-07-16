@@ -9,7 +9,7 @@ const data = require('./a-checkbox.json');
 // import drupalAttribute from 'drupal-attribute';
 // data.attributes = new drupalAttribute();
 
-storiesOf('molecules|checkbox', module)
+storiesOf('atoms|checkbox', module)
 .add('default', () =>
   template(data),
 )
