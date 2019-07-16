@@ -1,0 +1,28 @@
+@import "@kaizen/primary-components/atoms/input/_a-input";
+
+.form-type-textarea,
+.form-type-textfield,
+.form-type-search,
+.form-type-tel,
+.form-type-url,
+.form-type-email,
+.form-type-password,
+.form-type-time,
+.form-type-number {
+  & > label {
+    @extend %a-input__label;
+  }
+}
+
+textarea,
+[type='text'],
+[type='search'],
+[type='tel'],
+[type='url'],
+[type='email'],
+[type='password'],
+[type='date'],
+[type='time'],
+[type='number'] {
+  @extend %a-input__element;
+}
