@@ -2,10 +2,10 @@
   @apply list-none m-0 p-0 flex;
 
   &__link {
-    @apply text-robins-egg-blue;
+    @apply text-green;
 
     &:hover {
-      @apply text-turquoise;
+      @apply text-green-light;
     }
   }
 

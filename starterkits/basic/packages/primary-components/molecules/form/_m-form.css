@@ -1,0 +1,23 @@
+%m-form {
+  &__item {
+    @apply my-4;
+  }
+
+  &__legend {
+    @apply inline my-2 p-0 text-base font-bold;
+  }
+
+  &__description {
+    @apply text-xs;
+
+    &--radio-and-checkbox {
+      @apply pl-8 w-full;
+    }
+  }
+
+  &__required-star {
+    @apply inline text-error pl-1 text-base align-top;
+
+    content: "*";
+  }
+}

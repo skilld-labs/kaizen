@@ -7,6 +7,9 @@
 @import "@kaizen/primary-components/_typography";
 /* For now just put them globally */
 @import "./layout";
+@import "./radio/radio";
+@import "./checkbox/checkbox";
 @import "./button/button";
+@import "./form/form";
 @import "./block/block-system-branding-block";
 @import "./block/block--system-menu-block"

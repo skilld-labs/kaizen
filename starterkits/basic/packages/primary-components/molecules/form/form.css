@@ -1,0 +1,23 @@
+@import "_m-form";
+
+.m-form {
+  &__item {
+    @extend %m-form__item;
+  }
+
+  &__legend {
+    @extend %m-form__legend;
+  }
+
+  &__description {
+    @extend %m-form__description;
+
+    &--radio-and-checkbox {
+      @extend %m-form__description--radio-and-checkbox;
+    }
+  }
+
+  &__required-star {
+    @extend %m-form__required-star;
+  }
+}

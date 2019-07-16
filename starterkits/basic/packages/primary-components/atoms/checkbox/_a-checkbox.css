@@ -1,0 +1,40 @@
+%a-checkbox {
+  @apply flex flex-wrap;
+
+  &__original {
+    @apply absolute w-5 h-5 opacity-0;
+  }
+
+  &__custom {
+    @apply rounded bg-lime-light w-5 h-5 flex items-center justify-center absolute;
+
+    &--error {
+      @apply bg-error-light;
+    }
+
+    &--hover {
+      @apply bg-green-light;
+    }
+
+    &--focus {
+      @apply bg-green-light;
+      @apply shadow-outline;
+    }
+
+    &--checked {
+      @apply bg-green-light;
+    }
+  }
+
+  &__icon {
+    @apply w-3 h-3 fill-transparent flex-shrink-0;
+
+    &--checked {
+      @apply fill-white;
+    }
+  }
+
+  &__label {
+    @apply text-sm cursor-pointer pl-8 relative align-top;
+  }
+}
