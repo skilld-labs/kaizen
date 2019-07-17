@@ -1,0 +1,13 @@
+@import "@kaizen/primary-components/atoms/link/_a-link";
+
+a {
+  @extend %a-link;
+
+  &:hover {
+    @extend %a-link--hover;
+  }
+
+  &:focus {
+    @extend %a-link--focus;
+  }
+}

@@ -1,11 +1,11 @@
 %a-button {
   @apply py-2 px-4 rounded bg-green text-base text-white outline-none border-0;
 
-  &:hover {
+  &--hover {
     @apply bg-green-light;
   }
 
-  &:focus {
+  &--focus {
     @apply bg-green-light;
     @apply shadow-outline;
   }

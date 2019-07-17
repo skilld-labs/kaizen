@@ -1,0 +1,11 @@
+%a-link {
+  @apply text-gray-dark rounded;
+
+  &--hover {
+    @apply no-underline;
+  }
+
+  &--focus {
+    @apply no-underline;
+  }
+}

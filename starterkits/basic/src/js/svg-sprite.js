@@ -7,5 +7,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 export default function getSvgIcon(icon) {
-  return `<svg aria-hidden="true"><use xlink:href="${window.drupalSettings.kaizen_svg_sprite_path}#svg-${icon}"></use></svg>`;
+  return `<svg aria-hidden="true"><use xlink:href="${window.drupalSettings.kaizenSvgSpritePath}#svg-${icon}"></use></svg>`;
 }

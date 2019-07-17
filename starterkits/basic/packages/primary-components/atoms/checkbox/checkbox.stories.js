@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/html';
 import './checkbox.css';
-import svg_sprite_path from '../../../../dist/svg/sprite.svg';
+import svgSprite from '../../../../dist/svg/sprite.svg';
 
 const template = require('./a-checkbox.html.twig');
 const data = require('./a-checkbox.json');
@@ -28,7 +28,7 @@ storiesOf('atoms|checkbox', module)
 .add('checked', () =>
   template({
     ...data,
-    sprite: svg_sprite_path,
+    sprite: svgSprite,
     custom_class: 'a-checkbox__custom--checked',
     icon_class: 'a-checkbox__icon--checked',
   }),

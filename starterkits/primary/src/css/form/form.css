@@ -64,11 +64,6 @@ abbr.tabledrag-changed,
 abbr.ajax-changed {
   border-bottom: none;
 }
-.form-item input.error,
-.form-item textarea.error,
-.form-item select.error {
-  border: 2px solid red;
-}
 .form-item--error-message:before {
   display: inline-block;
   width: 14px;
