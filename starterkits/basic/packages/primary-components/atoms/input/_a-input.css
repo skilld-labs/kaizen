@@ -1,0 +1,18 @@
+%a-input {
+  &__label {
+    @apply block text-sm pb-1;
+  }
+
+  &__element {
+    @apply max-w-full py-2 px-4 rounded bg-gray-light border border-solid border-gray-dark appearance-none outline-none text-base;
+
+    &::placeholder {
+      @apply text-black opacity-25;
+    }
+
+    &:focus {
+      @apply border-transparent;
+      @apply shadow-outline-gray-dark;
+    }
+  }
+}

@@ -16,7 +16,7 @@
   }
 
   &__required-star {
-    @apply inline text-error pl-1 text-base align-top;
+    @apply inline text-error pl-1 text-sm align-top;
 
     content: "*";
   }

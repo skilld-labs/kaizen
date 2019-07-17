@@ -1,0 +1,11 @@
+@import "_a-input";
+
+.a-input {
+  &__label {
+    @extend %a-input__label;
+  }
+
+  &__element {
+    @extend %a-input__element;
+  }
+}
