@@ -5,4 +5,12 @@ html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   @extend %a-button;
+
+  &:hover {
+    @extend %a-button--hover;
+  }
+
+  &:focus {
+    @extend %a-button--focus;
+  }
 }

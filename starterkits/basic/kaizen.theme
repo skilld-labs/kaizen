@@ -19,7 +19,7 @@ function _kaizen_get_svg_sprite_path() {
  * full path to svg sprite from js.
  */
 function kaizen_page_attachments_alter(array &$attachments) {
-  $attachments['#attached']['drupalSettings']['kaizen_svg_sprite_path'] = _kaizen_get_svg_sprite_path();
+  $attachments['#attached']['drupalSettings']['kaizenSvgSpritePath'] = _kaizen_get_svg_sprite_path();
 }
 
 /**

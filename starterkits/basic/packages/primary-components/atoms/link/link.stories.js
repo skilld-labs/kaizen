@@ -1,27 +1,25 @@
 import { storiesOf } from '@storybook/html';
-import './button.css';
+import './link.css';
 
-
-const template = require('./a-button.html.twig');
-const data = require('./a-button.json');
+const template = require('./a-link.html.twig');
+const data = require('./a-link.json');
 
 // Uncomment next 2 lines if your templates contains {{ attibutes.addClass(...) }} or similar logic.
 // import drupalAttribute from 'drupal-attribute';
 // data.attributes = new drupalAttribute();
 
-
-storiesOf('atoms|button', module)
+storiesOf('atoms|link', module)
 .add('default', () => template(data))
 .add('hover', () =>
   template({
     ...data,
-    modifier_class: 'a-button--hover',
-  }
-))
+    modifier_class: 'a-link--hover',
+  }),
+)
 .add('focus', () =>
   template({
     ...data,
-    modifier_class: 'a-button--focus',
-  }
-));
+    modifier_class: 'a-link--focus',
+  }),
+);
 

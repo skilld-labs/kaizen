@@ -10,5 +10,29 @@ const data = require('./a-input.json');
 // data.attributes = new drupalAttribute();
 
 
-storiesOf('atoms|input', module).add('default', () => template(data));
-
+storiesOf('atoms|input', module)
+.add('default', () => template(data))
+.add('focus', () =>
+  template({
+    ...data,
+    modifier_class: 'a-input__element--focus',
+  }),
+)
+.add('filled', () =>
+  template({
+    ...data,
+    value: 'Filled input',
+  }),
+)
+.add('error', () =>
+  template({
+    ...data,
+    modifier_class: 'a-input__element--error',
+  }),
+)
+.add('error-focus', () =>
+  template({
+    ...data,
+    modifier_class: 'a-input__element--error a-input__element--error--focus',
+  }),
+);

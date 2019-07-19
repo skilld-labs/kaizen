@@ -1,0 +1,49 @@
+@import "@kaizen/primary-components/atoms/select/_a-select";
+
+.kaizen-select {
+  @extend %a-select;
+}
+
+.kaizen-select__inner {
+  @extend %a-select__inner;
+}
+
+.kaizen-select__selected {
+  @extend %a-select__selected;
+}
+
+.kaizen-select__dropdown {
+  @extend %a-select__dropdown;
+
+  &--active {
+    @extend %a-select__dropdown--active;
+  }
+}
+
+.kaizen-select__search {
+  @extend %a-select__search;
+}
+
+.kaizen-select__item-selectable {
+  @extend %a-select__item-selectable;
+}
+
+.kaizen-select--disabled {
+  .kaizen-select__item-selectable {
+    @extend %a-select__item-selectable--disabled;
+  }
+}
+
+.kaizen-select--open {
+  .kaizen-select__icon {
+    @extend %a-select__icon--active;
+  }
+}
+
+.kaizen-select__dropdown-item {
+  @extend %a-select__dropdown-item;
+
+  &--active {
+    @extend %a-select__dropdown-item--active;
+  }
+}
