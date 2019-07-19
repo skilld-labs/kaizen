@@ -4,6 +4,7 @@ const fs = require("fs");
 const isImage = require("is-image");
 const inquirer = require("inquirer");
 const path = require("path");
+const exec = require('child_process').exec;
 
 inquirer
   .prompt([
@@ -18,9 +19,19 @@ inquirer
       name: "themeName",
       message: "Please enter theme name:",
       validate: value => {
-        const pass = value !== "";
-        if (pass) {
-          return true;
+
+        const notEmpty = value !== "";
+        if (notEmpty) {
+          return new Promise((resolve, reject) => {
+            exec(`yarn info @${value}/components`, (err, stdout, stderr) => {
+              if (stderr) {
+                resolve(true);
+              }
+              if (stdout) {
+                resolve(`Your name has collision with @${value}/components in npm`);
+              }
+            });
+          });
         }
         return "Please enter something!";
       }
@@ -40,7 +51,7 @@ inquirer
         answers.themeName
       );
     }
-  });
+  }).catch((err) => console.log(`.catch ${err}`))
 
 function replaceKaizenInFilesAndFilenames(source, newThemePath, themeName) {
   let files = [];
