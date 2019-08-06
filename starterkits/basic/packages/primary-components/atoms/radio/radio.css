@@ -28,8 +28,4 @@
       @extend %a-radio__custom--error;
     }
   }
-
-  &__label {
-    @extend %a-radio__label;
-  }
 }

@@ -15,5 +15,5 @@
 @import "./button/button";
 @import "./select/select";
 @import "./form/form";
-@import "./block/block-system-branding-block";
-@import "./block/block--system-menu-block"
+@import "./block/branding";
+@import "./block/menu-account"

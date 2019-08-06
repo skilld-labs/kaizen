@@ -4,12 +4,24 @@
   &__link {
     @apply text-green;
 
-    &:hover {
+    &--hover {
       @apply text-green-light;
     }
   }
 
+  &__icon {
+    @apply w-4 h-4 align-middle mr-2 fill-green;
+
+    &--hover {
+      @apply fill-green-light;
+    }
+  }
+
   &__menu-item {
-    @apply ml-6 p-0;
+    @apply p-0;
+
+    &:nth-child(n+2) {
+      @apply ml-6;
+    }
   }
 }

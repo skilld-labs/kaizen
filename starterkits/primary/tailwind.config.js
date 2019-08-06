@@ -17,6 +17,8 @@ module.exports = {
     fill: theme => ({
       transparent: 'transparent',
       white: theme('colors.white'),
+      green: theme('colors.green'),
+      'green-light': theme('colors.green-light'),
       error: theme('colors.error'),
     }),
     boxShadow: {
@@ -41,6 +43,19 @@ module.exports = {
     },
     rotate: {
       180: '180deg',
+    },
+    zIndex: {
+      '1-negative': -1,
+      '0': 0,
+      '10': 10,
+      '20': 20,
+      '25': 25,
+      '30': 30,
+      '40': 40,
+      '50': 50,
+      '75': 75,
+      '100': 100,
+      auto: 'auto',
     },
   },
   variants: {},
