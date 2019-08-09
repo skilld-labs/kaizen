@@ -3,11 +3,23 @@
 .a-user-menu {
   @extend %a-user-menu;
 
-  &__link {
-    @extend %a-user-menu__link;
-  }
-
   &__menu-item {
     @extend %a-user-menu__menu-item;
+  }
+
+  &__icon {
+    @extend %a-user-menu__icon;
+  }
+
+  &__link {
+    @extend %a-user-menu__link;
+
+    &:hover {
+      @extend %a-user-menu__link--hover;
+
+      .a-user-menu__icon {
+        @extend %a-user-menu__icon--hover;
+      }
+    }
   }
 }

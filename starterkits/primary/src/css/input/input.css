@@ -1,3 +1,4 @@
+@import "@kaizen/primary-components/atoms/label/_a-label";
 @import "@kaizen/primary-components/atoms/input/_a-input";
 
 .form-type-textarea,
@@ -8,9 +9,11 @@
 .form-type-email,
 .form-type-password,
 .form-type-time,
-.form-type-number {
+.form-type-number,
+.form-type-select {
   & > label {
-    @extend %a-input__label;
+    @extend %a-label;
+    @extend %a-label--above;
   }
 }
 

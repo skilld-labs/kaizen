@@ -6,7 +6,7 @@
   }
 
   &__inner {
-    @apply relative z-20;
+    @apply relative;
   }
 
   &__selected {

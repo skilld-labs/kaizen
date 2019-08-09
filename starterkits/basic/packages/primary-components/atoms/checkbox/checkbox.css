@@ -30,8 +30,4 @@
       @extend %a-checkbox__custom--error;
     }
   }
-
-  &__label {
-    @extend %a-checkbox__label;
-  }
 }

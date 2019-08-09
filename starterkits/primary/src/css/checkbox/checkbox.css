@@ -1,3 +1,4 @@
+@import "@kaizen/primary-components/atoms/label/_a-label";
 @import "@kaizen/primary-components/atoms/checkbox/_a-checkbox";
 
 .form-type-checkbox {
@@ -36,6 +37,7 @@
   }
 
   .option {
-    @extend %a-checkbox__label;
+    @extend %a-label;
+    @extend %a-label--inline;
   }
 }

@@ -6,7 +6,7 @@
   }
 
   &__custom {
-    @apply rounded bg-lime-light w-5 h-5 flex items-center justify-center absolute;
+    @apply rounded bg-lime-light w-5 h-5 flex items-center justify-center absolute z-1-negative;
 
     &--error {
       @apply bg-error-light;
@@ -32,9 +32,5 @@
     &--checked {
       @apply fill-white;
     }
-  }
-
-  &__label {
-    @apply text-sm cursor-pointer pl-8 relative align-top;
   }
 }

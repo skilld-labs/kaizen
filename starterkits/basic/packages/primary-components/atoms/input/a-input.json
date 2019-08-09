@@ -1,6 +1,3 @@
 {
-  "content": {
-    "label": "Input label",
-    "element": "Enter something..."
-  }
+  "content": "Enter something..."
 }

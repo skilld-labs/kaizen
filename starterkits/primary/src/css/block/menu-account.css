@@ -1,0 +1,25 @@
+@import "@kaizen/primary-components/atoms/user-menu/_a-user-menu";
+
+.menu--account .menu {
+  @extend %a-user-menu;
+
+  > .menu-item {
+    @extend %a-user-menu__menu-item;
+
+    > a {
+      @extend %a-user-menu__link;
+
+      svg {
+        @extend %a-user-menu__icon;
+      }
+
+      &:hover {
+        @extend %a-user-menu__link--hover;
+
+        svg {
+          @extend %a-user-menu__icon--hover;
+        }
+      }
+    }
+  }
+}
