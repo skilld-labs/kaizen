@@ -1,0 +1,38 @@
+%m-tabs {
+  @apply list-none mt-0 mb-6 p-0 inline-flex;
+
+  &__item {
+    &:nth-child(n+2) {
+      @apply ml-2;
+    }
+  }
+
+  &__link {
+    @apply block no-underline px-3 py-1 bg-gray-light outline-none rounded;
+
+    &:hover {
+      @apply bg-gray-dark text-white;
+    }
+
+    &:focus {
+      @apply shadow-outline-gray-dark relative;
+    }
+
+    &--active {
+      @apply relative overflow-hidden;
+
+      &::after {
+        @apply w-full border-t-2 border-l-0 border-r-0 border-b-0 border-solid border-green absolute bottom-0 left-0 pointer-events-none;
+
+        content: "";
+      }
+
+      &:hover,
+      &:focus {
+        &::after {
+          @apply hidden;
+        }
+      }
+    }
+  }
+}

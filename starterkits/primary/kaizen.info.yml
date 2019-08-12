@@ -31,4 +31,8 @@ libraries-override:
   classy/base:
     css:
       component:
+        css/components/breadcrumb.css: false
         css/components/form.css: false
+        css/components/menu.css: false
+        css/components/pager.css: false
+        css/components/tabs.css: false

@@ -1,0 +1,17 @@
+@import "_m-tabs";
+
+.m-tabs {
+  @extend %m-tabs;
+
+  &__item {
+    @extend %m-tabs__item;
+  }
+
+  &__link {
+    @extend %m-tabs__link;
+
+    &--active {
+      @extend %m-tabs__link--active;
+    }
+  }
+}

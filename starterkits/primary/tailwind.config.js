@@ -13,12 +13,14 @@ module.exports = {
       'lime-light': 'var(--color-9)',
       error: 'var(--color-10)',
       'error-light': 'var(--color-11)',
+      inherit: 'inherit',
     },
     fill: theme => ({
       transparent: 'transparent',
       white: theme('colors.white'),
-      green: theme('colors.green'),
+      'gray-dark': theme('colors.gray-dark'),
       'green-light': theme('colors.green-light'),
+      green: theme('colors.green'),
       error: theme('colors.error'),
     }),
     boxShadow: {
@@ -42,7 +44,9 @@ module.exports = {
       '6xl': '4rem',
     },
     rotate: {
+      90: '90deg',
       180: '180deg',
+      270: '270deg',
     },
     zIndex: {
       '1-negative': -1,

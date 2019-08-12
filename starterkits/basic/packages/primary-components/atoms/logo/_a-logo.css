@@ -6,10 +6,10 @@
   }
 
   &__image {
-    @apply w-24 leading-none mr-2;
+    @apply w-12 leading-none mr-2;
   }
 
   &__link {
-    @apply text-3xl uppercase font-semibold leading-none text-black no-underline;
+    @apply text-xl uppercase font-semibold leading-none text-black no-underline;
   }
 }
