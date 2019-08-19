@@ -1,0 +1,5 @@
+@import "_o-clickable-block";
+
+.o-clickable-block {
+  @extend %o-clickable-block;
+}
