@@ -1,0 +1,21 @@
+@import "@kaizen/primary-components/organisms/header/_o-header";
+
+.header {
+  @extend %o-header;
+
+  &__bot {
+    @extend %o-header__bot;
+  }
+
+  &__content {
+    @extend %o-header__content;
+
+    &--top {
+      @extend %o-header__content--top;
+    }
+
+    &--bot {
+      @extend %o-header__content--bot;
+    }
+  }
+}

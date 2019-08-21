@@ -1,0 +1,17 @@
+@import "@kaizen/primary-components/molecules/tabs/_m-tabs";
+
+ul.tabs {
+  @extend %m-tabs;
+
+  & > li {
+    @extend %m-tabs__item;
+  }
+
+  a {
+    @extend %m-tabs__link;
+
+    &.is-active {
+      @extend %m-tabs__link--active;
+    }
+  }
+}

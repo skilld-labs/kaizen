@@ -1,0 +1,16 @@
+@import "_m-main-menu";
+
+.m-main-menu {
+  &__list {
+    @extend %m-main-menu__list;
+  }
+
+  &__link {
+    @extend %m-main-menu__link;
+
+    &:hover,
+    &:focus {
+      @extend %m-main-menu__link--active;
+    }
+  }
+}

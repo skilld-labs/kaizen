@@ -1,5 +1,5 @@
 %a-link {
-  @apply text-gray-dark rounded;
+  @apply text-gray-dark;
 
   &--hover {
     @apply no-underline;
