@@ -70,22 +70,20 @@
       </div>
     </header>
     {% if page.highlighted %}
-      <div class="highlighted">
-        <aside class="layout-container" role="complementary">
-          {{ page.highlighted }}
-        </aside>
-      </div>
-    {% endif %}
-    {% if page.featured_top %}
-      <div class="featured-top">
-        <aside class="featured-top__inner layout-container" role="complementary">
-          {{ page.featured_top }}
-        </aside>
+      <div class="highlighted" role="complementary">
+        {{ page.highlighted }}
       </div>
     {% endif %}
     <div id="main-wrapper" class="layout-main-wrapper layout-container">
       <div id="main" class="layout-main">
         {{ page.breadcrumb }}
+        {% if page.featured_top %}
+          <div class="featured-top">
+            <aside class="featured-top__inner layout-container" role="complementary">
+              {{ page.featured_top }}
+            </aside>
+          </div>
+        {% endif %}
         <main id="content" class="column main-content" role="main">
           <section class="section">
             <a id="main-content" tabindex="-1"></a>

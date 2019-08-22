@@ -2,6 +2,7 @@ import cssVars from 'css-vars-ponyfill';
 import modernizr from './.modernizrrc';
 import { initBreakpointsCssReload } from './breakpoints';
 import './svg-sprite';
+import './ui/messages';
 import './ui/select';
 
 // TODO: Check if css classes need to be reloaded by default.

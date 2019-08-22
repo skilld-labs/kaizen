@@ -13,6 +13,8 @@ module.exports = {
       'lime-light': 'var(--color-9)',
       error: 'var(--color-10)',
       'error-light': 'var(--color-11)',
+      success: 'var(--color-12)',
+      warning: 'var(--color-13)',
       inherit: 'inherit',
     },
     fill: theme => ({
@@ -22,6 +24,8 @@ module.exports = {
       'green-light': theme('colors.green-light'),
       green: theme('colors.green'),
       error: theme('colors.error'),
+      success: theme('colors.success'),
+      warning: theme('colors.warning'),
     }),
     boxShadow: {
       none: 'none',
@@ -51,6 +55,7 @@ module.exports = {
     zIndex: {
       '1-negative': -1,
       '0': 0,
+      '1': 1,
       '10': 10,
       '20': 20,
       '25': 25,
