@@ -75,7 +75,7 @@
     "watch:bs": "cross-env NODE_ENV=development ./node_modules/.bin/run-p browsersync watch",
     "cc": "node ./scripts/create-component.js",
     "storybook": "start-storybook",
-    "build-storybook": "build-storybook -c .storybook -o dist-storybook"
+    "build-storybook": "build-storybook -c .storybook -o dist/storybook"
   },
   "private": true,
   "workspaces": [
