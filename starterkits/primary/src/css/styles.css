@@ -17,6 +17,7 @@
 @import "./button/button";
 @import "./select/select";
 @import "./tabs/tabs";
+@import "./table/table";
 @import "./form/form";
 @import "./header/header";
 @import "./footer/footer";

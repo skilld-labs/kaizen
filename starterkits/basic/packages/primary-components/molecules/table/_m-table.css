@@ -1,0 +1,15 @@
+%m-table {
+  @apply text-left border-collapse;
+
+  &__caption {
+    @apply p-4 text-right;
+  }
+
+  &__cell {
+    @apply p-4 align-top border border-solid border-gray-light;
+
+    &--head {
+      @apply bg-gray-light;
+    }
+  }
+}
