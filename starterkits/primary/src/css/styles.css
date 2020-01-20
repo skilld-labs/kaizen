@@ -9,6 +9,7 @@
 @import "./layout";
 @import "./heading/heading";
 @import "./link/link";
+@import "./messages/messages";
 @import "./pager/pager";
 @import "./input/input";
 @import "./radio/radio";

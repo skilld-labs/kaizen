@@ -19,6 +19,8 @@ $info = [
     'color-9' => t('Color 9'),
     'color-10' => t('Color 10'),
     'color-11' => t('Color 11'),
+    'color-12' => t('Color 12'),
+    'color-13' => t('Color 13'),
   ],
   // Pre-defined color schemes.
   'schemes' => [
@@ -36,6 +38,8 @@ $info = [
         'color-9' => '#cbebeb',
         'color-10' => '#ff5353',
         'color-11' => '#ffd0d0',
+        'color-11' => '#4fc695',
+        'color-11' => '#e3aa42',
       ],
     ],
   ],

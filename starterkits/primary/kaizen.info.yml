@@ -36,3 +36,7 @@ libraries-override:
         css/components/menu.css: false
         css/components/pager.css: false
         css/components/tabs.css: false
+  classy/messages:
+    css:
+      component:
+        css/components/messages.css: false
