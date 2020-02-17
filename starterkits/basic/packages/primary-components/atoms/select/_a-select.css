@@ -30,12 +30,12 @@
   &__search {
     @apply text-none p-0 w-0 h-0 border-0 block;
 
-    &:focus {
-      @apply shadow-none;
-    }
-
     @supports (-webkit-appearance: none) {
       @apply text-1px;
+    }
+
+    &:focus {
+      @apply shadow-none;
     }
   }
 

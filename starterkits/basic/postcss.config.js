@@ -3,6 +3,7 @@ const postcssExtend = require('postcss-extend');
 const postcssImport = require('postcss-import');
 const postCssDrupalBreakpoints = require('@skilld/postcss-drupal-breakpoints');
 const postcssNested = require('postcss-nested');
+const postcssDiscardEmpty = require('postcss-discard-empty');
 const stylelint = require('stylelint');
 
 module.exports = () => ({
@@ -18,6 +19,7 @@ module.exports = () => ({
     autoprefixer({
       cascade: false,
     }),
+    postcssDiscardEmpty(),
     stylelint({
       configFile: './.stylelintrc',
       fix: true

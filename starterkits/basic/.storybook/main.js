@@ -3,6 +3,7 @@ module.exports = {
   addons: [
     '@storybook/addon-knobs/register',
     '@storybook/addon-notes/register',
+    'storybook-addon-paddings',
   ],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
