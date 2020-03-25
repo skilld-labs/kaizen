@@ -1,6 +1,7 @@
-import { storiesOf } from '@storybook/html';
+import { useEffect } from "@storybook/client-api";
 import './slider.css';
 import slider from './o-slider';
+import componentNotes from './o-slider.md';
 
 const template = require('./o-slider.html.twig');
 const data = require('./o-slider.json');
@@ -9,15 +10,19 @@ const data = require('./o-slider.json');
 // import drupalAttribute from 'drupal-attribute';
 // data.attributes = new drupalAttribute();
 
+const component = {
+  title: 'organisms|slider'
+}
 
-storiesOf('organisms|slider', module).add('default', () => {
-  document.addEventListener(
-    'DOMNodeInserted',
-    () => {
-      slider();
-    },
-    false,
-  );
-  return template(data);
-});
+if (componentNotes.length) {
+  component.parameters = { notes: componentNotes }
+}
 
+export default component;
+
+export const basic = () => {
+  useEffect(() => {
+    slider();
+  }, []);
+  return template(data)
+};

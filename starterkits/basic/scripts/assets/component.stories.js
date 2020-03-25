@@ -1,6 +1,5 @@
-import { storiesOf } from '@storybook/html';
 import './COMPONENT_NAME.css';
-COMPONENT_SCRIPT
+import componentNotes from './COMPONENT.md';COMPONENT_SCRIPT
 
 const template = require('./COMPONENT.html.twig');
 const data = require('./COMPONENT.json');
@@ -9,4 +8,16 @@ const data = require('./COMPONENT.json');
 // import drupalAttribute from 'drupal-attribute';
 // data.attributes = new drupalAttribute();
 
-COMPONENT_IMPORT
+const component = {
+  title: 'COMPONENT_FULL'
+}
+
+if (componentNotes.length) {
+  component.parameters = { notes: componentNotes }
+}
+
+export default component;
+
+export const basic = () => {COMPONENT_INIT
+  return template(data)
+};
