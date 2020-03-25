@@ -41,13 +41,13 @@ const componentQuestions = [
   {
     type: 'confirm',
     name: 'createJs',
-    message: 'Create components js form template?',
+    message: 'Create components js?(if component is interactive, like slider)',
     default: false,
   },
   {
     type: 'list',
     name: 'library',
-    message: 'What package to use?',
+    message: 'What package to use?(Choose basic)',
     choices: ['basic', 'primary'],
     default: 'basic',
   },
@@ -90,7 +90,9 @@ function createComponent(component) {
   const typePlural = `${type.toLowerCase()}s`; // Atom -> atoms
   const typeIndex = type.charAt(0).toLowerCase(); // Atom -> a
   const sourceName = `${typeIndex}-${name}`; // a-COMPONENT_NAME
-  const dirName = `packages/${libraryPath === 'primary' ? 'primary-components' : 'components'}/${typePlural}/${name}/`; // components/atoms/COMPONENT_NAME/
+  const dirName = `packages/${
+    libraryPath === 'primary' ? 'primary-components' : 'components'
+  }/${typePlural}/${name}/`; // components/atoms/COMPONENT_NAME/
 
   const sourceTarget = `${options.rootPath.project}${dirName}_${sourceName}.css`;
   const implementationTarget = `${options.rootPath.project}${dirName}${name}.css`;
@@ -98,7 +100,7 @@ function createComponent(component) {
   const dataTarget = `${options.rootPath.project}${dirName}${sourceName}.json`;
   const storyTarget = `${options.rootPath.project}${dirName}${name}.stories.js`;
   const jsTarget = `${options.rootPath.project}${dirName}${sourceName}.js`;
-
+  const descriptionTarget = `${options.rootPath.project}${dirName}${sourceName}.md`;
 
   const replaceInCss = {
     COMPONENT_NAME: name,
@@ -111,30 +113,24 @@ function createComponent(component) {
   };
 
   const componentScript = withJs
-    ? `import ${name} from './${sourceName}';`
-    : '';
-
-  const componentImport = withJs
     ? `
-storiesOf('${typePlural}|${name}', module).add('default', () => {
-  document.addEventListener(
-    'DOMNodeInserted',
-    () => {
-      ${name}();
-    },
-    false,
-  );
-  return template(data);
-});
+import ${name} from './${sourceName}';
+import { useEffect } from "@storybook/client-api";
 `
-    : `
-storiesOf('${typePlural}|${name}', module).add('default', () => template(data));
-`;
+    : '';
+  const componentScriptInit = withJs
+    ? `
+  useEffect(() => {
+    ${name}();
+  }, []);
+`
+    : '';
 
   const replaceInStory = {
     COMPONENT_NAME: name,
-    COMPONENT_IMPORT: componentImport,
+    COMPONENT_FULL: `${typePlural}|${name}`,
     COMPONENT_SCRIPT: componentScript,
+    COMPONENT_INIT: componentScriptInit,
     COMPONENT: sourceName,
   };
 
@@ -162,6 +158,7 @@ storiesOf('${typePlural}|${name}', module).add('default', () => template(data));
         readReplaceAndSave(twigTemplate, replaceInTwig, templateTarget);
         readReplaceAndSave(storySource, replaceInStory, storyTarget);
 
+        // Create json with default data.
         fs.writeFile(
           dataTarget,
           JSON.stringify(dataJson, null, '  '),
@@ -172,6 +169,13 @@ storiesOf('${typePlural}|${name}', module).add('default', () => template(data));
             }
           },
         );
+
+        // Create empty markdown file.
+        fs.writeFile(descriptionTarget, '', 'utf8', error => {
+          if (error) {
+            throw error;
+          }
+        });
       }
 
       if (withJs) {
