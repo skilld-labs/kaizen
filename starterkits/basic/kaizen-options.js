@@ -28,7 +28,7 @@ options.postCssConfigDirectory = `${options.rootPath.project}`;
 
 // Check if this is primary theme with own config overrides.
 try {
-  // eslint-disable-next-line global-require
+  // eslint-disable-next-line
   const overrides = require('./kaizen-options-override');
   options = Object.assign(options, overrides);
 } catch (ex) {
