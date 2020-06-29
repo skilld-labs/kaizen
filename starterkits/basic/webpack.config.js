@@ -95,6 +95,15 @@ module.exports = {
         test: /\.modernizrrc\.js$/,
         loader: 'webpack-modernizr-loader',
       },
+      // Uncomment if you have theme-stored fonts.
+      // {
+      //   test: /\.(woff|woff2)$/,
+      //   loader: 'file-loader',
+      //   options: {
+      //     outputPath: 'fonts',
+      //     publicPath: '../fonts',
+      //   },
+      // },
     ],
   },
   plugins: [
