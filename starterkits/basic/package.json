@@ -12,6 +12,7 @@
     "browser-sync": "^2.26.3",
     "drupal-attribute": "^1.0.2",
     "inquirer": "^7.0.3",
+    "raw-loader": "^4.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "storybook-addon-paddings": "^2.0.2",
