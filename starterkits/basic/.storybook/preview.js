@@ -7,7 +7,7 @@ import '../color/colors.css';
 import '../dist/css/styles.css';
 
 // Uncomment if you need to have sprite.
-// import spritePath from '../dist/svg/sprite.svg';
+// import svgSpritePath from '../dist/svg/sprite.svg';
 // window.svgSpritePath = svgSpritePath;
 
 // Extend Twig.js with drupal filters.

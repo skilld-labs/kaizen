@@ -1,7 +1,7 @@
 name: Kaizen
 type: theme
 description: 'Skilld Basic theme'
-core: 8.x
+core_version_requirement: ^8.7.7 || ^9
 base theme: classy
 regions:
   header: Header

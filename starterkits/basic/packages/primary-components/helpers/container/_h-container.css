@@ -1,7 +1,7 @@
 %h-container {
   @apply max-w-xl mx-auto px-4 ;
 
-  @drupal-breakpoint wide_1x {
+  @drupal-breakpoint l_1x {
     @apply max-w-6xl;
   }
 }
