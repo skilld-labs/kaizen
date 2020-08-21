@@ -67,18 +67,7 @@ module.exports = {
       auto: 'auto',
     },
   },
-  variants: {},
-  plugins: [
-    ({ addUtilities, config, e }) => {
-      const rotateUtilities = Object.keys(config('theme.rotate')).map(key => {
-        return {
-          [`.${e(`rotate-${key}`)}`]: {
-            transform: `rotate(${config('theme.rotate')[key]})`,
-          },
-        };
-      });
-
-      addUtilities(rotateUtilities);
-    },
-  ],
+  variants: {
+    rotate: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+  },
 };
