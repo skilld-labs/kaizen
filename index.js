@@ -5,55 +5,46 @@ const isImage = require("is-image");
 const inquirer = require("inquirer");
 const path = require("path");
 const exec = require('child_process').exec;
+const commandLineArgs = require('command-line-args');
 
-inquirer
-  .prompt([
-    {
-      type: 'list',
-      name: 'themeType',
-      message: 'What type of theme?',
-      choices: ['basic', 'primary'],
-    },
-    {
-      type: "input",
-      name: "themeName",
-      message: "Please enter theme name:",
-      validate: value => {
+const options = commandLineArgs([
+  { name: 'theme_type', type: String },
+  { name: 'theme_name', type: String },
+])
 
-        const notEmpty = value !== "";
-        if (notEmpty) {
-          return new Promise((resolve, reject) => {
-            exec(`yarn info @${value}/components`, (err, stdout, stderr) => {
-              if (stderr) {
-                resolve(true);
-              }
-              if (stdout) {
-                resolve(`Your name has collision with @${value}/components in npm`);
-              }
-            });
-          });
-        }
-        return "Please enter something!";
-      }
-    }
-  ])
-  .then(answers => {
-    const newThemePath = process.cwd() + "/" + answers.themeName + "/";
-    replaceKaizenInFilesAndFilenames(
-      path.join(__dirname, "/starterkits/basic"),
-      newThemePath,
-      answers.themeName
-    );
-    if (answers.themeType === 'primary') {
-      replaceKaizenInFilesAndFilenames(
-        path.join(__dirname, "/starterkits/primary"),
-        newThemePath,
-        answers.themeName
-      );
-    }
-  }).catch((err) => console.log(`.catch ${err}`))
+let themeType = options.theme_type || null;
+let themeName = options.theme_name || null;
+let errorsDuringThemeType = false;
+let errorsDuringThemeName = false;
+let prompt = [];
 
-function replaceKaizenInFilesAndFilenames(source, newThemePath, themeName) {
+const checkThemeName = (value) => {
+  const notEmpty = value !== "";
+  if (notEmpty) {
+    return true;
+  }
+  return "Please enter something!";
+};
+
+const promtsPushType = (message) => {
+  prompt.push({
+    type: 'list',
+    name: 'themeType',
+    message: message,
+    choices: ['basic', 'primary'],
+  });
+}
+
+const promtsPushName = () => {
+  prompt.push( {
+    type: 'input',
+    name: 'themeName',
+    message: 'Please enter theme name:',
+    validate: value => checkThemeName(value),
+  });
+}
+
+const replaceKaizenInFilesAndFilenames = (source, newThemePath, themeName) => {
   let files = [];
 
   if (!fs.existsSync(newThemePath)) {
@@ -92,4 +83,50 @@ function replaceKaizenInFilesAndFilenames(source, newThemePath, themeName) {
       }
     });
   }
+}
+
+const createTheme = (name, type) => {
+  const newThemePath = process.cwd() + "/" + name + "/";
+  replaceKaizenInFilesAndFilenames(
+    path.join(__dirname, "/starterkits/basic"),
+    newThemePath,
+    name
+  );
+  if (type === 'primary') {
+    replaceKaizenInFilesAndFilenames(
+      path.join(__dirname, "/starterkits/primary"),
+      newThemePath,
+      name
+    );
+  }
+};
+
+if (!themeType) {
+  promtsPushType('What type of theme?');
+  errorsDuringThemeType = true;
+}
+
+if (!errorsDuringThemeType && themeType && !['basic', 'primary'].includes(themeType)) {
+  promtsPushType('Wrong theme type, please choose one of the following types?');
+  errorsDuringThemeType = true;
+}
+
+if (!themeName) {
+  promtsPushName();
+  errorsDuringThemeName = true;
+}
+
+if (!errorsDuringThemeName && themeName && !checkThemeName(themeName)) {
+  promtsPushName();
+  errorsDuringThemeName = true;
+}
+
+if (errorsDuringThemeType || errorsDuringThemeName) {
+  inquirer
+    .prompt(prompt)
+    .then(answers => createTheme(answers.themeName ? answers.themeName : themeName, answers.themeType ? answers.themeType : themeType))
+    .catch(err => console.log(`.catch ${err}`));
+}
+else {
+  createTheme(themeName, themeType);
 }
