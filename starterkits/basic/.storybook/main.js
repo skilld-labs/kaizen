@@ -1,9 +1,8 @@
 module.exports = {
   stories: ['../packages/components/**/*.stories.[tj]s'],
   addons: [
-    '@storybook/addon-knobs/register',
-    '@storybook/addon-notes/register',
-    'storybook-addon-paddings',
+    '@storybook/addon-docs',
+    '@storybook/addon-essentials',
   ],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'

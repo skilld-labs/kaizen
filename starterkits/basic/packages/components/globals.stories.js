@@ -1,13 +1,8 @@
-import componentNotes from './globals.md';
 import coloursText from '!!raw-loader!../../color/colors.css';
 
 const component = {
-  title: 'globals|Global things',
+  title: 'globals/Global things',
 };
-
-if (componentNotes.length) {
-  component.parameters = {notes: componentNotes};
-}
 
 const colorsArray = () => {
   const matches = coloursText.match(/--color-(.*)/g);

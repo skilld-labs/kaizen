@@ -1,7 +1,6 @@
 import { useEffect } from "@storybook/client-api";
 import './slider.css';
 import slider from './o-slider';
-import componentNotes from './o-slider.md';
 
 const template = require('./o-slider.html.twig');
 const data = require('./o-slider.json');
@@ -11,11 +10,7 @@ const data = require('./o-slider.json');
 // data.attributes = new drupalAttribute();
 
 const component = {
-  title: 'organisms|slider'
-}
-
-if (componentNotes.length) {
-  component.parameters = { notes: componentNotes }
+  title: 'organisms/slider'
 }
 
 export default component;
