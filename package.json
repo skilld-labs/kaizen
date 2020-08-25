@@ -6,6 +6,7 @@
   "author": "Skilld",
   "license": "MIT",
   "dependencies": {
+    "command-line-args": "^5.1.1",
     "inquirer": "^7.0.3",
     "is-image": "^3.0.0"
   },
