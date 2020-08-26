@@ -1,0 +1,24 @@
+{
+  "name": "@skilld/kaizen-svg-sprite",
+  "version": "1.0.0",
+  "description": "Kaizen svg sprite functions",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skilld-labs/kaizen.git",
+    "directory": "packages/kaizen-svg-sprite"
+  },
+  "keywords": [
+    "svg-loader",
+    "svg-sprite",
+    "kaizen-theme"
+  ],
+  "author": "Skilld",
+  "bugs": {
+    "url": "https://github.com/skilld-labs/kaizen/issues"
+  },
+  "homepage": "https://github.com/skilld-labs/kaizen#readme",
+  "dependencies": {
+    "svg4everybody": "^2.1.9"
+  }
+}

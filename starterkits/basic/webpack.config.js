@@ -24,6 +24,7 @@ module.exports = {
     ...mapFilenamesToEntries(options.cssFiles.components, {
       ignore: options.cssFiles.ignore,
     }),
+    sprite: glob.sync(path.resolve(__dirname, 'images/svg/**/*.svg')),
   },
   output: {
     path: options.rootPath.dist,
