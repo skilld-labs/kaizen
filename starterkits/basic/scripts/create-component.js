@@ -100,7 +100,6 @@ function createComponent(component) {
   const dataTarget = `${options.rootPath.project}${dirName}${sourceName}.json`;
   const storyTarget = `${options.rootPath.project}${dirName}${name}.stories.js`;
   const jsTarget = `${options.rootPath.project}${dirName}${sourceName}.js`;
-  const descriptionTarget = `${options.rootPath.project}${dirName}${sourceName}.md`;
 
   const replaceInCss = {
     COMPONENT_NAME: name,
@@ -128,7 +127,7 @@ import { useEffect } from "@storybook/client-api";
 
   const replaceInStory = {
     COMPONENT_NAME: name,
-    COMPONENT_FULL: `${typePlural}|${name}`,
+    COMPONENT_FULL: `${typePlural}/${name}`,
     COMPONENT_SCRIPT: componentScript,
     COMPONENT_INIT: componentScriptInit,
     COMPONENT: sourceName,
@@ -169,13 +168,6 @@ import { useEffect } from "@storybook/client-api";
             }
           },
         );
-
-        // Create empty markdown file.
-        fs.writeFile(descriptionTarget, '', 'utf8', error => {
-          if (error) {
-            throw error;
-          }
-        });
       }
 
       if (withJs) {

@@ -1,5 +1,5 @@
 import './COMPONENT_NAME.css';
-import componentNotes from './COMPONENT.md';COMPONENT_SCRIPT
+COMPONENT_SCRIPT
 
 const template = require('./COMPONENT.html.twig');
 const data = require('./COMPONENT.json');
@@ -10,10 +10,6 @@ const data = require('./COMPONENT.json');
 
 const component = {
   title: 'COMPONENT_FULL'
-}
-
-if (componentNotes.length) {
-  component.parameters = { notes: componentNotes }
 }
 
 export default component;
