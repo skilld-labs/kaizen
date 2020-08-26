@@ -1303,6 +1303,13 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
+"@skilld/kaizen-svg-sprite@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@skilld/kaizen-svg-sprite/-/kaizen-svg-sprite-1.0.0.tgz#c9efc4c3be615b3f53fe3d006e82d1f4bafb51a2"
+  integrity sha512-G8XZPUmBxSFNigHNVcEKE/8dxs4UUUY0gN/gliZqJYj5TmMk5XEvmT6vjqJEWyyxZbl8LMMGp1lwnwjd7lwRuQ==
+  dependencies:
+    svg4everybody "^2.1.9"
+
 "@skilld/postcss-drupal-breakpoints@^0.0.1":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@skilld/postcss-drupal-breakpoints/-/postcss-drupal-breakpoints-0.0.1.tgz#453717b2715e14789bdc2632839d3d6456884386"
