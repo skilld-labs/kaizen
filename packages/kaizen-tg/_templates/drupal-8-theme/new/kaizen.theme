@@ -1,0 +1,36 @@
+---
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) %>.theme
+---
+<?php
+
+/**
+ * @file
+ * Hooks implementation of <%= h.changeCase.lower(name) %>.
+ */
+
+/**
+ * Returns path to svg sprite.
+ */
+function _<%= h.changeCase.lower(name) %>_get_svg_sprite_path() {
+  return base_path() . \Drupal::theme()->getActiveTheme()->getPath() . '/dist/svg/sprite.svg';
+}
+
+/**
+ * Hook_page_attachments().
+ *
+ * Prepares <%= h.changeCase.lower(name) %>_svg_sprite_path variable to get
+ * full path to svg sprite from js.
+ */
+function <%= h.changeCase.lower(name) %>_page_attachments_alter(array &$attachments) {
+  $attachments['#attached']['drupalSettings']['<%= h.changeCase.lower(name) %>SvgSpritePath'] = _<%= h.changeCase.lower(name) %>_get_svg_sprite_path();
+}
+
+/**
+ * Hook_preprocess().
+ *
+ * Prepares <%= h.changeCase.lower(name) %>_svg_sprite_path variable to get
+ * full path to svg sprite from twig.
+ */
+function <%= h.changeCase.lower(name) %>_preprocess(&$variables, $hook) {
+  $variables['<%= h.changeCase.lower(name) %>_svg_sprite_path'] = _<%= h.changeCase.lower(name) %>_get_svg_sprite_path();
+}

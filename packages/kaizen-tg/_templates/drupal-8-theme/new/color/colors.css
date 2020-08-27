@@ -1,0 +1,14 @@
+---
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/color/colors.css
+---
+/* ---------- Color Module Styles ----------- */
+
+:root {
+  --color-1: #e65100;
+  --color-2: #ff6d00;
+  --color-3: #ff981f;
+  --color-4: #ffca28;
+  --color-5: #ffe57f;
+  --color-6: #000000;
+  --color-7: #ffffff;
+}

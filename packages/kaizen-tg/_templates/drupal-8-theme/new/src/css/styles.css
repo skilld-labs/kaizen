@@ -1,0 +1,8 @@
+---
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/src/css/styles.css
+---
+@import "@skilld/kaizen-core/css/_colors";
+@import "@skilld/kaizen-core/css/_variables";
+@import "@skilld/kaizen-core/css/_border-box";
+@import "@skilld/kaizen-core/css/_embedded";
+@import "@skilld/kaizen-core/css/_typography";
