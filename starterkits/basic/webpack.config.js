@@ -37,7 +37,7 @@ module.exports = {
         test: /\.yml$/,
         use: [
           {
-            loader: '@skilld/webpack-drupal-breakpoints-loader',
+            loader: '@skilld/kaizen-breakpoints/loader',
           },
         ],
       },

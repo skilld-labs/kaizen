@@ -1,0 +1,24 @@
+{
+  "name": "@skilld/kaizen-breakpoints",
+  "version": "1.0.0",
+  "description": "Breakpoints YML to css and js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skilld-labs/kaizen.git",
+    "directory": "packages/kaizen-breakpoints"
+  },
+  "keywords": [
+    "breakpoints",
+    "kaizen"
+  ],
+  "author": "Skilld",
+  "bugs": {
+    "url": "https://github.com/skilld-labs/kaizen/issues"
+  },
+  "homepage": "https://github.com/skilld-labs/kaizen#readme",
+  "dependencies": {
+    "js-yaml": "^3.14.0",
+    "lodash.debounce": "^4.0.8",
+    "postcss": "^7.0.32"
+  }
+}
