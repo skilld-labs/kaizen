@@ -1,26 +1,13 @@
-/**
- * @file
- * Get breakpoints kaizen.breakpoints.yml in this file.
- *
- * Usage:
- * import {addBreakpointListener} from './breakpoints';
- * addBreakpointListener('mobile_1x', () => {
- *   // YOUR CODE HERE
- * }, 250);
- */
-
 import debounce from 'lodash.debounce';
-// eslint-disable-next-line import/no-unresolved
-const config = require('../../kaizen.breakpoints.yml');
 
 const events = ['load', 'resize'];
 const defaultGroup = 'kaizen';
 
-function addListeners(callback, withDebounce = false) {
+function addListeners(callback, withDebounce = false, config) {
   events.forEach(e => {
-    let func = callback;
+    let func = () => callback(config);
     if (withDebounce && e === 'resize') {
-      func = debounce(callback, withDebounce);
+      func = debounce(() => callback(config), withDebounce, config);
     }
     window.addEventListener(e, func);
   });
@@ -30,7 +17,7 @@ function checkQuery(query) {
   return window.matchMedia(query).matches;
 }
 
-function setBreakpoints() {
+function setBreakpoints(config) {
   Object.keys(config).forEach(group => {
     const gr = config[group];
     Object.keys(gr).forEach(breakpoint => {
@@ -49,6 +36,7 @@ function addBreakpointListener(
   callback,
   db = false,
   group = defaultGroup,
+  config
 ) {
   const gr = config[group];
   if (gr.hasOwnProperty(breakpoint)) {
@@ -56,12 +44,12 @@ function addBreakpointListener(
       if (checkQuery(gr[breakpoint])) {
         callback();
       }
-    }, db);
+    }, db, config);
   }
 }
 
-function initBreakpointsCssReload() {
-  addListeners(setBreakpoints);
+function initBreakpointsCssReload(config) {
+  addListeners(setBreakpoints, false, config);
 }
 
 export { initBreakpointsCssReload, addBreakpointListener };
