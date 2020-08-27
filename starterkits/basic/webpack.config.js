@@ -87,14 +87,11 @@ module.exports = {
           loader: 'svg-sprite-loader',
           options: {
             extract: true,
-            symbolId: filePath => `svg-${path.basename(filePath.slice(0, -4))}`,
+            symbolId: (filePath) =>
+              `svg-${path.basename(filePath.slice(0, -4))}`,
             publicPath: 'svg/',
           },
         },
-      },
-      {
-        test: /\.modernizrrc\.js$/,
-        loader: 'webpack-modernizr-loader',
       },
       // Uncomment if you have theme-stored fonts.
       // {
@@ -118,8 +115,5 @@ module.exports = {
         extractComments: true,
       }),
     ],
-  },
-  resolveLoader: {
-    modules: ['node_modules', path.resolve(__dirname, 'scripts/loaders/')],
   },
 };
