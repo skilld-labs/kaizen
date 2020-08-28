@@ -1,20 +1,20 @@
 {
-  "name": "@skilld/kaizen-tg",
+  "name": "@skilld/kaizen-core",
   "version": "1.0.2",
-  "description": "Kaizen drupal theme generator",
-  "bin": "index.js",
+  "description": "Kaizen core styles",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/skilld-labs/kaizen",
-    "directory": "packages/kaizen-tg"
+    "url": "https://github.com/skilld-labs/kaizen.git",
+    "directory": "packages/kaizen-core"
   },
-  "author": "Skilld",
   "bugs": {
     "url": "https://github.com/skilld-labs/kaizen/issues"
   },
   "homepage": "https://github.com/skilld-labs/kaizen#readme",
+  "author": "Skilld",
+  "license": "MIT",
   "dependencies": {
-    "hygen": "^6.0.4"
+    "@glidejs/glide": "^3.4.1"
   }
 }
