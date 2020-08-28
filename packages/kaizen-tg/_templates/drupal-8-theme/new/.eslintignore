@@ -1,0 +1,8 @@
+---
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/.eslintignore
+---
+/dist/js/*.js
+/dist/storybook/
+/color/*.js
+postcss.config.js
+*.stories.js
