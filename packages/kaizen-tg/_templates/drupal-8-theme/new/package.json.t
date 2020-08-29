@@ -9,6 +9,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
   "author": "Skilld",
   "license": "MIT",
   "devDependencies": {
+    "@skilld/kaizen-cg": "^1.0.1",
     "@storybook/addon-docs": "^6.0.18",
     "@storybook/addon-essentials": "^6.0.18",
     "@storybook/html": "^6.0.18",
