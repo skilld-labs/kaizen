@@ -1,0 +1,51 @@
+@import "_m-pager";
+
+.m-pager {
+  &__list {
+    @extend %m-pager__list;
+  }
+
+  &__item {
+    @extend %m-pager__item;
+
+    &--text {
+      @extend %m-pager__item--text;
+    }
+  }
+
+  &__link {
+    @extend %m-pager__link;
+
+    &--control {
+      @extend %m-pager__link--control;
+    }
+
+    &--hover {
+      @extend %m-pager__link--hover;
+    }
+
+    &--focus {
+      @extend %m-pager__link--focus;
+    }
+
+    &--active {
+      @extend %m-pager__link--active;
+    }
+  }
+
+  &__icon {
+    @extend %m-pager__icon;
+
+    &--left {
+      @extend %m-pager__icon--left;
+    }
+
+    &--right {
+      @extend %m-pager__icon--right;
+    }
+
+    &--hover {
+      @extend %m-pager__icon--hover;
+    }
+  }
+}

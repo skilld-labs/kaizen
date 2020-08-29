@@ -1,0 +1,15 @@
+---
+to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/src/css/block/branding.css` : null %>"
+---
+@import "@skilld/kaizen-primary/atoms/logo/_a-logo";
+.block-system-branding-block {
+  @extend %a-logo;
+
+  .site-logo {
+    @extend %a-logo__image;
+  }
+
+  .site-name a {
+    @extend %a-logo__link;
+  }
+}

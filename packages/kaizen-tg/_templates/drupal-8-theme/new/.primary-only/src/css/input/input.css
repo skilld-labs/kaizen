@@ -1,0 +1,99 @@
+---
+to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/src/css/input/input.css` : null %>"
+---
+@import "@skilld/kaizen-primary/atoms/label/_a-label";
+@import "@skilld/kaizen-primary/atoms/input/_a-input";
+
+.form-type-textarea,
+.form-type-textfield,
+.form-type-search,
+.form-type-tel,
+.form-type-url,
+.form-type-email,
+.form-type-password,
+.form-type-time,
+.form-type-number,
+.form-type-select {
+  & > label {
+    @extend %a-label;
+    @extend %a-label--above;
+  }
+}
+
+textarea,
+[type="text"],
+[type="search"],
+[type="tel"],
+[type="url"],
+[type="email"],
+[type="password"],
+[type="date"],
+[type="time"],
+[type="number"] {
+  @extend %a-input__element;
+
+  &:focus {
+    @extend %a-input__element--focus;
+  }
+
+  &.error {
+    @extend %a-input__element--error;
+
+    &:focus {
+      @extend %a-input__element--error--focus;
+    }
+  }
+
+  &[disabled] {
+    @extend %a-input__element--disabled;
+  }
+}
+
+.kaizen-select {
+  &__inner {
+    @extend %a-input;
+  }
+
+  &__selected {
+    @extend %a-input__element;
+    @extend %a-input__element--with-icon;
+  }
+
+  &__icon {
+    @extend %a-input__icon-container;
+
+    svg {
+      @extend %a-input__icon;
+    }
+  }
+
+  &--focus {
+    .kaizen-select__selected {
+      @extend %a-input__element--focus;
+    }
+  }
+
+  &--disabled {
+    .kaizen-select__selected {
+      @extend %a-input__element--disabled;
+    }
+
+    .kaizen-select__icon {
+      @extend %a-input__element--disabled;
+    }
+  }
+}
+
+.form-select.error + .kaizen-select__list {
+  .kaizen-select__selected {
+    @extend %a-input__element--error;
+
+    .kaizen-select--focus & {
+      @extend %a-input__element--error--focus;
+    }
+  }
+
+  .kaizen-select__icon {
+    @extend %a-input__icon--error;
+  }
+}

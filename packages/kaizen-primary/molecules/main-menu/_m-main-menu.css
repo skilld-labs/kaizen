@@ -1,0 +1,17 @@
+%m-main-menu {
+  &__list {
+    @apply list-none m-0 p-0 flex;
+  }
+
+  &__link {
+    @apply text-gray-dark no-underline outline-none py-3 px-5 inline-block align-top bg-gray-light;
+
+    &--highlight {
+      @apply bg-green text-white;
+    }
+
+    &--active {
+      @apply bg-green-light text-white;
+    }
+  }
+}

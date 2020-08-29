@@ -1,8 +1,36 @@
 ---
 to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/src/css/styles.css
 ---
-@import "@skilld/kaizen-core/_colors";
-@import "@skilld/kaizen-core/_variables";
 @import "@skilld/kaizen-core/_border-box";
 @import "@skilld/kaizen-core/_embedded";
+<% if(type==='core'){ -%>
+@import "@skilld/kaizen-core/_colors";
+@import "@skilld/kaizen-core/_variables";
 @import "@skilld/kaizen-core/_typography";
+<% } -%>
+<% if(type==='primary'){ -%>
+/* import variables from primary components */
+@import "@skilld/kaizen-primary/_colors";
+@import "@skilld/kaizen-primary/_variables";
+@import "@skilld/kaizen-primary/_typography";
+/* For now just put them globally */
+@import "./layout";
+@import "./heading/heading";
+@import "./link/link";
+@import "./messages/messages";
+@import "./pager/pager";
+@import "./input/input";
+@import "./radio/radio";
+@import "./checkbox/checkbox";
+@import "./button/button";
+@import "./select/select";
+@import "./tabs/tabs";
+@import "./table/table";
+@import "./form/form";
+@import "./header/header";
+@import "./footer/footer";
+@import "./block/branding";
+@import "./block/breadcrumb";
+@import "./block/menu-account";
+@import "./block/menu-main";
+<% } -%>

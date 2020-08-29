@@ -1,0 +1,57 @@
+%a-select {
+  @apply inline-block align-top outline-none relative;
+
+  &__original {
+    @apply hidden;
+  }
+
+  &__inner {
+    @apply relative;
+  }
+
+  &__selected {
+    @apply truncate;
+  }
+
+  &__icon {
+    &--active {
+      @apply rotate-180;
+    }
+  }
+
+  &__dropdown {
+    @apply z-10 rounded bg-gray-light border border-solid border-gray-dark hidden absolute overflow-auto w-full;
+
+    &--active {
+      @apply block;
+    }
+  }
+
+  &__search {
+    @apply text-none p-0 w-0 h-0 border-0 block;
+
+    @supports (-webkit-appearance: none) {
+      @apply text-1px;
+    }
+
+    &:focus {
+      @apply shadow-none;
+    }
+  }
+
+  &__item-selectable {
+    @apply cursor-pointer;
+
+    &--disabled {
+      @apply cursor-default;
+    }
+  }
+
+  &__dropdown-item {
+    @apply py-1 px-4;
+
+    &--active {
+      @apply bg-gray-dark text-white;
+    }
+  }
+}

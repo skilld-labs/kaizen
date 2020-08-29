@@ -1,0 +1,48 @@
+@import "_a-input";
+
+.a-input {
+  &__element {
+    @extend %a-input__element;
+
+    &--focus {
+      @extend %a-input__element--focus;
+    }
+
+    &--error {
+      @extend %a-input__element--error;
+
+      &--focus {
+        @extend %a-input__element--error--focus;
+      }
+    }
+
+    &[disabled] {
+      @extend %a-input__element--disabled;
+    }
+  }
+}
+
+.a-select {
+  &__inner {
+    @extend %a-input;
+  }
+
+  &__selected {
+    @extend %a-input__element;
+    @extend %a-input__element--with-icon;
+  }
+
+  &__icon {
+    @extend %a-input__icon-container;
+
+    svg {
+      @extend %a-input__icon;
+    }
+  }
+
+  &--focus {
+    .a-select__selected {
+      @extend %a-input__element--focus;
+    }
+  }
+}

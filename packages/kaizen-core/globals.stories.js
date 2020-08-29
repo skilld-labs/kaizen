@@ -17,41 +17,31 @@ const colorsArray = colors => {
   return colorsString;
 };
 
-const iconsArray = () => {
+const iconsArray = icons => {
   let iconString = '<div class="variables">';
   if (window.svgSpritePath) {
-    const filenames = [];
-    // const icons = require.context('../../images/svg/', false, /\.svg$/);
-    // if (icons) {
-    //   icons.keys().forEach((filename, index) => {
-    //     filenames[index] = filename.split('.')[1].split('/')[1];
-    //   });
-    // }
-
-    // if (filenames.length) {
-    //   iconString += `
-    //     <table style="width: 500px; text-align: center;">
-    //       <thead>
-    //         <tr style="background-color: black; color: white;">
-    //           <td style="padding: 10px;">Icon name</td>
-    //           <td style="padding: 10px;">Icon preview</td>
-    //         </tr>
-    //       </thead>
-    //       <tbody>`;
-    //   for (let i = 0; i < filenames.length; i++) {
-    //     iconString += `
-    //   <tr>
-    //     <td style="border-bottom: 1px solid black; background-color: #f5f5f5; padding: 10px;">${filenames[i]}</td>
-    //     <td style="border-bottom: 1px solid black; background-color: #f5f5f5; padding: 10px;">
-    //       <svg aria-hidden="true" style="width: 70px; height: 70px; vertical-align: top;">
-    //         <use xlink:href="${window.svgSpritePath}#svg-${filenames[i]}"></use>
-    //       </svg>
-    //     </td>
-    //   </tr>
-    // `;
-    //   }
-    //   iconString += '</tbody></table>'
-    // }
+    iconString += `
+    <table style="width: 500px; text-align: center;">
+      <thead>
+        <tr style="background-color: black; color: white;">
+          <td style="padding: 10px;">Icon name</td>
+          <td style="padding: 10px;">Icon preview</td>
+        </tr>
+      </thead>
+      <tbody>`;
+    Array.prototype.forEach.call(icons, icon => {
+      iconString += `
+        <tr>
+          <td style="border-bottom: 1px solid black; background-color: #f5f5f5; padding: 10px;">${icon.getAttribute('id')}</td>
+          <td style="border-bottom: 1px solid black; background-color: #f5f5f5; padding: 10px;">
+            <svg aria-hidden="true" style="width: 70px; height: 70px; vertical-align: top;">
+              <use xlink:href="${window.svgSpritePath}#${icon.getAttribute('id')}"></use>
+            </svg>
+          </td>
+        </tr>
+      `;
+    })
+    iconString += '</tbody></table>'
   }
   else {
     iconString += `No icons, if you need to get it - uncomment
@@ -90,8 +80,19 @@ export const colors = () => {
 }
 ;
 
-export const icons = () =>
-  iconsArray();
+export const icons = () => {
+  const [icons, setIcons] = useState([]);
+  useEffect(() => {
+    fetch(window.svgSpritePath)
+      .then(response => response.text())
+      .then(text => {
+        const fakeIcon = document.createElement('div');
+        fakeIcon.innerHTML = text
+        setIcons(fakeIcon.querySelectorAll('symbol'));
+      });
+  }, []);
+  return iconsArray(icons);
+}
 
 export const breakpoints = () =>
   `

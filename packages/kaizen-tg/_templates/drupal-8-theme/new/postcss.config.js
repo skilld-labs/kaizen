@@ -8,11 +8,18 @@ const postCssDrupalBreakpoints = require('@skilld/kaizen-breakpoints/postcss-plu
 const postcssNested = require('postcss-nested');
 const postcssDiscardEmpty = require('postcss-discard-empty');
 const stylelint = require('stylelint');
+<% if (type === 'primary') {-%>
+const tailwind = require('tailwindcss');
+<% } -%>
+
 
 module.exports = () => ({
   map: false,
   plugins: [
     postcssImport(),
+<% if (type === 'primary') {-%>
+    tailwind(),
+<% } -%>
     postCssDrupalBreakpoints({
       importFrom: './<%= h.changeCase.lower(name) %>.breakpoints.yml',
       themeName: '<%= h.changeCase.lower(name) %>'

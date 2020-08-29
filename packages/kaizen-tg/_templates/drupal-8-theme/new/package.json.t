@@ -26,8 +26,11 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
   "dependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.2",
-    "@skilld/kaizen-core": "^1.0.2",
     "@skilld/kaizen-breakpoints": "^1.0.0",
+    "@skilld/kaizen-core": "^1.0.3",
+<% if(type==='primary'){ -%>
+    "@skilld/kaizen-primary": "^1.0.0",
+<% } -%>
     "@skilld/kaizen-svg-sprite": "^1.0.0",
     "autoprefixer": "^9.5.0",
     "babel-loader": "^8.0.4",

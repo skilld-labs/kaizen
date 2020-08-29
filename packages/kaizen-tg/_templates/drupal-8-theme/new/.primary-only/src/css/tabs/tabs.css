@@ -1,0 +1,20 @@
+---
+to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/src/css/tabs/tabs.css` : null %>"
+---
+@import "@skilld/kaizen-primary/molecules/tabs/_m-tabs";
+
+ul.tabs {
+  @extend %m-tabs;
+
+  & > li {
+    @extend %m-tabs__item;
+  }
+
+  a {
+    @extend %m-tabs__link;
+
+    &.is-active {
+      @extend %m-tabs__link--active;
+    }
+  }
+}

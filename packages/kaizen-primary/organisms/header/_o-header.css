@@ -1,0 +1,19 @@
+%o-header {
+  @apply bg-green;
+
+  &__bot {
+    @apply bg-gray-light;
+  }
+
+  &__content {
+    @apply flex;
+
+    &--top {
+      @apply py-3 justify-between items-center;
+    }
+
+    &--bot {
+      @apply justify-center;
+    }
+  }
+}
