@@ -1,0 +1,23 @@
+%m-user-menu {
+  @apply list-none m-0 p-0 flex;
+
+  &__link {
+    @apply text-white no-underline outline-none;
+
+    &--active {
+      @apply underline;
+    }
+  }
+
+  &__icon {
+    @apply w-4 h-4 align-middle mr-2 fill-white;
+  }
+
+  &__menu-item {
+    @apply p-0;
+
+    &:nth-child(n+2) {
+      @apply ml-6;
+    }
+  }
+}

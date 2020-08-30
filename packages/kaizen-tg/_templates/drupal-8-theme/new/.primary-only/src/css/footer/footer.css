@@ -1,0 +1,12 @@
+---
+to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/src/css/footer/footer.css` : null %>"
+---
+@import "@skilld/kaizen-primary/organisms/footer/_o-footer";
+
+.footer {
+  @extend %o-footer;
+
+  &__top {
+    @extend %o-footer__top;
+  }
+}

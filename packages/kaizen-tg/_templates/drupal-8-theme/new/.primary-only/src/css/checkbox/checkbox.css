@@ -1,0 +1,46 @@
+---
+to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/src/css/checkbox/checkbox.css` : null %>"
+---
+@import "@skilld/kaizen-primary/atoms/label/_a-label";
+@import "@skilld/kaizen-primary/atoms/checkbox/_a-checkbox";
+
+.form-type-checkbox {
+  @extend %a-checkbox;
+
+  .form-checkbox {
+    @extend %a-checkbox__original;
+
+    & + .checkbox {
+      @extend %a-checkbox__custom;
+
+      svg {
+        @extend %a-checkbox__icon;
+      }
+    }
+
+    &.error + .checkbox {
+      @extend %a-checkbox__custom--error;
+    }
+
+    &:hover + .checkbox {
+      @extend %a-checkbox__custom--hover;
+    }
+
+    &:focus + .checkbox {
+      @extend %a-checkbox__custom--focus;
+    }
+
+    &:checked + .checkbox {
+      @extend %a-checkbox__custom--checked;
+
+      svg {
+        @extend %a-checkbox__icon--checked;
+      }
+    }
+  }
+
+  .option {
+    @extend %a-label;
+    @extend %a-label--inline;
+  }
+}

@@ -1,0 +1,11 @@
+%a-label {
+  @apply text-sm;
+
+  &--above {
+    @apply block pb-1;
+  }
+
+  &--inline {
+    @apply pl-8 align-top cursor-pointer;
+  }
+}

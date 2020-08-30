@@ -1,0 +1,48 @@
+%a-input {
+  @apply relative;
+
+  &__element {
+    @apply max-w-full py-2 px-4 rounded bg-gray-light border border-solid border-gray-dark appearance-none outline-none text-base leading-snug;
+
+    &::placeholder {
+      @apply text-black opacity-25;
+    }
+
+    &--focus {
+      @apply border-transparent;
+      @apply shadow-outline-gray-dark;
+    }
+
+    &--error {
+      @apply border-error bg-error-light;
+
+      &--focus {
+        @apply shadow-outline-error;
+      }
+    }
+
+    &--disabled {
+      @apply opacity-50;
+    }
+
+    &--with-icon {
+      @apply pr-10;
+    }
+  }
+
+  &__icon-container {
+    @apply p-3 absolute top-0 right-0;
+  }
+
+  &__icon {
+    @apply w-4 h-4 block;
+
+    &--error {
+      @apply fill-error;
+    }
+
+    &--disabled {
+      @apply opacity-50;
+    }
+  }
+}

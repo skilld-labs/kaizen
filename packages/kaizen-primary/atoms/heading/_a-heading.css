@@ -1,0 +1,25 @@
+%a-heading {
+  &--h1 {
+    @apply text-4xl my-5;
+  }
+
+  &--h2 {
+    @apply text-2xl my-5;
+  }
+
+  &--h3 {
+    @apply text-xl my-5;
+  }
+
+  &--h4 {
+    @apply text-base my-5;
+  }
+
+  &--h5 {
+    @apply text-sm my-5;
+  }
+
+  &--h6 {
+    @apply text-xs my-5;
+  }
+}

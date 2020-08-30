@@ -1,0 +1,15 @@
+%a-logo {
+  @apply flex flex-row items-center;
+
+  &:hover {
+    @apply opacity-75;
+  }
+
+  &__image {
+    @apply w-12 leading-none mr-2;
+  }
+
+  &__link {
+    @apply text-xl uppercase font-semibold leading-none text-black no-underline;
+  }
+}

@@ -1,0 +1,12 @@
+%a-button {
+  @apply py-3 px-4 rounded bg-green text-base text-white outline-none border-0;
+
+  &--hover {
+    @apply bg-green-light;
+  }
+
+  &--focus {
+    @apply bg-green-light;
+    @apply shadow-outline;
+  }
+}

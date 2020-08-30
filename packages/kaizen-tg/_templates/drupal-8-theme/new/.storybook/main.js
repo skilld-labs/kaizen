@@ -2,7 +2,12 @@
 to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/.storybook/main.js
 ---
 module.exports = {
-  stories: ['@skilld/kaizen-core/**/*.stories.@(ts|js)'],
+  stories: [
+    '@skilld/kaizen-core/**/*.stories.@(ts|js)',
+<% if(type==='primary'){ -%>
+    '@skilld/kaizen-primary/**/*.stories.@(ts|js)',
+<% } -%>
+  ],
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-essentials',

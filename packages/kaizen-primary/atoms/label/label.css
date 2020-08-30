@@ -1,0 +1,13 @@
+@import "_a-label";
+
+.a-label {
+  @extend %a-label;
+
+  &--above {
+    @extend %a-label--above;
+  }
+
+  &--inline {
+    @extend %a-label--inline;
+  }
+}

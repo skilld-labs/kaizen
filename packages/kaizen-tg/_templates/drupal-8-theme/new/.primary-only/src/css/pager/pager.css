@@ -1,0 +1,56 @@
+---
+to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/src/css/pager/pager.css` : null %>"
+---
+@import "@skilld/kaizen-primary/molecules/pager/_m-pager";
+
+.pager {
+  &__items {
+    @extend %m-pager__list;
+  }
+
+  &__item {
+    @extend %m-pager__item;
+
+    &--text {
+      @extend %m-pager__item--text;
+    }
+  }
+
+  &__link {
+    @extend %m-pager__link;
+
+    &--control {
+      @extend %m-pager__link--control;
+    }
+
+    &:hover {
+      @extend %m-pager__link--hover;
+
+      .pager__icon {
+        @extend %m-pager__icon--hover;
+      }
+    }
+
+    &:focus {
+      @extend %m-pager__link--focus;
+    }
+
+    &--active {
+      @extend %m-pager__link--active;
+    }
+  }
+
+  &__icon {
+    @extend %m-pager__icon;
+
+    &--first,
+    &--previous {
+      @extend %m-pager__icon--left;
+    }
+
+    &--next,
+    &--last {
+      @extend %m-pager__icon--right;
+    }
+  }
+}

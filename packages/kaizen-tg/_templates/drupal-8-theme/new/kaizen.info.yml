@@ -5,10 +5,47 @@ name: <%= name %>
 type: theme
 base theme: classy
 description: <%= description %>
+core_version_requirement: ^8.7.7 || ^9
+libraries:
+  - <%= h.changeCase.lower(name) %>/base
+<% if(type==='core'){ -%>
 regions:
   header: Header
   content: Content
   footer: Footer
-core_version_requirement: ^8.7.7 || ^9
-libraries:
-  - <%= h.changeCase.lower(name) %>/base
+<% } -%>
+<% if(type==='primary'){ -%>
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  highlighted: Highlighted
+  featured_top: 'Featured top'
+  breadcrumb: Breadcrumb
+  content: Content
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  featured_bottom_first: 'Featured bottom first'
+  featured_bottom_second: 'Featured bottom second'
+  featured_bottom_third: 'Featured bottom third'
+  footer_first: 'Footer first'
+  footer_second: 'Footer second'
+  footer_third: 'Footer third'
+  footer_fourth: 'Footer fourth'
+  footer_fifth: 'Footer fifth'
+libraries-override:
+  classy/base:
+    css:
+      component:
+        css/components/breadcrumb.css: false
+        css/components/form.css: false
+        css/components/menu.css: false
+        css/components/pager.css: false
+        css/components/tabs.css: false
+  classy/messages:
+    css:
+      component:
+        css/components/messages.css: false
+<% } -%>

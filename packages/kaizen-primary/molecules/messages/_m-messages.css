@@ -1,0 +1,74 @@
+%m-messages {
+  &,
+  a {
+    @apply text-white;
+  }
+
+  &--error {
+    @apply bg-error;
+  }
+
+  &--warning {
+    @apply bg-warning;
+  }
+
+  &--success {
+    @apply bg-success;
+  }
+
+  &__content {
+    @apply relative py-4 pr-12 pl-10;
+  }
+
+  &__list {
+    @apply m-0 pl-5;
+  }
+
+  &__icon-container {
+    @apply bg-white rounded-full p-1 absolute z-1;
+
+    &--left {
+      @apply top-0 left-0 mt-4;
+    }
+
+    &--right {
+      @apply top-0 right-0 mt-3;
+    }
+
+    &--clickable {
+      @apply outline-none cursor-pointer;
+
+      &:focus {
+        @apply shadow-outline-gray-dark;
+      }
+    }
+  }
+
+  &__icon {
+    @apply w-4 h-4 block;
+
+    &--bigger {
+      @apply w-6 h-6;
+    }
+
+    &--error {
+      @apply fill-error;
+    }
+
+    &--warning {
+      @apply fill-warning;
+    }
+
+    &--success {
+      @apply fill-success;
+    }
+
+    &--close {
+      @apply fill-gray-dark;
+    }
+  }
+
+  &__code {
+    @apply break-words whitespace-pre-wrap;
+  }
+}

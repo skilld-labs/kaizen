@@ -1,0 +1,27 @@
+---
+to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/config/install/block.block.${h.changeCase.lower(name)}_main_menu.yml` : null %>"
+---
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - <%= h.changeCase.lower(name) %>
+id: <%= h.changeCase.lower(name) %>_main_menu
+theme: <%= h.changeCase.lower(name) %>
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

@@ -1,0 +1,17 @@
+@import "_m-table";
+
+.m-table {
+  @extend %m-table;
+
+  &__caption {
+    @extend %m-table__caption;
+  }
+
+  &__cell {
+    @extend %m-table__cell;
+
+    &--head {
+      @extend %m-table__cell--head;
+    }
+  }
+}

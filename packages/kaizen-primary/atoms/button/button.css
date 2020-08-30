@@ -1,0 +1,13 @@
+@import "_a-button";
+
+.a-button {
+  @extend %a-button;
+
+  &--hover {
+    @extend %a-button--hover;
+  }
+
+  &--focus {
+    @extend %a-button--focus;
+  }
+}

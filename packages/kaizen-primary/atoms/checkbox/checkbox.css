@@ -1,0 +1,33 @@
+@import "_a-checkbox";
+
+.a-checkbox {
+  @extend %a-checkbox;
+
+  &__icon {
+    @extend %a-checkbox__icon;
+
+    &--checked {
+      @extend %a-checkbox__icon--checked;
+    }
+  }
+
+  &__custom {
+    @extend %a-checkbox__custom;
+
+    &--hover {
+      @extend %a-checkbox__custom--hover;
+    }
+
+    &--focus {
+      @extend %a-checkbox__custom--focus;
+    }
+
+    &--checked {
+      @extend %a-checkbox__custom--checked;
+    }
+
+    &--error {
+      @extend %a-checkbox__custom--error;
+    }
+  }
+}
