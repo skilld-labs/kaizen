@@ -27,9 +27,9 @@ to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/templates/na
   We call a macro which calls itself to render the full tree.
   @see https://twig.symfony.com/doc/1.x/tags/macro.html
 #}
-{{ menus.menu_links(items, attributes, 0, kaizen_svg_sprite_path) }}
+{{ menus.menu_links(items, attributes, 0, <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path) }}
 
-{% macro menu_links(items, attributes, menu_level, kaizen_svg_sprite_path) %}
+{% macro menu_links(items, attributes, menu_level, <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path) %}
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
@@ -50,19 +50,19 @@ to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/templates/na
         {% if item.url.getRouteName() == 'user.page' %}
           {% set iconic_title %}
             <svg aria-hidden="true">
-              <use xlink:href="{{ kaizen_svg_sprite_path }}#svg-avatar"></use>
+              <use xlink:href="{{ <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path }}#svg-avatar"></use>
             </svg>{{ item.title }}
           {% endset %}
         {% elseif item.url.getRouteName() == 'user.login' %}
           {% set iconic_title %}
             <svg aria-hidden="true">
-              <use xlink:href="{{ kaizen_svg_sprite_path }}#svg-login"></use>
+              <use xlink:href="{{ <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path }}#svg-login"></use>
             </svg>{{ item.title }}
           {% endset %}
         {% elseif item.url.getRouteName() == 'user.logout' %}
           {% set iconic_title %}
             <svg aria-hidden="true">
-              <use xlink:href="{{ kaizen_svg_sprite_path }}#svg-logout"></use>
+              <use xlink:href="{{ <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path }}#svg-logout"></use>
             </svg>{{ item.title }}
           {% endset %}
         {% endif %}

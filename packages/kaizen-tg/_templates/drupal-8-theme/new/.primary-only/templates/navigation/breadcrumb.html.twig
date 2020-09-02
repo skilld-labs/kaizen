@@ -18,7 +18,7 @@ to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/templates/na
       <li>
         {% if loop.index != 1 %}
           <svg aria-hidden="true">
-            <use xlink:href="{{ kaizen_svg_sprite_path }}#svg-arrow-bold"></use>
+            <use xlink:href="{{ <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path }}#svg-arrow-bold"></use>
           </svg>
         {% endif %}
         {% if item.url %}

@@ -9,7 +9,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
   "author": "Skilld",
   "license": "MIT",
   "devDependencies": {
-    "@skilld/kaizen-cg": "^1.0.1",
+    "@skilld/kaizen-cg": "^1.0.2",
     "@storybook/addon-docs": "^6.0.18",
     "@storybook/addon-essentials": "^6.0.18",
     "@storybook/html": "^6.0.18",
@@ -29,7 +29,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
     "@skilld/kaizen-breakpoints": "^1.0.0",
     "@skilld/kaizen-core": "^1.0.3",
 <% if(type==='primary'){ -%>
-    "@skilld/kaizen-primary": "^1.0.0",
+    "@skilld/kaizen-primary": "^1.0.1",
 <% } -%>
     "@skilld/kaizen-svg-sprite": "^1.0.0",
     "autoprefixer": "^9.5.0",
@@ -47,6 +47,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
     "extract-loader": "^5.1.0",
     "file-loader": "^6.0.0",
     "glob": "^7.1.3",
+    "npm-run-all": "^4.1.5",
     "postcss-cli": "^7.1.0",
     "postcss-discard-empty": "^4.0.1",
     "postcss-extend": "^1.0.5",
