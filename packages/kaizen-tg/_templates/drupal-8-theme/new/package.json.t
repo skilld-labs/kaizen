@@ -72,7 +72,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
     "browsersync": "yarn run browser-sync start --proxy '127.0.0.1:8888' --files ./dist",
     "watch": "cross-env ./node_modules/.bin/webpack -w",
     "watch:bs": "cross-env NODE_ENV=development ./node_modules/.bin/run-p browsersync watch",
-    "cc": "node ./scripts/create-component.js",
+    "cc": "npx @skilld/kaizen-cg",
     "storybook": "start-storybook",
     "build-storybook": "build-storybook -c .storybook -o dist/storybook"
   },
