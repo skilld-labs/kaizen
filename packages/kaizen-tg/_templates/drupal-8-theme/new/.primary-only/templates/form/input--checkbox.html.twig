@@ -16,7 +16,7 @@ to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/templates/fo
 <input{{ attributes }} />
 <div class="checkbox">
   <svg aria-hidden="true">
-    <use xlink:href="{{ kaizen_svg_sprite_path }}#svg-check"></use>
+    <use xlink:href="{{ <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path }}#svg-check"></use>
   </svg>
 </div>
 {{ children }}

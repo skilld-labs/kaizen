@@ -45,7 +45,8 @@ const selectOptions = {
       select({
         selector: 'select:not(.kaizen-select__input)',
         options: selectOptions,
-        svgSpritePath: settings.kaizenSvgSpritePath,
+        svgSpritePath: settings.<%= h.changeCase.lower(name) %>SvgSpritePath,
+        context,
       });
     },
   };

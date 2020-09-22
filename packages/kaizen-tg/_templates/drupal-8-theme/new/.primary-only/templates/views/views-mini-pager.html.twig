@@ -24,7 +24,7 @@ to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/templates/vi
             <span class="visually-hidden">{{ 'Previous page'|t }}</span>
             <span aria-hidden="true">
               <svg class="pager__icon pager__icon--previous">
-                <use xlink:href="{{ kaizen_svg_sprite_path }}#svg-arrow"></use>
+                <use xlink:href="{{ <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path }}#svg-arrow"></use>
               </svg>
               {{ items.previous.text|default('Previous'|t) }}
             </span>
@@ -45,7 +45,7 @@ to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/templates/vi
             <span aria-hidden="true">
               {{ items.next.text|default('Next'|t) }}
               <svg class="pager__icon pager__icon--next">
-                <use xlink:href="{{ kaizen_svg_sprite_path }}#svg-arrow"></use>
+                <use xlink:href="{{ <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path }}#svg-arrow"></use>
               </svg>
             </span>
           </a>

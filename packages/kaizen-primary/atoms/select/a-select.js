@@ -40,12 +40,13 @@ export default ({
   selector = 'select:not(.a-select__input)',
   options = defaultOptions,
   context = document,
+  svgSpritePath,
 } = {}) => {
-  Array.prototype.forEach.call(context.querySelectorAll(selector), el => {
+  Array.prototype.forEach.call(context.querySelectorAll(selector), (el) => {
     // eslint-disable-next-line no-new
     new Choices(el, {
       classNames: options,
-      callbackOnCreateTemplates: template => {
+      callbackOnCreateTemplates: (template) => {
         return {
           item: (classNames, data) => {
             return template(`

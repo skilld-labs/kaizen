@@ -37,17 +37,17 @@ to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/templates/mi
             <div class="messages__icon-container messages__icon-container--left">
               {% if type == 'error' %}
                 <svg aria-hidden="true" class="messages__icon messages__icon--error">
-                  <use xlink:href="{{ kaizen_svg_sprite_path }}#svg-smile-sad"></use>
+                  <use xlink:href="{{ <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path }}#svg-smile-sad"></use>
                 </svg>
               {% endif %}
               {% if type == 'warning' %}
                 <svg aria-hidden="true" class="messages__icon messages__icon--warning">
-                  <use xlink:href="{{ kaizen_svg_sprite_path }}#svg-smile-straight"></use>
+                  <use xlink:href="{{ <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path }}#svg-smile-straight"></use>
                 </svg>
               {% endif %}
               {% if type == 'status' %}
                 <svg aria-hidden="true" class="messages__icon messages__icon--success">
-                  <use xlink:href="{{ kaizen_svg_sprite_path }}#svg-smile-happy"></use>
+                  <use xlink:href="{{ <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path }}#svg-smile-happy"></use>
                 </svg>
               {% endif %}
             </div>
@@ -67,7 +67,7 @@ to: "<%= type==='primary' ? `${h.src()}/${h.changeCase.lower(name)}/templates/mi
             </div>
             <div class="messages__icon-container messages__icon-container--right messages__icon-container--clickable messages__close-icon" tabindex="0" role="button" aria-label="{{ 'Close message' | t }}">
               <svg aria-hidden="true" class="messages__icon messages__icon--bigger messages__icon--close">
-                <use xlink:href="{{ kaizen_svg_sprite_path }}#svg-close"></use>
+                <use xlink:href="{{ <%= h.src() %>/<%= h.changeCase.lower(name) %>_svg_sprite_path }}#svg-close"></use>
               </svg>
             </div>
           </div>

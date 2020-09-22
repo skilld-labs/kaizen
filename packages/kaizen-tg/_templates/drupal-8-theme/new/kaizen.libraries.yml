@@ -9,6 +9,10 @@ base:
       dist/css/styles.css: {}
   js:
     dist/js/app.js: {}
+<% if(type==='primary'){ -%>
+  dependencies:
+    - core/drupal
+<% } -%>
 
 color.preview:
   css:

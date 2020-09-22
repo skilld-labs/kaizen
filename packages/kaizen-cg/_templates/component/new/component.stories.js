@@ -14,7 +14,7 @@ const data = require('./<%= h.changeCase.lower(component_type).charAt(0) %>-<%= 
 // data.attributes = new drupalAttribute();
 
 const component = {
-  title: '<%= h.changeCase.lower(h.inflection.pluralize(component_type)) %>|<%= h.changeCase.lower(h.inflection.dasherize(name)) %>'
+  title: '<%= h.changeCase.lower(h.inflection.pluralize(component_type)) %>/<%= h.changeCase.lower(h.inflection.dasherize(name)) %>'
 }
 
 if (componentNotes.length) {
