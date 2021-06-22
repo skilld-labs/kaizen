@@ -1,11 +1,6 @@
 import './example.css';
-
 const template = require('./example.html.twig');
 const data = require('./example.json');
-
-// Uncomment next 2 lines if your templates contains {{ attibutes.addClass(...) }} or similar logic.
-import drupalAttribute from 'drupal-attribute';
-data.attributes = new drupalAttribute();
 
 const component = {
   title: 'atoms/example',
@@ -14,3 +9,7 @@ const component = {
 export default component;
 
 export const basic = () => template(data);
+export const withModifier = () => template({
+  ...data,
+  modifier_class: 'a-example--with-modifier',
+});

@@ -79,17 +79,3 @@ export const colors = () =>
 
 export const icons = () =>
   iconsArray();
-
-export const breakpoints = () =>
-  `
-<div class="variables">
-  To check breakpoints open /THEMENAME/theme.breakpoints.yml
-  <br>
-  3 breakpoints:
-  <ol>
-    <li>"s" - min-width: 320px</li>
-    <li>"m" - min-width: 640px</li>
-    <li>"l" - min-width: 1024px</li>
-  </ol>
-</div>
-`;

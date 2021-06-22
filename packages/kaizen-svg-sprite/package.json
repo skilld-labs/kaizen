@@ -18,7 +18,4 @@
     "url": "https://github.com/skilld-labs/kaizen/issues"
   },
   "homepage": "https://github.com/skilld-labs/kaizen#readme",
-  "dependencies": {
-    "svg4everybody": "^2.1.9"
-  }
 }

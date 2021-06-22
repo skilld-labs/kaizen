@@ -1,6 +1,6 @@
 {
   "name": "@skilld/kaizen-tg",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Kaizen drupal theme generator",
   "bin": "index.js",
   "main": "index.js",

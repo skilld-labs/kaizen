@@ -445,11 +445,15 @@
       "line-height"
     ],
     "property-no-unknown": null,
-    "rule-empty-line-before": null,
+    "rule-empty-line-before": ["always", {
+      "except": [
+        "first-nested"
+      ]
+    }],
     "selector-pseudo-element-colon-notation": null,
     "shorthand-property-no-redundant-values": null,
     "string-quotes": "double",
-    "unit-whitelist": ["deg", "em", "ex", "fr", "ms", "rem", "%", "s", "px", "vw", "vh"]
+    "unit-allowed-list": ["deg", "em", "ex", "fr", "ms", "rem", "%", "s", "px", "vw", "vh"]
   },
   "ignoreFiles": [
     "assets/vendor/**/*.css",

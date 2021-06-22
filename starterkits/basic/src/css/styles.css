@@ -2,4 +2,6 @@
 @import "@kaizen/components/_variables";
 @import "@kaizen/components/_border-box";
 @import "@kaizen/components/_embedded";
+@import "@kaizen/components/_normalize";
 @import "@kaizen/components/_typography";
+@import "@kaizen/components/helpers/focus-visible/focus-visible";

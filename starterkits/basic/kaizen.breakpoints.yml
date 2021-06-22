@@ -1,15 +1,23 @@
+kaizen.xs:
+  label: xs
+  mediaQuery: 'all and (min-width: 320px)'
+  weight: 0
+  group: kaizen
+  multipliers:
+    - 1x
+    - 2x
 kaizen.s:
   label: s
-  mediaQuery: 'all and (max-width: 320px)'
-  weight: 0
+  mediaQuery: 'all and (min-width: 480px)'
+  weight: 1
   group: kaizen
   multipliers:
     - 1x
     - 2x
 kaizen.m:
   label: m
-  mediaQuery: 'all and (min-width: 640px)'
-  weight: 1
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: 2
   group: kaizen
   multipliers:
     - 1x
@@ -17,7 +25,15 @@ kaizen.m:
 kaizen.l:
   label: l
   mediaQuery: 'all and (min-width: 1024px)'
-  weight: 2
+  weight: 3
+  group: kaizen
+  multipliers:
+    - 1x
+    - 2x
+kaizen.xl:
+  label: xl
+  mediaQuery: 'all and (min-width: 1440px)'
+  weight: 4
   group: kaizen
   multipliers:
     - 1x

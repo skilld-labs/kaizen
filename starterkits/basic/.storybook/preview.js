@@ -1,6 +1,8 @@
 // Import global styles.
 import '../color/colors.css';
 import '../dist/css/styles.css';
+import config from '../kaizen.breakpoints.yml';
+window.themeBreakpoints = config;
 
 // Import sprite.
 import svgSpritePath from '../dist/svg/sprite.svg';

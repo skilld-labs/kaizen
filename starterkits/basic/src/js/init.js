@@ -1,12 +1,7 @@
-import cssVars from 'css-vars-ponyfill';
 import { initBreakpointsCssReload } from '@skilld/kaizen-breakpoints';
-import { polyfill as spritePolyfill } from '@skilld/kaizen-svg-sprite';
 import config from '../../kaizen.breakpoints.yml';
+import '@kaizen/components/helpers/focus-visible/h-focus-visible';
+import '@kaizen/components/helpers/root-variables/h-root-variables';
 
+window.themeBreakpoints = config;
 initBreakpointsCssReload(config);
-
-document.addEventListener('DOMContentLoaded', () => {
-  spritePolyfill();
-});
-
-cssVars();
