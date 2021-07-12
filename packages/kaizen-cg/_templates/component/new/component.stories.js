@@ -3,7 +3,7 @@ to: <%= h.src() %>/packages/components/<%= h.changeCase.lower(h.inflection.plura
 ---
 import './<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.css';
 import componentNotes from './<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.md';
-import <%= h.inflection.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase()) %> from './<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.js';
+import <%= h.inflection.camelize(name.replace(/ /g, '').replace(/-/g, '_'), true) %> from './<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.js';
 import { useEffect } from "@storybook/client-api";
 
 const template = require('./<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.html.twig');
@@ -25,7 +25,7 @@ export default component;
 
 export const basic = () => {
   useEffect(() => {
-    <%= h.inflection.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase()) %>();
+    <%= h.inflection.camelize(name.replace(/ /g, '').replace(/-/g, '_'), true) %>();
   }, []);
   return template(data)
 };
