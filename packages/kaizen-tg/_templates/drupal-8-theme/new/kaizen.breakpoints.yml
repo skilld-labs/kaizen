@@ -5,7 +5,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) 
   label: xs
   mediaQuery: 'all and (min-width: 320px)'
   weight: 0
-  group: kaizen
+  group: <%= h.changeCase.lower(name) %>
   multipliers:
     - 1x
     - 2x
@@ -13,7 +13,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) 
   label: s
   mediaQuery: 'all and (min-width: 480px)'
   weight: 1
-  group: kaizen
+  group: <%= h.changeCase.lower(name) %>
   multipliers:
     - 1x
     - 2x
@@ -21,7 +21,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) 
   label: m
   mediaQuery: 'all and (min-width: 768px)'
   weight: 2
-  group: kaizen
+  group: <%= h.changeCase.lower(name) %>
   multipliers:
     - 1x
     - 2x
@@ -29,7 +29,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) 
   label: l
   mediaQuery: 'all and (min-width: 1024px)'
   weight: 3
-  group: kaizen
+  group: <%= h.changeCase.lower(name) %>
   multipliers:
     - 1x
     - 2x
@@ -37,7 +37,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) 
   label: xl
   mediaQuery: 'all and (min-width: 1440px)'
   weight: 4
-  group: kaizen
+  group: <%= h.changeCase.lower(name) %>
   multipliers:
     - 1x
     - 2x
