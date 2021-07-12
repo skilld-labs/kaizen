@@ -75,26 +75,18 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
-      },
-      {
         test: /\.svg$/,
-        use: {
-          loader: 'svg-sprite-loader',
-          options: {
-            extract: true,
-            symbolId: (filePath) =>
-              `svg-${path.basename(filePath.slice(0, -4))}`,
-            publicPath: 'svg/',
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              extract: true,
+              symbolId: (filePath) =>
+                `svg-${path.basename(filePath.slice(0, -4))}`,
+              publicPath: 'svg/',
+            },
           },
-        },
+        ],
       },
       // Uncomment if you have theme-stored fonts.
       // {
@@ -113,9 +105,15 @@ module.exports = {
     }),
   ],
   optimization: {
+    minimize: true,
     minimizer: [
       new TerserPlugin({
         extractComments: true,
+        terserOptions: {
+          mangle: {
+            reserved: ['Drupal'],
+          },
+        },
       }),
     ],
   },

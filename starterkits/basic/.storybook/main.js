@@ -3,6 +3,7 @@ module.exports = {
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-essentials',
+    '@storybook/addon-knobs',
   ],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
@@ -12,19 +13,16 @@ module.exports = {
     // Make whatever fine-grained changes you need
     config.module.rules.push(
       {
-        test: /\.twig$/,
-        loader: 'twig-loader',
-      },
-      {
-        test: /\.css$/,
+        test: /\.yml$/,
         use: [
           {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-            },
+            loader: '@skilld/kaizen-breakpoints/loader',
           },
         ],
+      },
+      {
+        test: /\.twig$/,
+        loader: 'twig-loader',
       },
     );
 

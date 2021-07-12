@@ -1,0 +1,11 @@
+.js-entity-fake-link {
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover a {
+    text-decoration: underline;
+  }
+}

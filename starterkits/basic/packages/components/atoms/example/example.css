@@ -1,6 +1,6 @@
 @import "_a-example";
 
-.example {
+.a-example {
   @extend %a-example;
 
   &--with-modifier {

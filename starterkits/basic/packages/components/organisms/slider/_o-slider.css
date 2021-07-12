@@ -1,7 +1,8 @@
-@import "@glidejs/glide/dist/css/glide.core";
+/* stylelint-disable */
+
+@import "@splidejs/splide/dist/css/splide.min.css";
+/* stylelint-enable */
 
 %o-slider {
-  --o-slider-bg: var(--color-5);
-
-  background-color: var(--o-slider-bg);
+  background-color: var(--color-3);
 }

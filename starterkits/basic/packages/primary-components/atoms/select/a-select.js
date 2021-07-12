@@ -42,11 +42,11 @@ export default ({
   context = document,
   svgSpritePath = '../../../../dist/svg/sprite.svg',
 } = {}) => {
-  Array.prototype.forEach.call(context.querySelectorAll(selector), el => {
+  Array.prototype.forEach.call(context.querySelectorAll(selector), (el) => {
     // eslint-disable-next-line no-new
     new Choices(el, {
       classNames: options,
-      callbackOnCreateTemplates: template => {
+      callbackOnCreateTemplates: (template) => {
         return {
           item: (classNames, data) => {
             return template(`
