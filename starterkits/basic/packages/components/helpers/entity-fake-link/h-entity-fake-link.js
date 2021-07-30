@@ -8,7 +8,7 @@ const fakeLinkEvents = (el, e) => {
   if (e.type === 'click' || e.key === 'Enter') {
     const ref = e.target != null ? e.target : e.srcElement;
     if (ref && ref.tagName !== 'A') {
-      window.open(el.getAttribute('data-href'), el.getAttribute('target'));
+      window.open(el.getAttribute('data-href'), el.getAttribute('data-target'));
     }
   }
 };
@@ -21,12 +21,10 @@ const fakeLinkProcessed = (el, link) => {
     'aria-label',
     link.hasAttribute('title') ? link.getAttribute('title') : link.textContent,
   );
-  if (link.hasAttribute('target')) {
-    el.setAttribute(
-      'data-target',
-      link.hasAttribute('target') ? link.getAttribute('target') : '_self',
-    );
-  }
+  el.setAttribute(
+    'data-target',
+    link.hasAttribute('target') ? link.getAttribute('target') : '_self',
+  );
   Array.prototype.forEach.call(el.querySelectorAll('a'), (innerLink) => {
     innerLink.setAttribute('tabindex', '-1');
   });

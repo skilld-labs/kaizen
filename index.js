@@ -75,9 +75,11 @@ const replaceKaizenInFilesAndFilenames = (source, newThemePath, themeName) => {
 
           const fileTextReplaceTempoBreakpoints = data.replace(/kaizen-breakpoints/gi, 'temporaryValBreakpoints');
           const fileTextReplaceTempoSvg = fileTextReplaceTempoBreakpoints.replace(/kaizen-svg-sprite/gi, 'temporaryValSvgSprite');
-          const fileTextReplaceTempo = fileTextReplaceTempoSvg.replace(/kaizen/gi, themeName);
+          const fileTextReplaceTempoCG = fileTextReplaceTempoSvg.replace(/kaizen-cg/gi, 'temporaryValCG');
+          const fileTextReplaceTempo = fileTextReplaceTempoCG.replace(/kaizen/gi, themeName);
           const fileTextReplaceRevertBreakpoints = fileTextReplaceTempo.replace(/temporaryValBreakpoints/gi, 'kaizen-breakpoints');
-          const fileTextReplace = fileTextReplaceRevertBreakpoints.replace(/temporaryValSvgSprite/gi, 'kaizen-svg-sprite');
+          const fileTextReplaceRevertSvg = fileTextReplaceRevertBreakpoints.replace(/temporaryValSvgSprite/gi, 'kaizen-svg-sprite');
+          const fileTextReplace = fileTextReplaceRevertSvg.replace(/temporaryValCG/gi, 'kaizen-cg');
           fs.writeFile(newFile, fileTextReplace, enc, error => {
             if (error) {
               throw error;
