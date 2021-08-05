@@ -1372,10 +1372,10 @@
     lodash.debounce "^4.0.8"
     postcss "^7.0.32"
 
-"@skilld/kaizen-cg@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@skilld/kaizen-cg/-/kaizen-cg-1.0.4.tgz#6404820cda0cfc87d9366cfb1f8d859741910332"
-  integrity sha512-/UbXTJVPuKXlXtPwUO7ZDCCdRpeBgVEnLbxH7zLO4tkkKKIpTERzUbxCRB2+ncLgK+rIvobRSW7ZeJWdcYM3Hg==
+"@skilld/kaizen-cg@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@skilld/kaizen-cg/-/kaizen-cg-1.0.6.tgz#cf2a528bac925c6e95340380fe3d8de60640b614"
+  integrity sha512-YT3zmmV+2+EuIunQxCSOMVbZ/TiXz51QzGoquqHxj+CA6y5NlL21/ZUrWFLKpPcevtQxzBKJOJ31ZT+J2++JoQ==
   dependencies:
     hygen "^6.0.4"
 
@@ -13211,6 +13211,11 @@ warning@^4.0.2, warning@^4.0.3:
   integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
   dependencies:
     loose-envify "^1.0.0"
+
+warnings-to-errors-webpack-plugin@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/warnings-to-errors-webpack-plugin/-/warnings-to-errors-webpack-plugin-2.0.1.tgz#87e6cc85b7995a434d2886a4889fc3fded9b0214"
+  integrity sha512-PhaAMVZzINqmBB7MPSfQhUZtC8VIbJRVmDOK4He5YdKfLLkhTFEWuaT2vKU/6Crbby3UEB+4PQiJSpZ30qXmZw==
 
 watchpack-chokidar2@^2.0.1:
   version "2.0.1"
