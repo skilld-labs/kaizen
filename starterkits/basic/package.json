@@ -20,7 +20,8 @@
     "react-dom": "^17.0.2",
     "twig": "^1.15.4",
     "twig-drupal-filters": "^3.1.2",
-    "twig-loader": "^0.5.5"
+    "twig-loader": "^0.5.5",
+    "warnings-to-errors-webpack-plugin": "^2.0.1"
   },
   "dependencies": {
     "@kaizen/components": "^1.0.0",
@@ -62,7 +63,7 @@
     "build": "cross-env ./node_modules/.bin/webpack",
     "lint": "cross-env ./node_modules/.bin/run-p lint:*",
     "lint-fix": "cross-env ./node_modules/.bin/run-p \"lint:* --fix\"",
-    "lint:js": "node ./node_modules/eslint/bin/eslint.js .",
+    "lint:js": "node ./node_modules/eslint/bin/eslint.js --max-warnings 0 .",
     "lint:css": "cross-env ./node_modules/.bin/stylelint \"**/*.css\"",
     "browsersync": "yarn run browser-sync start --proxy '127.0.0.1:8888' --files ./dist",
     "watch": "cross-env ./node_modules/.bin/webpack -w",

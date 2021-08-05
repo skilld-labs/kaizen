@@ -6,6 +6,7 @@ const glob = require('glob');
 const path = require('path');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const WarningsToErrorsPlugin = require('warnings-to-errors-webpack-plugin');
 const options = require('./kaizen-options');
 
 const mapFilenamesToEntries = (pattern, globOptions) =>
@@ -97,6 +98,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new WarningsToErrorsPlugin(),
     new SpriteLoaderPlugin({
       plainSprite: true,
     }),
