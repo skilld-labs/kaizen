@@ -8,6 +8,7 @@ const postCssDrupalBreakpoints = require('@skilld/kaizen-breakpoints/postcss-plu
 const postcssNested = require('postcss-nested');
 const postcssDiscardEmpty = require('postcss-discard-empty');
 const pxtorem = require('postcss-pxtorem');
+const postcssUrl = require('postcss-url');
 const stylelint = require('stylelint');
 <% if (type === 'primary') {-%>
 const tailwind = require('tailwindcss');
@@ -18,6 +19,16 @@ module.exports = () => ({
   map: false,
   plugins: [
     postcssImport(),
+    postcssUrl(
+      {
+        url: 'inline',
+        basePath: [
+          '../../',
+          '../../../',
+          '../../../../',
+        ],
+      },
+    ),
 <% if (type === 'primary') {-%>
     tailwind(),
 <% } -%>
