@@ -55,6 +55,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
     "postcss-nested": "^4.1.2",
     "postcss-preset-env": "^6.7.0",
     "postcss-pxtorem": "^6.0.0",
+    "postcss-url": "^10.1.3",
     "prettier": "^2.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
