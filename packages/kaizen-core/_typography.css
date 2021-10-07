@@ -1,7 +1,7 @@
 html {
   font-size: var(--root-font-size--mobile);
 
-  @drupal-breakpoint l_1x {
+  @db l {
     font-size: var(--root-font-size--desktop);
   }
 }

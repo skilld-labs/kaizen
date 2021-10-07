@@ -26,8 +26,8 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
     "twig-loader": "^0.5.5"
   },
   "dependencies": {
-    "@skilld/kaizen-breakpoints": "^1.0.0",
-    "@skilld/kaizen-core": "^1.0.3",
+    "@skilld/kaizen-breakpoints": "^1.0.1",
+    "@skilld/kaizen-core": "^1.0.4",
 <% if(type==='primary'){ -%>
     "@skilld/kaizen-primary": "^1.0.1",
 <% } -%>

@@ -57,7 +57,7 @@ function generateJSON(groups, fileContent) {
  * @returns
  */
 
-function generateQuery(breakpoint, multiplier) {
+function generateQuery(breakpoint, multiplier = undefined) {
   const resQuery = multiplier ? xToResolution(multiplier) : '';
   return breakpoint.mediaQuery + resQuery;
 }
@@ -116,6 +116,7 @@ function getBreakpointsByGroupsList(groups, fileContent) {
 
       multipliers.forEach(mp => {
         const multiplier = mp ? `_${mp}` : '';
+        output[group][breakpointLabel] = generateQuery(breakpoint);
         output[group][breakpointLabel + multiplier] = generateQuery(
           breakpoint,
           mp === '1x' ? null : mp,
