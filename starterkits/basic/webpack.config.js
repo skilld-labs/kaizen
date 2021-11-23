@@ -61,6 +61,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              url: false,
               sourceMap: process.env.NODE_ENV === 'development',
             },
           },
