@@ -456,7 +456,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/.stylelintrc
     "selector-pseudo-element-colon-notation": null,
     "shorthand-property-no-redundant-values": null,
     "string-quotes": "double",
-    "unit-allowed-list": ["deg", "em", "ex", "fr", "ms", "rem", "%", "s", "px", "vw", "vh"]
+    "unit-allowed-list": ["deg", "dppx", "em", "ex", "fr", "ms", "rem", "%", "s", "px", "vw", "vh"]
   },
   "ignoreFiles": [
     "assets/vendor/**/*.css",

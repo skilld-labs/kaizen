@@ -16,10 +16,13 @@ module.exports = postcss.plugin('postcss-drupal-breakpoints', function (opts) {
     return function (root) {
 
       root.walkAtRules(atRule => {
-        if (atRule.name === 'drupal-breakpoint') {
-          const media = breakpoints[themeName][atRule.params]
-          atRule.name = 'media'
-          atRule.params = media
+        switch (atRule.name) {
+          case 'drupal-breakpoint':
+          case 'db':
+            const media = breakpoints[themeName][atRule.params]
+            atRule.name = 'media'
+            atRule.params = media
+            break;
         }
       })
     }
