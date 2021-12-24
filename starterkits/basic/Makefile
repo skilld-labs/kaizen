@@ -4,8 +4,8 @@ IMAGE_FRONT = node:lts-alpine
 front = docker run \
 	--rm \
 	--init \
-	-v $(shell pwd):/usr/src/app -w /usr/src/app \
-	-w /usr/src/app \
+	--user $(shell id -u):$(shell id -g) \
+	-v $(shell pwd):/app -w /app \
 	$(IMAGE_FRONT) ${1}
 
 # Build front tasks.
@@ -14,7 +14,7 @@ install:
 	$(call front, yarn install --ignore-optional --prod)
 
 build:
-	$(call front, yarn build --verbose)
+	$(call front, yarn --verbose build)
 
 lint:
 	$(call front, yarn lint-fix)

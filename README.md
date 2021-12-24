@@ -42,7 +42,7 @@ Or
 1. If used with [skilld-docker-container](https://github.com/skilld-labs/skilld-docker-container), install project using not `make all` but `make_ci` to skip `make front` step.
 1. `cd web/themes/custom`
 1. Execute initialisation, either :
-    - with Docker : `docker run -it --rm -v "$PWD":/usr/src/app -w /usr/src/app node:lts npx skilld-labs/kaizen`
+    - with Docker : `docker run -it --rm -u $(id -u):$(id -g) -v "$PWD":/app -w /app node:lts-alpine npx skilld-labs/kaizen`
     - with Node & Yarn : `npx skilld-labs/kaizen`
 1. Go through installation steps :
     - Basic - Empty theme to use for custom theming
