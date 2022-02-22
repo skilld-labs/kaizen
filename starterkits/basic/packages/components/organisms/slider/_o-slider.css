@@ -1,8 +1,0 @@
-/* stylelint-disable */
-
-@import "@splidejs/splide/dist/css/splide.min.css";
-/* stylelint-enable */
-
-%o-slider {
-  background-color: var(--color-3);
-}

@@ -1,5 +1,0 @@
-@import "_o-slider";
-
-.o-slider {
-  @extend %o-slider;
-}

@@ -1,7 +1,0 @@
-/dist/js/*.js
-/dist/storybook/
-/color/*.js
-/scripts/
-postcss.config.js
-webpack.config.dev.js
-*.stories.js

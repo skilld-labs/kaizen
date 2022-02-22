@@ -1,9 +1,0 @@
-@import "@kaizen/primary-components/organisms/footer/_o-footer";
-
-.footer {
-  @extend %o-footer;
-
-  &__top {
-    @extend %o-footer__top;
-  }
-}

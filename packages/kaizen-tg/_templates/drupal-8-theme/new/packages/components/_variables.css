@@ -1,0 +1,8 @@
+---
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/packages/components/_variables.css
+---
+:root {
+  --root-font-size--mobile: 2vw;
+  --root-font-size--desktop: 100%;
+  --base-font-size: 1rem;
+}

@@ -6,13 +6,6 @@ const { Select } = require('enquirer');
 
 module.exports = [
   {
-    type: "select",
-    name: 'type',
-    message: 'Choose starterkit',
-    choices: ['core', 'basic', 'primary'],
-    required: true,
-  },
-  {
     type: "input",
     name: "name",
     message: "What's your theme name?",
@@ -21,7 +14,7 @@ module.exports = [
   {
     type: "input",
     name: "description",
-    message: "What's your theme desctiption?",
+    message: "What's your theme description?",
     initial: "Skilld basic theme",
   },
 ];

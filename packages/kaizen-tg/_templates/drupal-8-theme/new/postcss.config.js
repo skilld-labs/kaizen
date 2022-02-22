@@ -10,10 +10,7 @@ const postcssDiscardEmpty = require('postcss-discard-empty');
 const pxtorem = require('postcss-pxtorem');
 const postcssUrl = require('postcss-url');
 const stylelint = require('stylelint');
-<% if (type === 'primary') {-%>
-const tailwind = require('tailwindcss');
-<% } -%>
-
+const path = require('path');
 
 module.exports = () => ({
   map: false,
@@ -23,15 +20,11 @@ module.exports = () => ({
       {
         url: 'inline',
         basePath: [
-          '../../',
-          '../../../',
-          '../../../../',
+          path.resolve('images'),
+          path.resolve('fonts'),
         ],
       },
     ),
-<% if (type === 'primary') {-%>
-    tailwind(),
-<% } -%>
     postCssDrupalBreakpoints({
       importFrom: './<%= h.changeCase.lower(name) %>.breakpoints.yml',
       themeName: '<%= h.changeCase.lower(name) %>'
@@ -45,20 +38,6 @@ module.exports = () => ({
     pxtorem({
       propList: [
         '*',
-        '!border',
-        '!border-width',
-        '!border-top-width',
-        '!border-left-width',
-        '!border-right-width',
-        '!border-bottom-width',
-        '!border-radius',
-        '!border-top-left-radius',
-        '!border-top-right-radius',
-        '!border-bottom-left-radius',
-        '!border-bottom-right-radius',
-        '!box-shadow',
-        '!outline',
-        '!outline-offset',
       ]
     }),
     stylelint({

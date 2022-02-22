@@ -1,0 +1,16 @@
+---
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/packages/components/_typography.css
+---
+html {
+  font-size: var(--root-font-size--mobile);
+
+  @db l {
+    font-size: var(--root-font-size--desktop);
+  }
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-size: var(--base-font-size);
+}

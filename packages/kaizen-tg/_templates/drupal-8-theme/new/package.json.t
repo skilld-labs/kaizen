@@ -9,7 +9,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
   "author": "Skilld",
   "license": "MIT",
   "devDependencies": {
-    "@skilld/kaizen-cg": "^1.0.6",
+    "@skilld/kaizen-cg": "^2.0.0-alpha.0",
     "@storybook/addon-docs": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-knobs": "^6.2.9",
@@ -26,12 +26,9 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
     "twig-loader": "^0.5.5"
   },
   "dependencies": {
-    "@skilld/kaizen-breakpoints": "^1.0.1",
-    "@skilld/kaizen-core": "^1.0.4",
-<% if(type==='primary'){ -%>
-    "@skilld/kaizen-primary": "^1.0.1",
-<% } -%>
-    "@skilld/kaizen-svg-sprite": "^1.0.0",
+    "@<%= h.changeCase.lower(name) %>/components": "^1.0.0",
+    "@skilld/kaizen-breakpoints": "^2.0.0-alpha.0",
+    "@skilld/kaizen-core": "^2.0.0-alpha.0",
     "autoprefixer": "^10.2.6",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",

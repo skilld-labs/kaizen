@@ -12,7 +12,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) 
 <%= h.changeCase.lower(name) %>.s:
   label: s
   mediaQuery: 'all and (min-width: 480px)'
-  weight: 1
+  weight: 10
   group: <%= h.changeCase.lower(name) %>
   multipliers:
     - 1x
@@ -20,7 +20,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) 
 <%= h.changeCase.lower(name) %>.m:
   label: m
   mediaQuery: 'all and (min-width: 768px)'
-  weight: 2
+  weight: 20
   group: <%= h.changeCase.lower(name) %>
   multipliers:
     - 1x
@@ -28,7 +28,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) 
 <%= h.changeCase.lower(name) %>.l:
   label: l
   mediaQuery: 'all and (min-width: 1024px)'
-  weight: 3
+  weight: 30
   group: <%= h.changeCase.lower(name) %>
   multipliers:
     - 1x
@@ -36,7 +36,15 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) 
 <%= h.changeCase.lower(name) %>.xl:
   label: xl
   mediaQuery: 'all and (min-width: 1440px)'
-  weight: 4
+  weight: 40
+  group: <%= h.changeCase.lower(name) %>
+  multipliers:
+    - 1x
+    - 2x
+<%= h.changeCase.lower(name) %>.xxl:
+  label: xxl
+  mediaQuery: 'all and (min-width: 1920px)'
+  weight: 50
   group: <%= h.changeCase.lower(name) %>
   multipliers:
     - 1x

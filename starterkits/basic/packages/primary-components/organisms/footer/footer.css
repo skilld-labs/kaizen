@@ -1,9 +1,0 @@
-@import "_o-footer";
-
-.o-footer {
-  @extend %o-footer;
-
-  &__top {
-    @extend %o-footer__top;
-  }
-}
