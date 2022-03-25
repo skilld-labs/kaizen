@@ -7,9 +7,15 @@ module.exports = {
     '../**/*.stories.@(ts|js)',
   ],
   addons: [
-    '@storybook/addon-docs',
     '@storybook/addon-essentials',
-    '@storybook/addon-knobs',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss'),
+        },
+      },
+    },
   ],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
@@ -34,5 +40,8 @@ module.exports = {
 
     // Return the altered config
     return config;
+  },
+  core: {
+    builder: 'webpack5',
   },
 };

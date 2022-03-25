@@ -9,6 +9,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/.stylelintrc
   "rules": {
     "at-rule-no-unknown": [ true, {
       "ignoreAtRules": [
+        "db",
         "drupal-breakpoint",
         "extend"
       ]
