@@ -38,6 +38,7 @@ function generateJSON(groups, fileContent) {
 
       multipliers.forEach(mp => {
         const multiplier = mp ? `_${mp}` : '';
+        output[group][breakpointLabel] = generateQuery(breakpoint);
         output[group][breakpointLabel + multiplier] = generateQuery(
           breakpoint,
           mp === '1x' ? null : mp,

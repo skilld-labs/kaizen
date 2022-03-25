@@ -1,0 +1,11 @@
+---
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/packages/components/_variables.css
+---
+:root {
+  --root-font-size: 2vw;
+  --base-font-size: 16px;
+
+  @db l {
+    --root-font-size: 100%;
+  }
+}

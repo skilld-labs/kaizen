@@ -3,11 +3,15 @@ to: <%= h.src() %>/packages/components/<%= h.changeCase.lower(h.inflection.plura
 ---
 /**
  * @file
- * This is component sctipt template.
+ * This is component script template.
  */
 
-export default ({ className = '.<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>', context = document } = {}) => {
-  Array.prototype.forEach.call(context.querySelectorAll(className), el => {
+export default ({
+  className = '<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>',
+  processingName = className,
+  context = document,
+} = {}) => {
+  once(processingName, `.${className}`, context).forEach((el) => {
     // eslint-disable-next-line no-console
     console.log(el);
   });

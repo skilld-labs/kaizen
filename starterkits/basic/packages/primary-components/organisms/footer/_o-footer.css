@@ -1,7 +1,0 @@
-%o-footer {
-  @apply bg-gray-dark text-white;
-
-  &__top {
-    @apply py-5;
-  }
-}

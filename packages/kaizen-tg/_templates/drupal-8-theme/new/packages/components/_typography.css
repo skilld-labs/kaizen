@@ -1,0 +1,12 @@
+---
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/packages/components/_typography.css
+---
+html {
+  font-size: var(--root-font-size);
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-size: var(--base-font-size);
+}

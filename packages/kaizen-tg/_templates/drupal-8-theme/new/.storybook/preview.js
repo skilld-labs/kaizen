@@ -3,7 +3,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/.storybook/preview.js
 ---
 // Import global styles.
 import '../color/colors.css';
-import '../dist/css/styles.css';
+import '../src/css/styles.css';
 import config from '../<%= h.changeCase.lower(name) %>.breakpoints.yml';
 window.themeBreakpoints = config;
 

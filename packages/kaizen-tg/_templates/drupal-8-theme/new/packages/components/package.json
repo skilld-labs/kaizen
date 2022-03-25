@@ -1,0 +1,9 @@
+---
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/packages/components/package.json
+---
+{
+  "name": "@<%= h.changeCase.lower(name) %>/components",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
