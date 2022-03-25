@@ -16,15 +16,7 @@ module.exports = () => ({
   map: false,
   plugins: [
     postcssImport(),
-    postcssUrl(
-      {
-        url: 'inline',
-        basePath: [
-          path.resolve('images'),
-          path.resolve('fonts'),
-        ],
-      },
-    ),
+    postcssUrl(),
     postCssDrupalBreakpoints({
       importFrom: './<%= h.changeCase.lower(name) %>.breakpoints.yml',
       themeName: '<%= h.changeCase.lower(name) %>'
