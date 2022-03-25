@@ -17,6 +17,8 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
     "@storybook/manager-webpack5": "^6.4.19",
     "browser-sync": "^2.27.9",
     "drupal-attribute": "^1.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "twig": "^1.15.4",
     "twig-drupal-filters": "^3.1.2",
     "twig-loader": "^0.5.5"
