@@ -1,4 +1,4 @@
 :root {
-  --window-width: 100vw;
-  --window-height: 100vh;
+  --viewport-width: 100vw;
+  --viewport-height: 100vh;
 }

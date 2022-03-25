@@ -5,11 +5,11 @@
 
 const hRootVariablesHandler = () => {
   document.documentElement.style.setProperty(
-    '--window-width',
+    '--viewport-width',
     `${window.innerWidth}px`,
   );
   document.documentElement.style.setProperty(
-    '--window-height',
+    '--viewport-height',
     `${window.innerHeight}px`,
   );
 };
@@ -17,7 +17,9 @@ const hRootVariablesHandler = () => {
 const body = once('h-root-variables', document.documentElement).shift();
 if (body) {
   hRootVariablesHandler();
-  window.addEventListener('resize', () => {
-    hRootVariablesHandler();
-  });
+  ['load', 'resize'].forEach(event => {
+    window.addEventListener(event, () => {
+      hRootVariablesHandler();
+    });
+  })
 }

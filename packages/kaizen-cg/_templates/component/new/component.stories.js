@@ -8,8 +8,6 @@ import { useEffect } from '@storybook/client-api';
 
 const template = require('./<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.html.twig');
 const data = require('./<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.json');
-const attributes = new drupalAttribute();
-attributes.addClass(['<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>']);
 
 export default {
   title: '<%= h.changeCase.lower(h.inflection.pluralize(component_type)) %>/<%= h.changeCase.lower(h.inflection.dasherize(name)) %>',
@@ -23,11 +21,11 @@ export default {
 };
 
 export const basic = (args = {}) => {
+  const attributes = new drupalAttribute();
+  attributes.addClass(['<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>']);
+  data.attributes = attributes;
   useEffect(() => {
     <%= h.inflection.camelize(name.replace(/ /g, '').replace(/-/g, '_'), true) %>();
   }, [args]);
-  return template({
-    ...data,
-    attributes,
-  })
+  return template(data)
 };

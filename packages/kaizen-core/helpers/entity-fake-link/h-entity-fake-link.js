@@ -19,7 +19,7 @@ const fakeLinkProcessed = (el, link) => {
   el.setAttribute('data-href', link.getAttribute('href'));
   el.setAttribute(
     'aria-label',
-    link.hasAttribute('title') ? link.getAttribute('title') : link.textContent,
+    link.hasAttribute('title') ? link.getAttribute('title') : link.textContent.replace(/\s+/g, ' ').trim(),
   );
   el.setAttribute(
     'data-target',
