@@ -4,7 +4,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) 
 base:
   css:
     theme:
-        color/colors.css: {}
+      color/colors.css: {}
     base:
       dist/css/styles.css: {}
   js:
@@ -21,4 +21,3 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
-

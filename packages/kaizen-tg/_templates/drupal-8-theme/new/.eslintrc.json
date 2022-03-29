@@ -3,8 +3,9 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/.eslintrc.json
 ---
 {
   "extends": [
-    "airbnb",
-    "plugin:prettier/recommended"
+    "airbnb-base",
+    "plugin:prettier/recommended",
+    "plugin:yml/recommended"
   ],
   "root": true,
   "env": {
@@ -16,13 +17,19 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/.eslintrc.json
     "Drupal": true,
     "drupalSettings": true,
     "drupalTranslations": true,
-    "domready": true,
     "jQuery": true,
     "_": true,
-    "matchMedia": true,
+    "Cookies": true,
     "Backbone": true,
     "Modernizr": true,
-    "CKEDITOR": true
+    "loadjs": true,
+    "Popper": true,
+    "Shepherd": true,
+    "Sortable": true,
+    "once": true,
+    "CKEDITOR": true,
+    "CKEditor5": true,
+    "tabbable": true
   },
   "rules": {
     "prettier/prettier": "error",
