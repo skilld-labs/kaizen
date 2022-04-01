@@ -1,4 +1,4 @@
-# kaizen
+# kaizen-tg
 
         _/                       _/
        _/  _/       _/_/_/             _/_/_/_/       _/_/       _/_/_/
@@ -7,9 +7,29 @@
     _/    _/     _/_/_/      _/     _/_/_/_/       _/_/_/     _/    _/
 
 
-## What is this?
+## Requirements
 
-- This is a theme generator for kaizen
+- Docker-ce
+
+Or
+
+- Node.js
+- Yarn
+
+
+## Features
+
+- PostCss
+- Storybook
+- Webpack
+- Browsersync
+- eslint
+- stylelint
+- Autoprefixer
+- Drupal Color Module support
+- Drupal breakpoints.yml config parser in css/js
+- Svg sprite generation
+- Several basic helpers which improves quality and perception of the web-sites. [Read more](https://www.npmjs.com/package/@skilld/kaizen-core)
 
 ## Usage
 
@@ -17,3 +37,20 @@
 2. `npx @skilld/kaizen-tg` and follow instructions. Or alternative installation using Docker `docker run -it --rm -u $(id -u):$(id -g) -v "$PWD":/app -w /app node:lts-alpine npx @skilld/kaizen-tg`
 3. `cd [theme_name]`
 4. `yarn && yarn build` or `make install && make build` if you want to use docker instead of local
+
+
+## Components creation
+
+Run `yarn cc` from theme dir
+
+## Storybook
+
+Run `yarn storybook` from theme dir to init storybook
+
+## Linting and fixing
+
+Run `yarn lint-fix` from theme dir
+
+# License
+
+This project is licensed under the MIT open source license.

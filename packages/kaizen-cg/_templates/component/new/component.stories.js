@@ -20,9 +20,19 @@ export default {
   // argTypes: {},
 };
 
+data.svgSpritePath = window.svgSpritePath;
+
 export const basic = (args = {}) => {
   const attributes = new drupalAttribute();
   attributes.addClass(['<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>']);
+  if (args.attributes) {
+    for (const [attrName, attrValue] of Object.entries(args.attributes)) {
+      if (attrName === 'class') {
+        attributes.addClass(attrValue);
+      }
+      attributes.setAttribute(attrName, attrValue);
+    }
+  }
   data.attributes = attributes;
   useEffect(() => {
     <%= h.inflection.camelize(name.replace(/ /g, '').replace(/-/g, '_'), true) %>();

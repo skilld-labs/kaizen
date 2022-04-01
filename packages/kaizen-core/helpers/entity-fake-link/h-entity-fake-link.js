@@ -1,6 +1,6 @@
 /**
  * @file
- * This javascript is supposed to use some link to simulate
+ * This javascript can be used to simulate
  * link wrapper around whole entity.
  */
 
@@ -14,6 +14,7 @@ const fakeLinkEvents = (el, e) => {
 };
 
 const fakeLinkProcessed = (el, link) => {
+  el.setAttribute('data-h-entity-fake-link-built', '');
   el.setAttribute('tabindex', '0');
   el.setAttribute('role', 'link');
   el.setAttribute('data-href', link.getAttribute('href'));

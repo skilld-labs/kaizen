@@ -1,25 +1,6 @@
 ---
 to: <%= h.src() %>/packages/components/<%= h.changeCase.lower(h.inflection.pluralize(component_type)) %>/<%= h.changeCase.lower(h.inflection.dasherize(name)) %>/<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.css
 ---
-/*
-  <%= h.changeCase.pascal(component_type) %> <%= h.changeCase.pascal(h.inflection.dasherize(name)) %>
-  This is main and only one component css.
-  Supports nested BEM elements from previous version.
-  And pseudo classes.
-
-  .a-button {
-    background-color: green;
-
-    &:hover {
-      background-color: pink;
-    }
-
-    &__text {
-      color: black;
-    }
-  }
-*/
-
 .<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %> {
   display: inherit;
 }

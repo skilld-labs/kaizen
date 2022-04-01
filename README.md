@@ -29,11 +29,12 @@ Or
 - Webpack
 - Browsersync
 - eslint
+- stylelint
 - Autoprefixer
 - Drupal Color Module support
 - Drupal breakpoints.yml config parser in css/js
 - Svg sprite generation
-
+- Several basic helpers which improves quality and perception of the web-sites. [Read more](https://github.com/skilld-labs/kaizen/tree/master/packages/kaizen-core)
 
 ## Usage
 
@@ -57,8 +58,7 @@ Run `yarn lint-fix` from theme dir
 
 ## Contrib
 
-- WIP
-
+Please contrib into kaizen if you have ideas or problems. We are on [github](https://github.com/skilld-labs/kaizen). Feel free to open discussion or create pull requests.
 
 # License
 
