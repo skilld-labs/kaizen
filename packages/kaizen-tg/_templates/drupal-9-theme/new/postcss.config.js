@@ -2,7 +2,7 @@
 to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/postcss.config.js
 ---
 const autoprefixer = require('autoprefixer');
-const postcssExtend = require('postcss-extend');
+const postcssExtendRule = require('postcss-extend-rule');
 const postcssImport = require('postcss-import');
 const postCssDrupalBreakpoints = require('@skilld/kaizen-breakpoints/postcss-plugin');
 const postcssNested = require('postcss-nested');
@@ -10,7 +10,6 @@ const postcssDiscardEmpty = require('postcss-discard-empty');
 const pxtorem = require('postcss-pxtorem');
 const postcssUrl = require('postcss-url');
 const stylelint = require('stylelint');
-const path = require('path');
 
 module.exports = () => ({
   map: false,
@@ -19,10 +18,10 @@ module.exports = () => ({
     postcssUrl(),
     postCssDrupalBreakpoints({
       importFrom: './<%= h.changeCase.lower(name) %>.breakpoints.yml',
-      themeName: '<%= h.changeCase.lower(name) %>'
+      themeName: '<%= h.changeCase.lower(name) %>',
     }),
     postcssNested(),
-    postcssExtend(),
+    postcssExtendRule(),
     autoprefixer({
       cascade: false,
     }),
