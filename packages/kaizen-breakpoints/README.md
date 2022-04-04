@@ -13,9 +13,9 @@
 
 ## Usage
 
-1. This package is added as a dependency for [@skilld/kaizen-tg](https://www.npmjs.com/package/@skilld/kaizen-tg) package, so normally once theme is install - you have `kaizen-breakpoints` already under the hood installed.
+1. This package is added as a dependency for [@skilld/kaizen-tg](https://www.npmjs.com/package/@skilld/kaizen-tg) package, so normally once theme is installed - you have `kaizen-breakpoints` already under the hood.
 2. To see the list of all available breakpoints and its names which you can use in your css and js files - you can run storybook and find it here `/?path=/story/globals-variables--breakpoints` (It is Globals / Variables / Breakpoints) path in storybook
-3. Syntax of usage in css files:
+3. Syntax of usage in css files (`@db` btw means `drupal breakpoint`):
    - `@db l {}` <-- it is analogue of old `@drupal-breakpoint l_1x {}` we had in Kaizen v1
    - `@db l_1x {}`
    - `@db l_2x {}` <-- this is 2x multiplier for retina screens. We don't use usually it in css files, but this breakpoint needed for Drupal's responsive image groups, for 2x increased image styles.
