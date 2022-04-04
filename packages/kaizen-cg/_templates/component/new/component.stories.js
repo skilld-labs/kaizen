@@ -30,7 +30,9 @@ export const basic = (args = {}) => {
       if (attrName === 'class') {
         attributes.addClass(attrValue);
       }
-      attributes.setAttribute(attrName, attrValue);
+      else {
+        attributes.setAttribute(attrName, attrValue);
+      }
     }
   }
   data.attributes = attributes;

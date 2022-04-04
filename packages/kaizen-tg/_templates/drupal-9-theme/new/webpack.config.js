@@ -9,11 +9,12 @@ const glob = require('glob');
 const path = require('path');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const options = require('./<%= h.changeCase.lower(name) %>-options');
 
-const mapFilenamesToEntries = (pattern, globOptions) =>
+const mapJSFilenamesToEntries = (pattern, globOptions) =>
   glob.sync(pattern, globOptions).reduce((entries, filename) => {
-    const [, name] = filename.match(/([^/]+)\.css$/);
+    const [, name] = filename.match(/([^/]+)\.js$/);
     return {
       ...entries,
       [name]: filename,
@@ -21,13 +22,10 @@ const mapFilenamesToEntries = (pattern, globOptions) =>
   }, {});
 
 module.exports = {
-  context: options.theme.js,
   entry: {
-    app: './init.js',
-    ...mapFilenamesToEntries(options.cssFiles.components, {
-      ignore: options.cssFiles.ignore,
-    }),
     sprite: glob.sync(path.resolve(__dirname, 'images/svg/**/*.svg')),
+    styles: glob.sync(options.cssFiles.components, options.cssFiles.ignore),
+    ...mapJSFilenamesToEntries(options.jsFiles.components, {}),
   },
   output: {
     path: options.rootPath.dist,
@@ -89,20 +87,14 @@ module.exports = {
           },
         ],
       },
-      // Uncomment if you have theme-stored fonts.
-      // {
-      //   test: /\.(woff|woff2)$/,
-      //   loader: 'file-loader',
-      //   options: {
-      //     outputPath: 'fonts',
-      //     publicPath: '../fonts',
-      //   },
-      // },
     ],
   },
   plugins: [
     new SpriteLoaderPlugin({
       plainSprite: true,
+    }),
+    new MiniCssExtractPlugin({
+      filename: './dist/css/[name].css',
     }),
   ],
   optimization: {

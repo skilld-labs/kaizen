@@ -25,6 +25,10 @@ options.cssFiles = {
   ignore: `${options.theme.css}**/_*.css`,
 };
 
+options.jsFiles = {
+  components: `${options.theme.js}**/*.js`,
+};
+
 options.buildAssets = `${options.rootPath.project}scripts/assets/`;
 
 options.postCssConfigDirectory = `${options.rootPath.project}`;
