@@ -19,7 +19,7 @@ module.exports = [
   {
     type: 'input',
     name: 'description',
-    message: "What's your component desctiption?",
+    message: "What's your component description?",
     initial: "Component description placeholder"
   }
 ]

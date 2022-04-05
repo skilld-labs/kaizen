@@ -34,10 +34,15 @@ export const basic = (args = {}) => {
         attributes.setAttribute(attrName, attrValue);
       }
     }
+
+    delete args.attributes;
   }
   data.attributes = attributes;
   useEffect(() => {
     <%= h.inflection.camelize(name.replace(/ /g, '').replace(/-/g, '_'), true) %>();
   }, [args]);
-  return template(data)
+  return template({
+    ...data,
+    ...args,
+  })
 };
