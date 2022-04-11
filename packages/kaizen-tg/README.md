@@ -51,6 +51,11 @@ Run `yarn storybook` from theme dir to init storybook
 
 Run `yarn lint-fix` from theme dir
 
+## Other kaizen's packages, included into `kaizen-tg` package.
+1. [kaizen-cg](https://www.npmjs.com/package/@skilld/kaizen-cg)
+2. [kaizen-core](https://www.npmjs.com/package/@skilld/kaizen-core)
+3. [kaizen-breakpoints](https://www.npmjs.com/package/@skilld/kaizen-breakpoints)
+
 # License
 
 This project is licensed under the MIT open source license.

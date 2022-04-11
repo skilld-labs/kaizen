@@ -9,7 +9,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
   "author": "Skilld",
   "license": "MIT",
   "devDependencies": {
-    "@skilld/kaizen-cg": "^2.0.0-alpha.2",
+    "@skilld/kaizen-cg": "^2.0.0-alpha.3",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/builder-webpack5": "^6.4.19",
@@ -25,8 +25,8 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
   },
   "dependencies": {
     "@<%= h.changeCase.lower(name) %>/components": "^1.0.0",
-    "@skilld/kaizen-breakpoints": "^2.0.0-alpha.2",
-    "@skilld/kaizen-core": "^2.0.0-alpha.1",
+    "@skilld/kaizen-breakpoints": "^2.0.0-alpha.3",
+    "@skilld/kaizen-core": "^2.0.0-alpha.2",
     "autoprefixer": "^10.4.4",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
