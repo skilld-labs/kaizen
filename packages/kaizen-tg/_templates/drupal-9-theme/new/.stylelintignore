@@ -2,3 +2,5 @@
 to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/.stylelintignore
 ---
 /color/*.css
+dist/**/**/**/*.css
+*_external.css
