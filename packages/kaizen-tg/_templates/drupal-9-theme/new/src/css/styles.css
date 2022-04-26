@@ -5,5 +5,5 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/src/css/styles.css
 @import "@skilld/kaizen-core/_normalize";
 @import "@skilld/kaizen-core/_variables";
 @import "@<%= h.changeCase.lower(name) %>/components/_colors";
-@import "@<%= h.changeCase.lower(name) %>/components/_typography";
 @import "@<%= h.changeCase.lower(name) %>/components/_variables";
+@import "@<%= h.changeCase.lower(name) %>/components/_typography";

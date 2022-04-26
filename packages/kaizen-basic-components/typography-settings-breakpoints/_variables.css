@@ -1,0 +1,53 @@
+:root {
+  /* font-sizes */
+  --font-size--xxxxxl: 48px;
+  --font-size--xxxxl: 40px;
+  --font-size--xxxl: 36px;
+  --font-size--xxl: 30px;
+  --font-size--xl: 24px;
+  --font-size--m: 20px;
+  --font-size--l: 18px;
+  --font-size--base: 16px;
+  --font-size--s: 14px;
+  --font-size--xs: 12px;
+  --font-size--xxs: 10px;
+
+  /* outline settings */
+  --outline-color: blue;
+  --outline-size: 2px;
+  --outline-offset: var(--outline-size);
+
+  /* site sizes */
+  --site-max-width: 1920px;
+
+  /* Root font size changes acording to the breakpoints */
+  /* Mobile design width is 375px, so everything below should be scaled proportionally
+   * - font would be decreased
+  */
+  --root-font-size: 4.278vw;
+
+  /* stylelint-disable-next-line order/order */
+  @media all and (min-width: 376px) {
+    --root-font-size: 100%;
+  }
+  /* stylelint-disable-next-line order/order */
+  @db l {
+    --root-font-size: calc(16 * (1vw / 14.4));
+    /* from 1024-1440px-1920px.
+    on 1024 font size would be 11.3778px
+    0n 1440 font size would be 16px
+    on 1920 font size would be 21.3px
+    with this settings need to be careful with the image sizes.
+    */
+  }
+  /* stylelint-disable-next-line order/order */
+  @db xxl {
+    --site-max-width: 90.14rem;
+    --root-font-size: 21.3px;
+  }
+
+  /* stylelint-disable-next-line order/order */
+  @media print {
+    --root-font-size: 100%;
+  }
+}
