@@ -20,7 +20,9 @@ const fakeLinkProcessed = (el, link) => {
   el.setAttribute('data-href', link.getAttribute('href'));
   el.setAttribute(
     'aria-label',
-    link.hasAttribute('title') ? link.getAttribute('title') : link.textContent.replace(/\s+/g, ' ').trim(),
+    link.hasAttribute('title')
+      ? link.getAttribute('title')
+      : link.textContent.replace(/\s+/g, ' ').trim(),
   );
   el.setAttribute(
     'data-target',
@@ -39,23 +41,43 @@ const fakeLinkProcessed = (el, link) => {
   });
 };
 
-export default ({
-  wrapperData = '[data-h-entity-fake-link-container]',
-  targetData = '[data-h-entity-fake-link-target]',
-  processingName = 'h-entity-fake-link',
-  context = document,
-} = {}) => {
-  once(processingName, wrapperData, context).forEach((el) => {
-    // Multiple links inside of element you want to wrap is not expected
-    // with this script. So it searches only the first matched.
-    let link = el.querySelector(`a${targetData}[href]`);
-    if (!link) {
-      // Fallback search. If targetData is not defined, then let's try
-      // to catch just first matched link.
-      link = el.querySelector('a[href]');
-    }
-    if (link) {
-      fakeLinkProcessed(el, link);
-    }
-  });
-};
+(({ behaviors }) => {
+  behaviors.kaizen_core_h_entity_fake_link = {
+    attach: (context, settings) => {
+      const customConfig =
+        settings &&
+        settings.behaviors &&
+        settings.behaviors.kaizen_core_h_entity_fake_link &&
+        settings.behaviors.kaizen_core_h_entity_fake_link.entries
+          ? settings.behaviors.kaizen_core_h_entity_fake_link.entries
+          : '';
+      const config = {
+        entries: [
+          {
+            wrapperData: '[data-h-entity-fake-link-container]',
+            targetData: '[data-h-entity-fake-link-target]',
+          },
+          ...customConfig,
+        ],
+        processingName: 'h-entity-fake-link',
+      };
+      config.entries.forEach((entry) => {
+        once(config.processingName, entry.wrapperData, context).forEach(
+          (el) => {
+            // Multiple links inside of element you want to wrap is not expected
+            // with this script. So it searches only the first matched.
+            let link = el.querySelector(`a${entry.targetData}[href]`);
+            if (!link) {
+              // Fallback search. If targetData is not defined, then let's try
+              // to catch just first matched link.
+              link = el.querySelector('a[href]');
+            }
+            if (link) {
+              fakeLinkProcessed(el, link);
+            }
+          },
+        );
+      });
+    },
+  };
+})(Drupal);

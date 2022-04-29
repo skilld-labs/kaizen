@@ -18,10 +18,11 @@ This component helps you to easily simulate link to some wrapper, based on link 
 Example of usage:
 ```
 <div class="m-teaser" data-h-entity-fake-link-container>
+  <div class="m-teaser__content">... Some content ... </div>
   <a class="m-teaser__link" href="#" data-h-entity-fake-link-target>Lorem ipsum</a>
 </div>
 ```
-Note that you can even skip this attribute `data-h-entity-fake-link-target` if your clickable-container contains only one link inside. The script has a fallback in that case and it will take first link in the tree if target data attribute wasn't added for the link.
+Note that you can even skip this attribute `data-h-entity-fake-link-target` for your link if your clickable-container contains only one link inside. The script has a fallback in that case and it will take first link in the tree if target data attribute wasn't added for the link.
 
 In storybook you have to call this script for your story like this:
 ```

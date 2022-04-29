@@ -1,6 +1,6 @@
 /**
  * @file
- * This is Javascript slider functionality.
+ * This is Javascript focus-visible functionality.
  */
 
 import 'focus-visible';

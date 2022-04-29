@@ -10,26 +10,39 @@ const path = require('path');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const options = require('./<%= h.changeCase.lower(name) %>-options');
 
 const mapJSFilenamesToEntries = (pattern, globOptions) =>
   glob.sync(pattern, globOptions).reduce((entries, filename) => {
     const [, name] = filename.match(/([^/]+)\.js$/);
+    const entryName = filename.includes(options.rootPath.storybook)
+      ? `storybook-js/components/${name}/${name}`
+      : `drupal-js/${name}`;
     return {
       ...entries,
-      [name]: filename,
+      [entryName]: filename,
     };
   }, {});
 
 module.exports = {
   entry: {
-    sprite: glob.sync(path.resolve(__dirname, 'images/svg/**/*.svg')),
-    styles: glob.sync(options.cssFiles.components, options.cssFiles.ignore),
-    ...mapJSFilenamesToEntries(options.jsFiles.components, {}),
+    'entries/sprite': glob.sync(path.resolve(__dirname, 'images/svg/**/*.svg')),
+    'entries/drupalStyles': glob.sync(
+      options.cssFiles.drupalComponents,
+      options.cssFiles.drupalIgnore,
+    ),
+    'entries/storybookStyles': glob.sync(options.cssFiles.storybookComponents, {
+      ignore: options.cssFiles.storybookIgnore,
+    }),
+    ...mapJSFilenamesToEntries(options.jsFiles.drupalComponents, {}),
+    ...mapJSFilenamesToEntries(options.jsFiles.storybookComponents, {
+      ignore: options.jsFiles.storybookIgnore,
+    }),
   },
   output: {
     path: options.rootPath.dist,
-    filename: 'js/[name].js',
+    filename: '[name].js',
   },
   mode: 'production',
   module: {
@@ -48,7 +61,11 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'css/[name].css',
+              name(resourcePath) {
+                return resourcePath.includes(options.rootPath.storybook)
+                  ? 'storybook-css/components/[name]/[name].css'
+                  : 'drupal-css/[name].css';
+              },
               sourceMap: process.env.NODE_ENV === 'development',
             },
           },
@@ -93,8 +110,8 @@ module.exports = {
     new SpriteLoaderPlugin({
       plainSprite: true,
     }),
-    new MiniCssExtractPlugin({
-      filename: './dist/css/[name].css',
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['entries/'],
     }),
   ],
   optimization: {

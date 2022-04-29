@@ -10,26 +10,30 @@ let options = {};
 
 options.rootPath = {
   project: `${__dirname}/`,
+  storybook: `${__dirname}/packages/components/`,
   src: `${__dirname}/src/`,
   dist: `${__dirname}/dist/`,
 };
 
 options.theme = {
   name: '<%= h.changeCase.lower(name) %>',
-  css: `${options.rootPath.src}css/`,
-  js: `${options.rootPath.src}js/`,
+  storybook: `${options.rootPath.storybook}**/**/`,
+  drupalCss: `${options.rootPath.src}css/`,
+  drupalJs: `${options.rootPath.src}js/`,
 };
 
 options.cssFiles = {
-  components: `${options.theme.css}**/*.css`,
-  ignore: `${options.theme.css}**/_*.css`,
+  storybookComponents: `${options.theme.storybook}*.css`,
+  storybookIgnore: `${options.theme.storybook}_*.css`,
+  drupalComponents: `${options.theme.drupalCss}**/*.css`,
+  drupalIgnore: `${options.theme.drupalCss}**/_*.css`,
 };
 
 options.jsFiles = {
-  components: `${options.theme.js}**/*.js`,
+  storybookComponents: `${options.theme.storybook}*.js`,
+  storybookIgnore: `${options.theme.storybook}*.stories.js`,
+  drupalComponents: `${options.theme.drupalJs}**/*.js`,
 };
-
-options.buildAssets = `${options.rootPath.project}scripts/assets/`;
 
 options.postCssConfigDirectory = `${options.rootPath.project}`;
 

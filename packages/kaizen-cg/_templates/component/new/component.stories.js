@@ -2,7 +2,7 @@
 to: <%= h.src() %>/packages/components/<%= h.changeCase.lower(h.inflection.pluralize(component_type)) %>/<%= h.changeCase.lower(h.inflection.dasherize(name)) %>/<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.stories.js
 ---
 import './<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.css';
-import <%= h.inflection.camelize(name.replace(/ /g, '').replace(/-/g, '_'), true) %> from './<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.js';
+import './<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.js';
 import drupalAttribute from 'drupal-attribute';
 import { useEffect } from '@storybook/client-api';
 
@@ -19,9 +19,11 @@ export default {
   // uncomment next line if you want to define it.
   // argTypes: {},
 };
-
-data.svgSpritePath = window.svgSpritePath;
-
+<% if (typeof themeName != 'undefined') { %>
+data.<%= h.changeCase.snakeCase(themeName) %>SvgSpritePath = window.<%= h.changeCase.snakeCase(themeName) %>SvgSpritePath;
+<% } else { %>
+data.<%= h.changeCase.snakeCase(h.themeName) %>SvgSpritePath = window.<%= h.changeCase.snakeCase(h.themeName) %>SvgSpritePath;
+<% } %>
 export const basic = (args = {}) => {
   const attributes = new drupalAttribute();
   attributes.addClass(['<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>']);
@@ -39,7 +41,8 @@ export const basic = (args = {}) => {
   }
   data.attributes = attributes;
   useEffect(() => {
-    <%= h.inflection.camelize(name.replace(/ /g, '').replace(/-/g, '_'), true) %>();
+    // Uncomment next line if you need javascript in your component.
+    <% if (typeof themeName != 'undefined') { %>// Drupal.behaviors.<%= h.changeCase.snakeCase(themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.attach();<% } else { %>// Drupal.behaviors.<%= h.changeCase.snakeCase(h.themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.attach();<% } %>
   }, [args]);
   return template({
     ...data,

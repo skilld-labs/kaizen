@@ -18,7 +18,7 @@ function _<%= h.changeCase.lower(name) %>_get_svg_sprite_path() {
 /**
  * Hook_page_attachments().
  *
- * Prepares <%= h.changeCase.lower(name) %>_svg_sprite_path variable to get
+ * Prepares <%= h.changeCase.lower(name) %>SvgSpritePath variable to get
  * full path to svg sprite from js.
  */
 function <%= h.changeCase.lower(name) %>_page_attachments_alter(array &$attachments) {
@@ -39,9 +39,9 @@ function <%= h.changeCase.lower(name) %>_page_attachments_alter(array &$attachme
 /**
  * Hook_preprocess().
  *
- * Prepares <%= h.changeCase.lower(name) %>_svg_sprite_path variable to get
+ * Prepares <%= h.changeCase.lower(name) %>SvgSpritePath variable to get
  * full path to svg sprite from twig.
  */
 function <%= h.changeCase.lower(name) %>_preprocess(&$variables, $hook) {
-  $variables['<%= h.changeCase.lower(name) %>_svg_sprite_path'] = _<%= h.changeCase.lower(name) %>_get_svg_sprite_path();
+  $variables['<%= h.changeCase.lower(name) %>SvgSpritePath'] = _<%= h.changeCase.lower(name) %>_get_svg_sprite_path();
 }

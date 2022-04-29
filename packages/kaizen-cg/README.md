@@ -17,6 +17,9 @@ Once [kaizen-tg](https://www.npmjs.com/package/@skilld/kaizen-tg) is installed, 
 1. `cd [themename_dir]`
 2. `yarn cc` and follow instructions
 
+## Should know
+1. Every component's js uses Drupal.behaviors structure and it works in storybook same way as in Drupal.
+
 ## Recommendations
 
 1. Please follow BEM methodology when you are creating component. More about BEM's namings [here](http://getbem.com/naming/)

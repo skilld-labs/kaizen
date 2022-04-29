@@ -14,12 +14,20 @@ const hRootVariablesHandler = () => {
   );
 };
 
-const body = once('h-root-variables', document.documentElement).shift();
-if (body) {
-  hRootVariablesHandler();
-  ['load', 'resize'].forEach(event => {
-    window.addEventListener(event, () => {
-      hRootVariablesHandler();
-    });
-  })
-}
+(({ behaviors }) => {
+  behaviors.kaizen_core_h_root_variables = {
+    attach: (context) => {
+      const body = once(
+        'h-root-variables',
+        document.documentElement,
+        context,
+      ).unshift();
+      if (body) {
+        hRootVariablesHandler();
+        ['load', 'resize'].forEach((event) =>
+          window.addEventListener(event, () => hRootVariablesHandler()),
+        );
+      }
+    },
+  };
+})(Drupal);
