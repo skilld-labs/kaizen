@@ -2,6 +2,12 @@
 const hygen = require("hygen");
 const path = require("path");
 
+let themeName = 'kaizenComponent';
+const themeIndex = process.argv.indexOf('--theme_name');
+if (themeIndex > -1) {
+  themeName = process.argv[themeIndex + 1];
+}
+
 const config = {
   templates: `${__dirname}/_templates`,
   cwd: __dirname,
@@ -14,6 +20,7 @@ const config = {
   helpers: {
     relative: (from, to) => path.relative(from, to),
     src: () => process.cwd(),
+    themeName,
   },
 };
 
