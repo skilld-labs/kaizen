@@ -10,9 +10,10 @@ export default ({
   className = '<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>',
   processingName = className,
   context = document,
+  themeName = '<%= h.themeName %>',
 } = {}) => {
   once(processingName, `.${className}`, context).forEach((el) => {
     // eslint-disable-next-line no-console
-    console.log(el);
+    console.log(themeName, el);
   });
 };
