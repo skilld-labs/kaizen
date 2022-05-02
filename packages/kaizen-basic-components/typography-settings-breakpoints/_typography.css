@@ -1,0 +1,33 @@
+/* Uncommnent import of font example */
+/*
+@font-face {
+  font-family: "ExampleFont";
+  src:
+    local(""),
+    url("../../fonts/ExampleFont.woff2") format("woff2"),
+    url("../../fonts/ExampleFont.woff") format("woff");
+
+  font-weight: 400;
+  font-style: normal;
+}
+*/
+
+html {
+  font-size: var(--root-font-size);
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: Ubuntu, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: var(--font-size--base);
+
+  @db l {
+    --color-text: #000;
+  }
+}
+
+:focus {
+  outline: var(--outline-size) solid var(--outline-color);
+  outline-offset: var(--outline-offset);
+}
