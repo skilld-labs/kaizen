@@ -1,0 +1,65 @@
+{
+  "content": {
+    "id": 1,
+    "placeholder": "Placeholder text"
+  },
+  "options": [
+    {
+      "type": "option",
+      "value": "option text 1",
+      "label": "option label 1"
+    },
+    {
+      "type": "option",
+      "value": "option text 2",
+      "label": "option label 2"
+    },
+    {
+      "type": "option",
+      "value": "option text 3",
+      "label": "option label 3"
+    },
+    {
+      "type": "option",
+      "value": "option text 4",
+      "label": "option label 4"
+    },
+    {
+      "type": "option",
+      "value": "option text 5",
+      "label": "option label 5"
+    },
+    {
+      "type": "option",
+      "value": "option text 6",
+      "label": "option label 6"
+    },
+    {
+      "type": "option",
+      "value": "option text 7",
+      "label": "option label 7"
+    },
+    {
+      "type": "option",
+      "value": "option text 8",
+      "label": "option label 8"
+    }
+  ],
+  "optionsLanguage": [
+    {
+      "type": "option",
+      "value": "English",
+      "label": "English"
+    },
+    {
+      "type": "option",
+      "value": "Français",
+      "label": "Français"
+    },
+    {
+      "type": "option",
+      "value": "体中文",
+      "label": "体中文"
+    }
+  ]
+}

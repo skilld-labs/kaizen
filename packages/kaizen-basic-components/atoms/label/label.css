@@ -1,0 +1,13 @@
+@import "_a-label";
+
+.a-label {
+  @extend %a-label;
+
+  &--secondary {
+    @extend %a-label--secondary;
+  }
+
+  &.form-required::after {
+    @extend %a-label--required;
+  }
+}

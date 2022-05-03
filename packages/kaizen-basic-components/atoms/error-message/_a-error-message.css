@@ -1,0 +1,36 @@
+%a-error-message {
+  display: block;
+  letter-spacing: initial;
+  text-transform: none;
+  color: var(--color-secondary-4);
+  font-size: var(--font-size--xxs);
+  font-weight: var(--font-weight--medium);
+  line-height: var(--line-height--base);
+
+  &__ul {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  &--top {
+    padding-top: 0;
+    padding-bottom: 0.5rem;
+  }
+
+  &--bottom {
+    padding-top: 0.5rem;
+    padding-bottom: 0;
+  }
+
+  &__link {
+    color: var(--color-secondary-4);
+
+    &--hover {
+      color: var(--color-text);
+
+      &--light {
+        color: var(--color-grey-utility-color);
+      }
+    }
+  }
+}
