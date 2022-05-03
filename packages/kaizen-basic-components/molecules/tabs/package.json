@@ -1,0 +1,9 @@
+{
+  "name": "@themetest/components",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "tabbyjs": "^12.0.3"
+  }
+}
