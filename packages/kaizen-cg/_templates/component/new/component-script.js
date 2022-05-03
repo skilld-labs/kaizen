@@ -30,7 +30,7 @@ to: <%= h.src() %>/packages/components/<%= h.changeCase.lower(h.inflection.plura
       };
 
       config.entries.forEach((entry) => {
-        once(config.processingName, entry.className, context).forEach((el) => {
+        once(config.processingName, `.${entry.className}`, context).forEach((el) => {
           // eslint-disable-next-line no-console
           console.log(el);
         });
