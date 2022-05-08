@@ -1,20 +1,21 @@
 {
-  "name": "@skilld/kaizen-tg",
-  "version": "2.0.0-alpha.6",
-  "description": "Kaizen drupal theme generator",
+  "name": "@skilld/kaizen-scg",
+  "version": "2.0.0-alpha.1",
+  "description": "Kaizen smart component generator",
   "bin": "index.js",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/skilld-labs/kaizen",
-    "directory": "packages/kaizen-tg"
+    "url": "https://github.com/skilld-labs/kaizen.git",
+    "directory": "packages/kaizen-scg"
   },
   "author": "Skilld",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/skilld-labs/kaizen/issues"
   },
   "homepage": "https://github.com/skilld-labs/kaizen#readme",
   "dependencies": {
-    "hygen": "^6.2.0"
+    "hygen": "^6.0.4"
   }
 }

@@ -35,7 +35,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.yml$/,
+        test: /\.breakpoints.yml$/,
         use: [
           {
             loader: '@skilld/kaizen-breakpoints/loader',

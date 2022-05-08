@@ -10,6 +10,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
   "license": "MIT",
   "devDependencies": {
     "@skilld/kaizen-cg": "^2.0.0-alpha.3",
+    "@skilld/kaizen-scg": "^2.0.0-alpha.1",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/builder-webpack5": "^6.4.19",
@@ -57,7 +58,8 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
     "svg-sprite-loader": "^6.0.11",
     "terser-webpack-plugin": "^5.3.1",
     "webpack": "^5.70.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "yaml-loader": "^0.8.0"
   },
   "scripts": {
     "build": "cross-env ./node_modules/.bin/webpack",
@@ -70,6 +72,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
     "watch": "cross-env ./node_modules/.bin/webpack -w",
     "watch:bs": "cross-env NODE_ENV=development ./node_modules/.bin/run-p browsersync watch",
     "cc": "npx @skilld/kaizen-cg",
+    "csc": "npx @skilld/kaizen-scg",
     "storybook": "start-storybook",
     "build-storybook": "build-storybook -c .storybook -o dist/storybook"
   },
