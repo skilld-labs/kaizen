@@ -44,8 +44,5 @@ export const basic = (args = {}) => {
     // Uncomment next line if you need javascript in your component.
     <% if (typeof themeName != 'undefined') { %>// Drupal.behaviors.<%= h.changeCase.snakeCase(themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.attach();<% } else { %>// Drupal.behaviors.<%= h.changeCase.snakeCase(h.themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.attach();<% } %>
   }, [args]);
-  return template({
-    ...data,
-    ...args,
-  })
+  return template(data)
 };

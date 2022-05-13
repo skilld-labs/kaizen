@@ -31,10 +31,13 @@ to: <%= h.src() %>/packages/components/<%= h.changeCase.lower(h.inflection.plura
 
       config.entries.forEach((entry) => {
         once(config.processingName, `.${entry.className}`, context).forEach((el) => {
-          // eslint-disable-next-line no-console
-          console.log(el);
+          <% if (typeof themeName != 'undefined') { %>behaviors.<%= h.changeCase.snakeCase(themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.handler(el, entry);<% } else { %>behaviors.<%= h.changeCase.snakeCase(h.themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.handler(el, entry);<% } %>
         });
       })
+    },
+    handler: (el, entry) => {
+      // eslint-disable-next-line no-console
+      console.log(el, entry);
     },
   };
 })(Drupal);

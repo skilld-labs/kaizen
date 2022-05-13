@@ -21,6 +21,12 @@ twigDrupalFilters(Twig);
 window.Drupal = { behaviors: {} };
 
 ((Drupal, drupalSettings) => {
+  // Simplified Drupal.t() function just to be able to use such constructions
+  // directly from component's js behaviors.
+  Drupal.t = function (str) {
+    return str;
+  };
+
   Drupal.throwError = function (error) {
     setTimeout(function () {
       throw error;
