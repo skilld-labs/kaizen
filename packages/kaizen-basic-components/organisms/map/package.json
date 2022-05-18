@@ -1,0 +1,12 @@
+{
+  "name": "@themetest/components",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@tomik23/autocomplete": "tomik23/autocomplete",
+    "casual-browserify": "^1.5.19-2",
+    "leaflet": "^1.8.0",
+    "leaflet.markercluster": "^1.5.3"
+  }
+}

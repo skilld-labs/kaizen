@@ -1,0 +1,34 @@
+{# For group icons into clusters automaticatlly add next line class "o-map-grouped" #}
+{# For focus the map into user's location add class "focus-user-location" #}
+<div class="o-map focus-user-location {{ modifier_class }}" data-search-distance-limit-km="100">
+    <div class="o-map__filters-wrapper">
+    <div class="o-map__search-form">
+      <div class="auto-search-wrapper">
+          <input class="a-inputtext o-map__search-input" id="o-map-search-input-id" type="text" autocomplete="off" placeholder="Enter an Address, City, State, Province, Country, or Postal Code">
+      </div>
+    </div>
+    <form class="o-map__filter-container" action="#">
+      {% for filter in filters %}
+        <div class="a-checkbox__input-wrapper o-map__filter-input-wrapper" style="color: {{ filter.color }};">
+          <input class="a-checkbox__input o-map__filter-input" type="checkbox" value="{{ filter.id }}" name="{{ filter.id }}" id="{{ filter.id }}">
+          <label class="a-checkbox__label o-map__filter-input-label" for="{{ filter.id }}">
+            {% if filter.icon %}
+              <div class="a-checkbox__icon-wrapper">
+                <img class="o-map__filter-icon"
+                     src="{{ filter.icon }}">
+              </div>
+            {% else %}
+              <div class="a-checkbox__icon-wrapper">
+                <svg class="o-map__filter-icon">
+                  <use xlink:href="{{ svgSpritePath }}#svg-map-point"></use>
+                </svg>
+              </div>
+            {% endif %}
+            <span>{{ filter.label }}</span>
+          </label>
+        </div>
+      {% endfor %}
+    </form>
+  </div>
+  <div class="o-map__map"></div>
+</div>
