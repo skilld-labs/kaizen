@@ -7,33 +7,24 @@ to: <%= h.src() %>/packages/components/<%= h.changeCase.lower(h.inflection.plura
  */
 (({ behaviors }) => {
   <% if (typeof themeName != 'undefined') { %>behaviors.<%= h.changeCase.snakeCase(themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %> = {<% } else { %>behaviors.<%= h.changeCase.snakeCase(h.themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %> = {<% } %>
-    attach: (context, settings) => {
-      const customConfig =
-        settings &&
-        settings.behaviors &&
-        <% if (typeof themeName != 'undefined') { %>settings.behaviors.<%= h.changeCase.snakeCase(themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %> &&
-        settings.behaviors.<%= h.changeCase.snakeCase(themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.entries
-          ? settings.behaviors.<%= h.changeCase.snakeCase(themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.entries
-          : '';
-        <% } else { %>settings.behaviors.<%= h.changeCase.snakeCase(h.themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %> &&
-        settings.behaviors.<%= h.changeCase.snakeCase(h.themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.entries
-          ? settings.behaviors.<%= h.changeCase.snakeCase(h.themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.entries
-          : '';<% } %>
-      const config = {
-        entries: [
-          {
-            className: '<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>',
-          },
-          ...customConfig,
-        ],
-        processingName: '<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>',
-      };
-
-      config.entries.forEach((entry) => {
-        once(config.processingName, `.${entry.className}`, context).forEach((el) => {
-          <% if (typeof themeName != 'undefined') { %>behaviors.<%= h.changeCase.snakeCase(themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.handler(el, entry);<% } else { %>behaviors.<%= h.changeCase.snakeCase(h.themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.handler(el, entry);<% } %>
+    entries: () => {
+      return [
+        {
+          className: '<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>',
+          processingName: 'storybook-<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>',
+        },
+      ];
+    },
+    attach: (context) => {
+      <% if (typeof themeName != 'undefined') { %>Drupal.behaviors.<%= h.changeCase.snakeCase(themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.entries().forEach((entry) => {<% } else { %>behaviors.<%= h.changeCase.snakeCase(h.themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.entries().forEach((entry) => {<% } %>
+        once(
+          entry.processingName,
+          `.${entry.className}`,
+          context,
+        ).forEach((el) => {
+          <% if (typeof themeName != 'undefined') { %>Drupal.behaviors.<%= h.changeCase.snakeCase(themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.handler(el, entry);<% } else { %>Drupal.behaviors.<%= h.changeCase.snakeCase(h.themeName) %>_storybook_<%= h.changeCase.lower(component_type).charAt(0) %>_<%= h.changeCase.snakeCase(h.inflection.dasherize(name)) %>.handler(el, entry);<% } %>
         });
-      })
+      });
     },
     handler: (el, entry) => {
       // eslint-disable-next-line no-console

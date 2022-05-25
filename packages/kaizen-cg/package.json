@@ -1,6 +1,6 @@
 {
   "name": "@skilld/kaizen-cg",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.6",
   "description": "Kaizen component generator",
   "bin": "index.js",
   "main": "index.js",

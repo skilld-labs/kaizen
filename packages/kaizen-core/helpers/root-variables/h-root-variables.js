@@ -24,7 +24,7 @@ const hRootVariablesHandler = () => {
       ).unshift();
       if (body) {
         hRootVariablesHandler();
-        ['load', 'resize'].forEach((event) =>
+        ['DOMContentLoaded', 'load', 'resize'].forEach((event) =>
           window.addEventListener(event, () => hRootVariablesHandler()),
         );
       }
