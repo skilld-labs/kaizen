@@ -1,0 +1,56 @@
+---
+to: <%= h.src() %>/packages/components/<%= h.changeCase.lower(h.inflection.pluralize(component_type)) %>/<%= h.changeCase.lower(h.inflection.dasherize(name)) %>/<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.kaizen_component.yml
+---
+title: 'Kaizen <%= h.inflection.capitalize(component_type) %> <%= h.inflection.capitalize(name) %>'
+library:
+  css:
+    base:
+      COMPONENT/<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.css: {}
+  js:
+    # https://unpkg.com/cowsay@1.5.0/build/cowsay.umd.js: { type: external, minified: true }
+    COMPONENT/<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>.js: {}
+  dependencies:
+    - core/drupal
+variables:
+  attributes:
+    class: '<%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>'
+  modifiers:
+    - <%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>--one
+    - <%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>--two
+  # region_attributes:
+  #   content:
+  #     attributes:
+  #       class:
+  #         - <%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>__content
+  #     modifiers:
+  #       - <%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>__content--one
+  #       - <%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>__content--two
+  template_settings:
+    tag:
+      label: 'Custom Tag'
+      description: 'Select html Tag'
+      modifiers:
+        - h1
+        - h2
+        - h3
+# plugins:
+#   formatter:
+#     template: <%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>
+#     field_types:
+#       - string
+#       - string_long
+#       - text
+#       - text_long
+#       - text_with_summary
+#   layout:
+#     template: <%= h.changeCase.lower(component_type).charAt(0) %>-<%= h.changeCase.lower(h.inflection.dasherize(name)) %>
+#     category: 'Kaizen Components'
+#     default_region: content
+#     icon_map:
+#       - [content]
+#     regions:
+#       content:
+#         label: Content
+default_content:
+  content:
+    content: 'Lorem Ipsum'

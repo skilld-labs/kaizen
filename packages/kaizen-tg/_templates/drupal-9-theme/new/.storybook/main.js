@@ -25,10 +25,18 @@ module.exports = {
     // Make whatever fine-grained changes you need
     config.module.rules.push(
       {
-        test: /\.yml$/,
+        test: /\.breakpoints.yml$/,
         use: [
           {
             loader: '@skilld/kaizen-breakpoints/loader',
+          },
+        ],
+      },
+      {
+        test: /\.kaizen_component.yml$/,
+        use: [
+          {
+            loader: 'yaml-loader',
           },
         ],
       },
