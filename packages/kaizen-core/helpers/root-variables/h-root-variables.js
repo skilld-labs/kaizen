@@ -6,7 +6,7 @@
 const hRootVariablesHandler = () => {
   document.documentElement.style.setProperty(
     '--viewport-width',
-    `${window.innerWidth}px`,
+    `${document.documentElement.clientWidth}px`,
   );
   document.documentElement.style.setProperty(
     '--viewport-height',
