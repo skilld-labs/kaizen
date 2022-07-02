@@ -26,7 +26,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
   "dependencies": {
     "@<%= h.changeCase.lower(name) %>/components": "^1.0.0",
     "@skilld/kaizen-breakpoints": "^2.0.0-alpha.3",
-    "@skilld/kaizen-core": "^2.0.0-alpha.2",
+    "@skilld/kaizen-core": "^2.0.0-alpha.3",
     "autoprefixer": "^10.4.4",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
