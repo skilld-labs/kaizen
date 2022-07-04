@@ -1,0 +1,15 @@
+%a-label {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: var(--font-size--xs);
+  font-weight: var(--font-weight--medium);
+  line-height: var(--line-height--xxs);
+
+  &--required {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 0.3em;
+    content: "*";
+  }
+}

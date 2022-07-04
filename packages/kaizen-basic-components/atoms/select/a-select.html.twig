@@ -1,0 +1,27 @@
+{% spaceless %}
+  <div {{ wrapper_attributes.addClass(wrapper_modifier_class)}}>
+    {% if content.label %}
+      <label {{ label_attributes }}>{{ content.label }}</label>
+    {% endif %}
+
+    <div class="a-select__content">
+      <select {{ select_attributes.addClass('a-select') }}>
+          {% for option in options %}
+              {% if option.type == 'optgroup' %}
+                  <optgroup label="{{ option.label }}">
+                      {% for sub_option in option.options %}
+                          <option value="{{ sub_option.value }}"{{ sub_option.selected ? ' selected="selected"' }}>{{ sub_option.label }}</option>
+                      {% endfor %}
+                  </optgroup>
+              {% elseif option.type == 'option' %}
+                  <option value="{{ option.value }}"{{ option.selected ? ' selected="selected"' }}>{{ option.label }}</option>
+              {% endif %}
+          {% endfor %}
+      </select>
+
+      {% if error %}
+          {{ content.error_message }}
+      {% endif %}
+    </div>
+  </div>
+{% endspaceless %}
