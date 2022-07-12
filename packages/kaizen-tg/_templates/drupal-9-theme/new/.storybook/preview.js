@@ -14,4 +14,6 @@ window.svgSpritePath = svgSpritePath;
 // Extend Twig.js with drupal filters.
 import Twig from 'twig';
 import twigDrupalFilters from 'twig-drupal-filters';
+import once from '@drupal/once';
+window.once = once;
 twigDrupalFilters(Twig);

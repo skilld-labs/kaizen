@@ -5,5 +5,8 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/packages/components/package.j
   "name": "@<%= h.changeCase.lower(name) %>/components",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@drupal/once": "^1.0.1"
+  }
 }
