@@ -7,9 +7,9 @@
     _/    _/     _/_/_/      _/     _/_/_/_/       _/_/_/     _/    _/
 
 
-## What is this?
+## What is it?
 
-- This package contains some script which parses breakpoints from Drupal's themename/themename.breakpoints.yml and adds them into css and javascript.
+- The goal of this package is to re-use `themename.breakpoints.yml` for providing same breakpoints into css and js
 
 ## Usage
 

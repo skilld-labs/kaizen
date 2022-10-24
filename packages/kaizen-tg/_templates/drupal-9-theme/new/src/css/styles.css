@@ -7,4 +7,5 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/src/css/styles.css
 @import "@<%= h.changeCase.lower(name) %>/components/_colors";
 @import "@<%= h.changeCase.lower(name) %>/components/_typography";
 @import "@<%= h.changeCase.lower(name) %>/components/_variables";
-@import "@skilld/kaizen-core/helpers/focus-visible/focus-visible";
+@import "@<%= h.changeCase.lower(name) %>/components/_root";
+@import "@skilld/kaizen-core/helpers/focus-visible/h-focus-visible";

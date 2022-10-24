@@ -1,5 +1,5 @@
 ---
-to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/packages/components/_variables.css
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/components/_variables.css
 ---
 :root {
   --root-font-size: 2vw;

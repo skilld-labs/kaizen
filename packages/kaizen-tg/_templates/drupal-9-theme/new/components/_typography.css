@@ -1,0 +1,4 @@
+---
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/components/_typography.css
+---
+/* ---------- Connect your fonts here ----------- */

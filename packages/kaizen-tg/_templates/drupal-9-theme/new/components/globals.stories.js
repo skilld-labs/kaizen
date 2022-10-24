@@ -1,10 +1,10 @@
 ---
-to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/packages/components/globals.stories.js
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/components/globals.stories.js
 ---
 import { useEffect, useState } from '@storybook/client-api';
 
 const component = {
-  title: 'globals/variables',
+  title: 'globals/Variables',
 };
 
 export default component;

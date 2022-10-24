@@ -12,7 +12,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) 
  * Returns path to svg sprite.
  */
 function _<%= h.changeCase.lower(name) %>_get_svg_sprite_path() {
-  return base_path() . \Drupal::theme()->getActiveTheme()->getPath() . '/dist/svg/sprite.svg';
+  return base_path() . \Drupal::theme()->getActiveTheme()->getPath() . '/dist/assets/sprite.svg';
 }
 
 /**

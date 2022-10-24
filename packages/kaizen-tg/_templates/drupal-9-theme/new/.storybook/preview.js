@@ -8,7 +8,7 @@ import config from '../<%= h.changeCase.lower(name) %>.breakpoints.yml';
 window.themeBreakpoints = config;
 
 // Import sprite.
-import svgSpritePath from '../dist/svg/sprite.svg';
+import svgSpritePath from '../dist/assets/sprite.svg';
 window.<%= h.changeCase.lower(name) %>SvgSpritePath = svgSpritePath;
 
 // Extend Twig.js with drupal filters.

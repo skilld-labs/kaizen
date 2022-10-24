@@ -1,5 +1,5 @@
 ---
-to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/packages/components/package.json
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/components/package.json
 ---
 {
   "name": "@<%= h.changeCase.lower(name) %>/components",

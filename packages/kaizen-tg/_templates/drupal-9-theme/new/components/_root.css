@@ -1,5 +1,5 @@
 ---
-to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/packages/components/_typography.css
+to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/components/_root.css
 ---
 html {
   font-size: var(--root-font-size);

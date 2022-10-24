@@ -29,6 +29,7 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
     "@skilld/kaizen-breakpoints": "^2.0.0-alpha.3",
     "@skilld/kaizen-core": "^2.0.0-alpha.3",
     "autoprefixer": "^10.4.4",
+    "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "eslint": "^8.9.0",
@@ -55,12 +56,12 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
     "stylelint-config-standard": "^25.0.0",
     "stylelint-order": "^5.0.0",
     "svg-sprite-loader": "^6.0.11",
-    "terser-webpack-plugin": "^5.3.1",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2"
   },
   "scripts": {
     "build": "cross-env ./node_modules/.bin/webpack",
+    "build-dev": "cross-env NODE_ENV=development ./node_modules/.bin/webpack",
     "lint": "cross-env ./node_modules/.bin/run-p lint:*",
     "lint-fix": "cross-env ./node_modules/.bin/run-p \"lint:* --fix\"",
     "lint:js": "node ./node_modules/eslint/bin/eslint.js .",
@@ -75,6 +76,6 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
   },
   "private": true,
   "workspaces": [
-    "packages/*"
+    "components"
   ]
 }

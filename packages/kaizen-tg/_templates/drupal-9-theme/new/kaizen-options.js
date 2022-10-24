@@ -10,7 +10,7 @@ let options = {};
 
 options.rootPath = {
   project: `${__dirname}/`,
-  storybook: `${__dirname}/packages/components/`,
+  storybook: `${__dirname}/components/`,
   src: `${__dirname}/src/`,
   dist: `${__dirname}/dist/`,
 };

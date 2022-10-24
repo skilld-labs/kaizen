@@ -7,7 +7,7 @@
     _/    _/     _/_/_/      _/     _/_/_/_/       _/_/_/     _/    _/
 
 
-## What is this?
+## What is it?
 
 - This is a component generator for [kaizen-tg](https://www.npmjs.com/package/@skilld/kaizen-tg)
 
@@ -16,6 +16,13 @@
 Once [kaizen-tg](https://www.npmjs.com/package/@skilld/kaizen-tg) is installed, use:
 1. `cd [themename_dir]`
 2. `yarn cc` and follow instructions
+
+## Structure
+1. `*.js` to store javascript code related to the component
+2. `*.json` to store modifiers of the component, such as default content for example
+3. `*.css` to store css code related to the component
+4. `*.html.twig` for templating
+5. `*.stories.js` for storybook initiation
 
 ## Should know
 1. Every component's js uses Drupal.behaviors structure and it works in storybook same way as in Drupal.
