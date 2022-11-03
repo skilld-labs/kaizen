@@ -15,7 +15,7 @@ to: <%= h.src() %>/components/<%= h.changeCase.lower(h.inflection.pluralize(comp
     },
     customEntry: () => {
       // If you need a custom entry (in case if for example in drupal
-      // you have other classnames than in components - you can create
+      // you have other classnames than in components) - you can create
       // a new .js file in src/js folder, and put into it the following
       // construction:
       //     (({ behaviors }) => {
