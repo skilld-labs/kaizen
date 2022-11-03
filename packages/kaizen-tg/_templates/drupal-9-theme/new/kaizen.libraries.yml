@@ -6,9 +6,9 @@ base:
     theme:
       color/colors.css: {}
     base:
-      dist/css/styles.css: {}
+      dist/css/drupal/styles.css: {}
   js:
-    dist/js/init.js: {}
+    dist/js/drupal/init.js: {}
   dependencies:
     - core/drupal
     - core/once
@@ -21,3 +21,11 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
+
+# Uncomment next library if you need entity-fake-link functionality
+#h-entity-fake-link:
+#  css:
+#    component:
+#      dist/css/drupal/h-entity-fake-link.css: {}
+#  js:
+#    dist/js/drupal/h-entity-fake-link.js: {}

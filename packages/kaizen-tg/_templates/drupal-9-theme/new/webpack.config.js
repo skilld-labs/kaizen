@@ -8,30 +8,49 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/webpack.config.js
 const glob = require('glob');
 const path = require('path');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const options = require('./<%= h.changeCase.lower(name) %>-options');
 
 const mapJSFilenamesToEntries = (pattern, globOptions) =>
   glob.sync(pattern, globOptions).reduce((entries, filename) => {
     const [, name] = filename.match(/([^/]+)\.js$/);
+    const entryName = filename.includes(options.rootPath.storybook)
+      ? `js/storybook/${name}/${name}`
+      : `js/drupal/${name}`;
     return {
       ...entries,
-      [name]: filename,
+      [entryName]: filename,
     };
   }, {});
 
+const entries = {
+  'entries/sprite': glob.sync(path.resolve(__dirname, 'assets/images/svg/**/*.svg')),
+  'entries/drupalStyles': glob.sync(
+    options.cssFiles.drupalComponents,
+    options.cssFiles.drupalIgnore,
+  ),
+  ...mapJSFilenamesToEntries(options.jsFiles.drupalComponents, {}),
+  ...mapJSFilenamesToEntries(options.jsFiles.storybookComponents, {
+    ignore: options.jsFiles.storybookIgnore,
+  }),
+};
+
+const storybookStyles = glob.sync(options.cssFiles.storybookComponents, {
+  ignore: options.cssFiles.storybookIgnore,
+});
+
+if (storybookStyles.length) {
+  entries['entries/storybookStyles'] = storybookStyles;
+}
+
 module.exports = {
-  entry: {
-    sprite: glob.sync(path.resolve(__dirname, 'images/svg/**/*.svg')),
-    styles: glob.sync(options.cssFiles.components, options.cssFiles.ignore),
-    ...mapJSFilenamesToEntries(options.jsFiles.components, {}),
-  },
+  entry: entries,
   output: {
     path: options.rootPath.dist,
-    filename: 'js/[name].js',
+    filename: '[name].js',
   },
-  mode: 'production',
+  mode: process.env.NODE_ENV === 'development' ? process.env.NODE_ENV : 'production',
   module: {
     rules: [
       {
@@ -48,7 +67,11 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'css/[name].css',
+              name(resourcePath) {
+                return resourcePath.includes(options.rootPath.storybook)
+                  ? 'css/storybook/[name].css'
+                  : 'css/drupal/[name].css';
+              },
               sourceMap: process.env.NODE_ENV === 'development',
             },
           },
@@ -79,10 +102,11 @@ module.exports = {
           {
             loader: 'svg-sprite-loader',
             options: {
+              publicPath: 'assets/',
               extract: true,
               symbolId: (filePath) =>
                 `svg-${path.basename(filePath.slice(0, -4))}`,
-              publicPath: 'svg/',
+              name: 'sprite.svg',
             },
           },
         ],
@@ -93,21 +117,23 @@ module.exports = {
     new SpriteLoaderPlugin({
       plainSprite: true,
     }),
-    new MiniCssExtractPlugin({
-      filename: './dist/css/[name].css',
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'assets/fonts'),
+          to: path.resolve(__dirname, 'dist/assets/fonts'),
+          noErrorOnMissing: true,
+          globOptions: {
+            ignore: ['**/*.txt'],
+          },
+        },
+      ],
+    }),
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['entries/'],
     }),
   ],
   optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        extractComments: true,
-        terserOptions: {
-          mangle: {
-            reserved: ['Drupal'],
-          },
-        },
-      }),
-    ],
+    minimize: false,
   },
 };

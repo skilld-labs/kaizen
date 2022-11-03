@@ -15,7 +15,20 @@ module.exports = () => ({
   map: false,
   plugins: [
     postcssImport(),
-    postcssUrl(),
+    postcssUrl([
+      {
+        url: 'inline',
+        filter: (asset) => {
+          return ['png', 'jpg', 'jpeg', 'svg', 'gif', 'webp', 'avif'].includes(asset.url.split('.').pop());
+        },
+      },
+      {
+        url: 'rebase',
+        filter: (asset) => {
+          return !['png', 'jpg', 'jpeg', 'svg', 'gif', 'webp', 'avif'].includes(asset.url.split('.').pop());
+        },
+      },
+    ]),
     postCssDrupalBreakpoints({
       importFrom: './<%= h.changeCase.lower(name) %>.breakpoints.yml',
       themeName: '<%= h.changeCase.lower(name) %>',

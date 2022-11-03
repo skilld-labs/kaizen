@@ -1,7 +1,7 @@
 ---
 to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/<%= h.changeCase.lower(name) %>.info.yml
 ---
-name: <%= name %>
+name: <%= h.changeCase.sentenceCase(name) %>
 type: theme
 base theme: false
 description: <%= description %>
