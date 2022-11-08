@@ -16,7 +16,7 @@ const mapJSFilenamesToEntries = (pattern, globOptions) =>
   glob.sync(pattern, globOptions).reduce((entries, filename) => {
     const [, name] = filename.match(/([^/]+)\.js$/);
     const entryName = filename.includes(options.rootPath.storybook)
-      ? `js/storybook/${name}/${name}`
+      ? `js/storybook/${name}`
       : `js/drupal/${name}`;
     return {
       ...entries,
