@@ -1,0 +1,93 @@
+@import "_o-map";
+
+.o-map {
+  .m-block {
+    @extend %o-map__block;
+  }
+
+  &__map {
+    @extend %o-map__map;
+  }
+
+  &__marker {
+    @extend %o-map__marker;
+  }
+
+  &__marker-icon {
+    @extend %o-map__marker-icon;
+
+    &--custom {
+      @extend %o-map__marker-icon--custom;
+    }
+
+    .o-map__marker--active & {
+      @extend %o-map__marker-icon--active;
+    }
+  }
+
+  &__filter-icon {
+    @extend %o-map__filter-icon;
+  }
+
+  &__filter-input-label {
+    @extend %o-map__filter-input-label;
+
+    &::before {
+      @extend %o-map__filter-input-label--before;
+    }
+  }
+
+  &__filters-wrapper {
+    @extend %o-map__filters-wrapper;
+  }
+
+  &__filter-container {
+    @extend %o-map__filter-container;
+  }
+
+  &__search-form {
+    @extend %o-map__search-form;
+  }
+
+  &__search-input {
+    @extend %o-map__search-input;
+
+    &::placeholder {
+      @extend %o-map__search-input-placeholder;
+    }
+
+    &:placeholder-shown {
+      @extend %o-map__search-input--not-expanded;
+    }
+  }
+
+  .auto-results-wrapper {
+    p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* leaflet cleanup */
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  padding: 0;
+  border-radius: 0;
+  background: white;
+  box-shadow: none;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  line-height: inherit;
+}
+
+.leaflet-popup-tip-container {
+  display: none;
+}
+
+.leaflet-control-scale {
+  display: none;
+}

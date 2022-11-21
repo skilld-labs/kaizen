@@ -1,0 +1,106 @@
+/* Variables just for example. */
+
+:root {
+  --color-primary: #0e4e95;
+  --color-primary-2: #126ae1;
+  --color-primary-3: #f3f7fa;
+  --color-primary-4: #566069;
+  --color-primary-5: #29b9e8;
+  --color-secondary: #43b0b1;
+  --color-secondary-2: #56ccf2;
+  --color-secondary-3: #f26f21;
+  --color-secondary-4: #c52254;
+  --color-secondary-5: #f2f2f2;
+
+  /* Not pallet colors */
+  --color-secondary-6: #008dbf;
+  --color-secondary-7: #e4e4e4;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-border: var(--color-secondary-7);
+
+  /* Disabled colors */
+  --color-primary-disabled: #a1d7d8;
+  --color-secondary-disabled: #88b4f0;
+  --color-bg: var(--color-white);
+  --color-text: var(--color-primary-4);
+  --color-disabled: var(--color-primary-4); /* old #8ca6c7 */
+  --color-disabled-bg: var(--color-secondary-5); /* old #f3f6f9 */
+  --window-height: 100vh;
+  --base-root-font-mobile: 4.278vw; /* Mobile design width is 375px, so everything below should be scaled proportionally */
+  --root-font-size--default: 100%;
+  --root-font-size--medium: calc(16 * (1vw / 14.4));
+  --root-font-size--large: calc(16 * (1vw / 14.4)); /* 16 on 1440 and 21.3 on 1920 */
+  /* font-sizes */
+  --font-size--xxxxxl: 48px;
+  --font-size--xxxxl: 40px;
+  --font-size--xxxl: 36px;
+  --font-size--xxl: 30px;
+  --font-size--xl: 24px;
+  --font-size--m: 20px;
+  --font-size--l: 18px;
+  --font-size--base: 16px;
+  --font-size--s: 14px;
+  --font-size--xs: 13px;
+  --font-size--xxs: 12px;
+  --font-size--xxxs: 11px;
+  /* font families */
+  --font-family--base: "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  /* font-weight */
+  --font-weight--base: var(--font-weight--regular);
+  --font-weight--regular: 400;
+  --font-weight--medium: 500;
+  --font-weight--bold: 700;
+  /* line height */
+  --line-height--xxxxl: 2.25;
+  --line-height--xxxl: 2;
+  --line-height--xxl: 1.75;
+  --line-height--xl: 1.7;
+  --line-height--l: 1.6;
+  --line-height--base: 1.5;
+  --line-height--s: 1.385;
+  --line-height--xs: 1.333;
+  --line-height--xxs: 1.25;
+  --line-height--xxxm: 1.14;
+  --line-height--xxxs: 1.1667;
+  --line-height--xxxxs: 1;
+  /* letter-spacing */
+  --letter-spacing--xl: 1.4px;
+  --letter-spacing--l: 0.05rem; /* 0.8px */
+  --letter-spacing--s: 0.04063rem; /* 0.65px */
+  /* site sizes */
+  --site-max-width: 1920px; /* 1920px */
+  --content-max-width: 1264px; /* 1216px + 48 padding */
+  --content-max-width--mobile: 768px;
+  --content-max-width--w: 1488px;
+  --content-max-width--ls: 1056px; /* 1008px + 48 padding */
+  --content-max-width--s: 53rem; /* 800px + 48 padding */
+  --content-max-width--xs: 46.5rem;
+  --mobile-header-height: 64px;
+  --desktop-sticky-main-menu-height: 59px;
+  /* container */
+  --container-padding: 24px;
+  /* z-index */
+  --z-index-header: 500;
+  --z-index-header-bottom: 510;
+  --z-index-header-top: 515;
+  --z-index-sticky: 520;
+  --z-index-modal: 600;
+  --z-index-selects: 700;
+  --z-index-dialog-overlay: 799;
+  --z-index-dialog: 800;
+  /* transitions */
+  --transition-duration: 0.3s;
+  --transition-timing-function: ease;
+  --transition-hover: var(--transition-duration) var(--transition-timing-function);
+  --transition-collapse: var(--transition-duration) var(--transition-timing-function);
+  /* border-radius */
+  --border-radius-circle: 50%;
+  --border-radius-xl: 8px;
+  --border-radius-base: 4px;
+  --border-radius-s: 3px;
+  --border-radius-xs: 2px;
+  /* other */
+  --input-height: 48px;
+  --input-secondary-height: 48px;
+}
