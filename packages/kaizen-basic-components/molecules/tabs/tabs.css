@@ -1,0 +1,58 @@
+@import "_m-tabs";
+
+.m-tabs {
+  &::after {
+    @extend %m-tabs__border;
+  }
+
+  &__inner {
+    @extend %m-tabs__inner;
+  }
+
+  &__item {
+    @extend %m-tabs__item;
+
+    &--last {
+      @extend %m-tabs__item--last;
+    }
+  }
+
+  &__link {
+    &[role=tab] {
+      @extend %m-tabs__link;
+
+      &::before {
+        @extend %m-tabs__link-border;
+      }
+
+      &:hover:not([aria-selected=true]) {
+        @extend %m-tabs__link--hover;
+      }
+
+      &:focus {
+        @extend %m-tabs__link--focus;
+      }
+
+      &[aria-selected=true] {
+        @extend %m-tabs__link--hover;
+        @extend %m-tabs__link--active;
+
+        &::before {
+          @extend %m-tabs__link-border--active;
+        }
+      }
+    }
+  }
+
+  &__content {
+    @extend %m-tabs__content;
+  }
+
+  &__header {
+    @extend %m-tabs__header;
+  }
+
+  [hidden] {
+    @extend %m-tabs--hidden;
+  }
+}

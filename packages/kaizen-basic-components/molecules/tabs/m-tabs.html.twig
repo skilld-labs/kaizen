@@ -1,0 +1,22 @@
+<div class="m-tabs {{ modifier_class }}" data-tabs>
+  <ul class="m-tabs__inner">
+    {% for tab in tabs %}
+      {# <li> - Is important for the functionality #}
+      <li class="m-tabs__item">
+        <a class="m-tabs__link" {{ tab.active }} href="#{{ tab.id }}">
+          {{ tab.tabName }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+<div class="m-tabs__content-wrapper">
+  {% for tab in tabs %}
+    <h3  class="m-tabs__header">
+      {{ tab.tabName }}
+    </h3>
+    <div class="m-tabs__content" id="{{ tab.id }}">
+      <div>{{ tab.tabContent }}</div>
+    </div>
+  {% endfor %}
+</div>

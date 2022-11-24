@@ -1,0 +1,20 @@
+{
+  "tabs": [
+    {
+      "id": "m-tabs-tab1",
+      "active": "data-tabby-default",
+      "tabName": "Gravida volutpat.",
+      "tabContent": "Dis alias, qui do nostra, eum? Hac architecto magni, reprehenderit."
+    },
+    {
+      "id": "m-tabs-tab2",
+      "tabName": "Odio rhoncus.",
+      "tabContent": "Iste debitis tincidunt quos platea ab fugiat hendrerit proident mi."
+    },
+    {
+      "id": "m-tabs-tab3",
+      "tabName": "Arcu eget ut.",
+      "tabContent": "Ullamco ridiculus blanditiis? Donec, nihil posuere, tempore, minus! Numquam possimus."
+    }
+  ]
+}
