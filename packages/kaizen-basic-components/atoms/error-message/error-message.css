@@ -1,0 +1,17 @@
+@import "_a-error-message";
+
+.a-error-message {
+  @extend %a-error-message;
+
+  a {
+    @extend %a-error-message__link;
+
+    &:hover {
+      @extend %a-error-message__link--hover;
+    }
+  }
+
+  ul {
+    @extend %a-error-message__ul;
+  }
+}

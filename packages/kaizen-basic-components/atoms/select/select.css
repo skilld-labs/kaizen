@@ -1,0 +1,122 @@
+@import "_a-select";
+@import "../error-message/_a-error-message";
+
+.a-select {
+  &__wrapper {
+    &--inline {
+      @extend %a-select__wrapper--inline;
+    }
+
+    .a-error-message {
+      @extend %a-error-message--top;
+    }
+  }
+
+  &__button {
+    @extend %a-select__button;
+
+    &:after {
+      @extend %a-select__angle;
+    }
+
+    &:hover {
+      @extend %a-select__button--hover;
+
+      &:after {
+        @extend %a-select__angle--hover;
+      }
+    }
+
+    .is-focused & {
+      @extend %a-select__button--focus;
+    }
+
+    .is-open & {
+      @extend %a-select__button--open;
+
+      &:after {
+        @extend %a-select__angle--open;
+      }
+    }
+
+    .is-open.is-flipped & {
+      @extend %a-select__button--open--flipped;
+    }
+
+    .is-disabled &,
+    .is-disabled &:hover {
+      @extend %a-select__button--disabled;
+
+      &:after {
+        @extend %a-select__angle--disabled;
+      }
+    }
+
+    .a-select__wrapper-error & {
+      @extend %a-select__button--error;
+    }
+  }
+
+  &__button-content {
+    @extend %a-select__button-content;
+
+    .choices__item,
+    .choices__item--selectable {
+      @extend %a-select__button-content-text;
+    }
+  }
+
+  &__dropdown {
+    @extend %a-select__dropdown;
+
+    &,
+    &[aria-expanded] {
+      .choices__list {
+        @extend %a-select__list;
+      }
+    }
+  }
+
+  &__label {
+    @extend %a-select__label;
+
+    .a-select__wrapper--inline & {
+      @extend %a-select__label--inline;
+    }
+  }
+
+  &__link {
+    &,
+    .a-select__dropdown[aria-expanded] & {
+      @extend %a-select__link;
+
+      &.is-selected {
+        @extend %a-select__link--selected;
+      }
+
+      &:hover {
+        @extend %a-select__link--hover;
+      }
+    }
+  }
+
+  &__content {
+    @extend %a-select__content;
+  }
+
+  &__container {
+    @extend %a-select__container;
+
+    &[data-type*=select-one]:after {
+      display: none;
+    }
+
+    & ~ .a-error-message {
+      @extend %a-error-message--bottom;
+    }
+  }
+}
+
+.choices[data-type*=select-one]:after {
+  display: none;
+}
