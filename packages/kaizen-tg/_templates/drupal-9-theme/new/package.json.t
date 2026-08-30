@@ -8,6 +8,9 @@ to: <%= h.src() %>/<%= h.changeCase.lower(name) %>/package.json
   "repository": "git@github.com:skilld-labs/kaizen.git",
   "author": "Skilld",
   "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
   "devDependencies": {
     "@skilld/kaizen-cg": "^2.0.0-beta.0",
     "@storybook/addon-essentials": "^6.4.19",

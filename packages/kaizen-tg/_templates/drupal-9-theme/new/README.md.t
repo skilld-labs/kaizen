@@ -7,8 +7,8 @@ This theme was generated using [kaizen-tg](https://www.npmjs.com/package/@skilld
 
 ## Requirements
 
-- Node.js
-- Yarn
+- Node.js >= 22 (tested on 22 and 24; Node 18 and 20 are EOL and unsupported)
+- Yarn 1.x
 
 
 ## Features
