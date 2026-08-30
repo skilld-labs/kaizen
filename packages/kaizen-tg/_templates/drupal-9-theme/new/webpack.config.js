@@ -133,6 +133,11 @@ module.exports = {
       cleanAfterEveryBuildPatterns: ['entries/'],
     }),
   ],
+  // svg-sprite-loader@6 leaves the extracted sprite module without a source, so
+  // webpack's stats printer crashes on Buffer.byteLength(undefined) once the build
+  // has already emitted everything. Not printing per-module stats sidesteps it.
+  // Remove this once svg-sprite-loader is replaced by webpack 5 asset modules.
+  stats: { modules: false },
   optimization: {
     minimize: false,
   },
